@@ -3,9 +3,13 @@ from App.view.loginUI import LoginUI
 
 app = QApplication([])
 login = LoginUI()
-res = login.exec_()
-if res:
-    print("Login successful")
 
-print("Exiting application")
+while True:
+    res = login.exec_()
+    if res:
+        from App.view.homeUI import HomeUI
+        home = HomeUI()
+        app.exec_()
+
+    print("Exiting application")
     
