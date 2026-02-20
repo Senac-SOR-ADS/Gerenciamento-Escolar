@@ -1,0 +1,17 @@
+from PyQt5.QtWidgets import QWidget, QDialog
+from PyQt5.uic import loadUi
+from PyQt5.QtCore import pyqtSlot
+
+class LoginUi(QDialog):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        loadUi("ui/login_funcionario.ui", self)
+        self.show()
+
+
+if __name__ == "__main__":
+    from PyQt5.QtWidgets import QApplication
+    app = QApplication([])
+    login = LoginUi()
+    app.exec_()
+       
