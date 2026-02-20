@@ -11,7 +11,7 @@ class LoginUI(QDialog):
     @pyqtSlot()
     def on_btn_concluir_clicked(self):
         self.accept()
-
+    
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
     app = QApplication([])
