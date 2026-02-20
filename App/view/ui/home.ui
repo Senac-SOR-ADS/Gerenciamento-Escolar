@@ -14,6 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+<<<<<<< HEAD
    <widget class="QLabel" name="labelTurmas">
     <property name="geometry">
      <rect>
@@ -88,6 +89,13 @@
      <rect>
       <x>710</x>
       <y>0</y>
+=======
+   <widget class="QPushButton" name="pushExit">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>10</y>
+>>>>>>> e03468d04a4b714b8c0c9b6a09a5d82c3870b8dc
       <width>75</width>
       <height>23</height>
      </rect>
@@ -96,8 +104,81 @@
      <string>Exit</string>
     </property>
    </widget>
+<<<<<<< HEAD
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+=======
+   <widget class="QListView" name="listGerencia">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>80</y>
+      <width>131</width>
+      <height>491</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QListView" name="listTurmas">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>131</width>
+      <height>491</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelTurmas">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>50</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Turmas</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelAlunos">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>50</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Alunos</string>
+    </property>
+   </widget>
+   <widget class="QListView" name="listAlunos">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>80</y>
+      <width>481</width>
+      <height>491</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelGerencia">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>50</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Gerência</string>
+    </property>
+   </widget>
+  </widget>
+>>>>>>> e03468d04a4b714b8c0c9b6a09a5d82c3870b8dc
  </widget>
  <resources/>
  <connections/>
