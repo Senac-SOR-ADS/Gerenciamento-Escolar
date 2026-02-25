@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QDialog
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.uic import loadUi
+from App.controller.loginController import validateLogin, logout
 
 class LoginUI(QDialog):
     def __init__(self, **kwargs):
@@ -10,7 +11,17 @@ class LoginUI(QDialog):
 
     @pyqtSlot()
     def on_btn_concluir_clicked(self):
-        self.accept()
+        nome = self.nome.text()
+        senha = self.senha.text()
+        resposta = validateLogin(nome, senha)
+        if resposta:
+            self.accept()
+        else:
+            print("Usuario ou Senha incorretos!")
+
+    def on_pushExit_clicked(self):
+        logout(self)
+
     
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
