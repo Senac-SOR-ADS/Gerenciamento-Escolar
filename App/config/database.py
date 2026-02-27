@@ -31,7 +31,7 @@ class Database():
             raise RuntimeError("Erro ao conectar ao banco de dados")
 
     @contextmanager
-    def getCursos(self):
+    def getCursor(self):
         conn = self.connect()
         cursor = conn.cursor()
         try:
