@@ -22,7 +22,8 @@ class Database():
                 port = self.port,
                 user = self.user,
                 password = self.password,
-                database = self.database
+                database = self.database,
+                use_pure = True
             )
             return conexao
             
@@ -46,13 +47,34 @@ class Database():
             finally:
                 conn.close()
 
+    def execute(self, sql, params=None):
+        """Executa INSERT/UPDATE/DELETE"""
+        with self.getCursor() as (_, cursor):
+            cursor.execute(sql, params)
+            return cursor.rowcount
 
-cursor = conexao.cursor()
+    def insert(self, sql, params=None):
+        """Executa o INSERT e retorna o ID"""
+        with self.getCursor() as (_, cursor):
+            cursor.execute(sql, params)
+            return cursor.lastrowid
+        
+    def fetchone(self, sql, params=None):
+        """Retorna o primeiro registro da query"""
+        with self.getCursor() as (_, cursor):
+            cursor.execute(sql, params)
+            return cursor.fetchone()
+        
+    def fetchall(self, sql, params=None):
+        """Retorna todos os registro da query"""
+        with self.getCursor() as (_, cursor):
+            cursor.execute(sql, params)
+            return cursor.fetchall()
 
-cursor.execute("SELECT * FROM usuarios")
 
-resp = cursor.fetchall()
+if __name__ == "__main__":
+    DB = Database()
 
-conexao.close()
+    resultado = DB.fetchall("SELECT * FROM alunos")
 
-print(resp)
+    print (resultado)

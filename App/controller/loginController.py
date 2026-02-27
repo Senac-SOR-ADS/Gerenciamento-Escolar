@@ -1,3 +1,6 @@
+from App.config.database import Database
+from App.model.userModel import Usuario
+
 
 __currentUser = {
     "id": None,
@@ -10,13 +13,17 @@ def isLogged():
     return __currentUser['id']
 
 def logout():
-     __setCurrentUser(0)
+     __setCurrentUser(None)
      
 def __setCurrentUser(id):
     __currentUser['id'] = id
 
 def validateLogin(email, password):
-    if email == "usuario" and password == "123":
-        __setCurrentUser(1)
+    user = Usuario.login(email)
+    #user.showInfo()
+
+    if user.id and user.email == email and user.senha == password:
+        __setCurrentUser(user.id)
         return True
+    
     return False
