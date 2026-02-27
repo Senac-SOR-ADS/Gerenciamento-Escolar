@@ -7,10 +7,10 @@ load_dotenv(override=True)
 
 class Database():
     def __init__(self):
-        self.host = getenv("DB_HOST"),
-        self.port = int(getenv("DB_PORT")),
-        self.user = getenv("DB_USER"),
-        self.password = getenv("DB_PASSWORD"),
+        self.host = getenv("DB_HOST")
+        self.port = int(getenv("DB_PORT"))
+        self.user = getenv("DB_USER")
+        self.password = getenv("DB_PASSWORD")
         self.database = getenv("DB_NAME")
 
     def connect(self):
@@ -20,7 +20,8 @@ class Database():
                 port = self.port,
                 user = self.user,
                 password = self.password,
-                database = self.database
+                database = self.database,
+                use_pure = True
             )
             return conexao
         except Exception as e:
@@ -43,12 +44,29 @@ class Database():
             finally:
                 conn.close()
 
+    def execute(self, sql, params=None):
+        with self.getCursor() as (_, cursor):
+            cursor.execute(sql, params)
+            return cursor.rowcount
+        
+    def insert(self, sql, params=None):
+        with self.getCursor() as (_, cursor):
+            cursor.execute(sql, params)
+            return cursor.lastrowid
 
-cursor = conexao.cursor()
-cursor.execute("SELECT * FROM usuarios")
+    def fetchone(self, sql, params=None):
+        with self.getCursor() as (_, cursor):
+            cursor.execute(sql, params)
+            return cursor.fetchone()
+        
+    def fetchall(self, sql, params=None):
+        with self.getCursor() as (_, cursor):
+            cursor.execute(sql, params)
+            return cursor.fetchall()
 
-resp = cursor.fetchall()
 
-conexao.close()
+if __name__ == "__main__":
+    DB = Database()
 
-print(resp)
+    resultado = DB.fetchall("SELECT * FROM alunos")
+    print(resultado)
