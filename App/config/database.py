@@ -2,9 +2,9 @@ import mysql.connector
 from os import getenv
 from dotenv import load_dotenv
 from contextlib import contextmanager
-
+ 
 load_dotenv(override=True)
-
+ 
 class Database():
     def __init__(self):
         self.host = getenv("DB_HOST")
@@ -12,14 +12,22 @@ class Database():
         self.user = getenv("DB_USER")
         self.password = getenv("DB_PASSWORD")
         self.database = getenv("DB_NAME")
-
+ 
     def connect(self):
         try:
-            pass
+            conexao = mysql.connector.connect(
+                host = self.host,
+                port = self.port,
+                user = self.user,
+                password = self.password,
+                database = self.database,
+                use_pure = True
+            )
+            return conexao
         except Exception as e:
             print(f"Error conexao: {e}")
-            raise RuntimeError("Erro ao conectar ao banco de dados")
-
+            raise RuntimeError("Erro ao conectar ao banco de dados.")
+       
     @contextmanager
     def getCursor(self):
         conn = self.connect()
@@ -35,13 +43,29 @@ class Database():
                 cursor.close()
             finally:
                 conn.close()
-
-conexao = mysql.connector.connect(
-    host = getenv("DB_HOST"),
-    port = int(getenv("DB_PORT")),
-    user = getenv("DB_USER"),
-    password = getenv("DB_PASSWORD"),
-    database = getenv("DB_NAME")
-)
-cursor = conexao.cursor()
-cursor.execute("select * from usuarios")
+ 
+    def execute(self, sql, params=None):
+        with self.getCursor() as (_, cursor):
+            cursor.execute(sql, params)
+            return cursor.rowcount
+       
+    def insert(self, sql, params=None):
+        with self.getCursor() as (_, cursor):
+            cursor.execute(sql, params)
+            return cursor.lastrowid
+       
+    def fetchone(self, sql, params=None):
+        with self.getCursor() as (_, cursor):
+            cursor.execute(sql, params)
+            return cursor.fetchone()
+       
+    def fetchall(self, sql, params=None):
+        with self.getCursor() as (_, cursor):
+            cursor.execute(sql, params)
+            return cursor.fetchall()
+ 
+if __name__ == "__main__":
+    DB = Database()
+    result = DB.fetchall("SELECT * FROM alunos")
+    print(result)
+ 
