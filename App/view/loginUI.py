@@ -16,7 +16,8 @@ class LoginUI(QDialog):
         resp = validateLogin(nome, senha)
         if (resp == True):
             self.accept()
-        print("Usuario ou Senha Incorretos")
+        else:
+            print("Usuario ou Senha Incorretos")
 
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication

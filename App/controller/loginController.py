@@ -1,4 +1,4 @@
-
+from App.model.userModel import Usuario
 __currentUser = {
     "id": None,
     "nome": "",
@@ -16,7 +16,11 @@ def __setCurrentUser(id):
     __currentUser["id"] = id
 
 def validateLogin(email, password):
-     if email == "usuario" and password == "123":
-        __setCurrentUser(1)
+    user = Usuario.login(email)
+    user.showInfo()
+
+    if user.id and email == user.email and password == user.senha:
+        __setCurrentUser(user.id)
         return True
-     return False
+    
+    return False
