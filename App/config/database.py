@@ -67,5 +67,4 @@ class Database():
 if __name__ == "__main__":
     DB = Database()
     result = DB.fetchall("SELECT * FROM alunos")
-    print(result)
  
