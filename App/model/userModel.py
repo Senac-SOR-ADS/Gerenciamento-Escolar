@@ -21,7 +21,7 @@ class Usuario:
         DB = Database()
         sql = "SELECT * FROM usuarios WHERE email = %s"
         params = (email,)
-        result = DB.fetchone(sql, params)
+        result = DB.fetchOne(sql, params)
         if not result: return Usuario()
         user = Usuario(*result)
         return user 
@@ -34,4 +34,4 @@ class Usuario:
             Senha: {self.senha}
             Tipo: {self.tipo}
             Ativo: {self.ativo}
-        """)
+        """) 
