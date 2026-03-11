@@ -11,9 +11,28 @@ class Room:
         self.ativo = bool(ativo)
 
     @classmethod
-    def status(cls):
-        "Mostrar se a sala esta ativa ou foi desativada."
-        pass
+    def _getObjectList(cls, lista):
+        return [cls(*user) for user in lista]
+
+    @classmethod
+    def status(cls, id_status):
+        try:
+            DB = Database()
+            sql = "SELECT `ativo` FROM salas WHERE id = %s"
+            params = (id_status,)
+            result = DB.fetchone(sql, params)
+            if result and result[0] == 1:
+                print("Sala Ativa!")
+                return True
+            else: 
+                print("Sala Inativa!")
+                return False
+            
+        except Exception as e:
+            print(f"Erro em obter informações do {e}")
+            return False   
+        
+                             
 
     @classmethod
     def pickStudentRoom(cls):
@@ -22,19 +41,33 @@ class Room:
     
     @classmethod
     def showRoom(cls):
-        "Mostrar salas que existem"
-        pass
+        try:
+            DB = Database()
+            sql = "SELECT `turmas` FROM salas"
+            result = DB.fetchall(sql)
+            return result
+        except Exception as e:
+            print(f"Erro ao acessar as turmas {e} !")
 
+   
     @classmethod
-    def editRoom(cls):
-        "Modificar salas existentes, caso alguma sala troque alguma turma"
-        pass
+    def updateRoom(cls, room: Room):
+        try:
+            DB = Database()
+            sql = "UPDATE salas SET `turmas` = %s WHERE id = %s"
+            params = (room.turmas, room.id_sala)
+            DB.execute(sql, params)
+            return True
+        
+        except Exception as e:
+            print(f"Erro ao atualizar a sala: {e}") 
+            return False
         
     @classmethod
     def getAll(cls):
         try:
             DB = Database()
-            sql = "SELECT `id`, `turmas`, `ativo` FROM salas "
+            sql = "SELECT `id`, `turmas`, `ativo` FROM salas"
             result = DB.fetchall(sql)
             return result
         except Exception as e:
@@ -42,7 +75,9 @@ class Room:
             
 
 if __name__ == "__main__":
-    print(Room.getAll())
+    print("Iniciando o teste...")
+    
+    roomUpdate = Room(id_sala=2, turmas="2º Ano B") 
+    print(Room.updateRoom(roomUpdate))
 
-
-
+    
