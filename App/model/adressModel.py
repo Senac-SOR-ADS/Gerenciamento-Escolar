@@ -22,14 +22,68 @@ class Adress:
         # INSERIR NOVO ENDEREÇO
         pass
 
-    def update(self):
-        #ATUALIZAR ENDEREÇO
-        pass
+    @classmethod
+    def update(cls):
+
+        try:
+            DB = Database()
+            sql = """
+            UPDATE enderecos
+            SET cidade = %s,
+                bairro = %s,
+                rua = %s,
+                complemento = %s
+                WHERE responsavel_id = %s
+            """
+
+            params = (
+                adress.city,
+                adress.neighborhood,
+                adress.street,
+                adress.complement,
+                adress.responsible_id
+                )
+
+            DB.execute(sql, params)
+            print("Atualização feita!")
+        
+        except Exception as e:
+            print("Não foi possível atualizar:", e)
+            raise RuntimeError("Falha ao atualizar o endereço!") from e
+
+
+    def updateAdress(self):
+
+        DB = Database()
+        sql = """
+            UPDATE enderecos
+            SET cidade = %s,
+                bairro = %s,
+                rua = %s,
+                complemento = %s
+            WHERE responsavel_id = %s
+        """
+
+        params = (
+            self.city,
+            self.neighborhood,
+            self.street,
+            self.complement,
+            self.responsible_id
+        )
+        DB.execute(sql, params)
+      
+
+        
+
+        
+        
+        
 
     def read(self):
         # CONSULTAR ENDEREÇO
         DB = Database()
-        sql = "SELECT * FROM enderecos"
+        sql = "SELECT * FROM enderecos WHERE id = %s"
         result = DB.fetchall(sql)
         return result
 
@@ -47,6 +101,12 @@ class Adress:
 
 
 if __name__ == "__main__":
-    address = Adress()
-    listar = address.read()
-    print(listar)
+    adress = Adress(
+        responsible_id=3,     
+        city="Toquio",
+        neighborhood="Bairro Nada",
+        street="Rua Sushi",
+        complement="Nada"
+    )
+
+    adress.update()
