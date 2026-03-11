@@ -23,7 +23,7 @@ class Usuario:
         params = (email,)
         result = DB.fetchOne(sql, params)
         if not result: return Usuario()
-        user = Usuario(*result)
+        user = Usuario(*result.values())
         return user 
     
     def showInfo(self):
