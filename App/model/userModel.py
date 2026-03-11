@@ -1,7 +1,12 @@
 from App.config.database import Database
 
 class Usuario:
-    
+    id = None
+    nome = ""
+    email = ""
+    senha = ""
+    tipo = ""
+    ativo = False
 
     def __init__(self , id=None , name="" , email="" , password="" , type="" , active=False):
         self.id = id
@@ -12,11 +17,11 @@ class Usuario:
         self.active = bool(active)
 
     @classmethod
-    def createUser(cls , name , email , password , type):
+    def createUser(cls , user:Usuario):
         try:
             DB = Database()
             sql = "INSERT INTO usuarios (nome_user , email , senha , tipo_user) VALUES(%s , %s , %s , %s)"
-            params = (name , email , password , type)
+            params = (user.name , user.email , user.password , user.type)
             result = DB.execute(sql  , params)
             return result
         except Exception as e:
@@ -24,11 +29,11 @@ class Usuario:
             raise RuntimeError
 
     @classmethod
-    def updateUser(cls ,id , name , email , password):
+    def updateUser(cls ,user:Usuario):
         try:
             DB = Database()
             sql = "UPDATE usuarios SET nome_user = %s , email = %s , senha = %s WHERE id = %s"
-            params = (name , email , password , id)
+            params = (user.name , user.email , user.password , id)
             result = DB.execute(sql , params)
             return result
         except Exception as e:
@@ -67,7 +72,7 @@ class Usuario:
         try:
             DB = Database()
             sql = "SELECT * FROM usuarios"
-            result = DB.fetchAll(sql)
+            result = DB.fetchAll(sql , )
             usuarios = [cls(*row) for row in result]
             return usuarios
         except Exception as e:
@@ -109,5 +114,10 @@ class Usuario:
          """)
 
 if __name__ == "__main__":
-    todosUsuarios = Usuario.findAll()
-    print(todosUsuarios)
+    user = Usuario()
+    Usuario.createUser()
+    user = Usuario.findById(1)
+    print(user.showInfo())
+
+    # for u in todosUsuarios:
+    #     print(u.showInfo())
