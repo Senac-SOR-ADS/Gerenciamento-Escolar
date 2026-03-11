@@ -12,7 +12,6 @@ login = LoginUI()
 while not isLogged():
     res = login.exec_()
     if res:
-        print('home')
         tela = HomeUI()
         app.exec_()
         logout()
