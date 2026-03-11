@@ -1,8 +1,13 @@
+from dotenv import load_dotenv
 from PyQt5.QtWidgets import QApplication
 from App.view.loginUI import LoginUI
 from App.view.homeUI import HomeUI
+<<<<<<< dev
 from App.controller.loginController import isLogged, logout
 from dotenv import load_dotenv
+=======
+from App.controller.loginController import isLogged , logout
+>>>>>>> dev
 
 load_dotenv(override=True)
 
@@ -12,7 +17,6 @@ login = LoginUI()
 while not isLogged():
     res = login.exec_()
     if res:
-        print('home')
         tela = HomeUI()
         app.exec_()
         logout()

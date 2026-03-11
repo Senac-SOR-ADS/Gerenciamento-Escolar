@@ -16,6 +16,7 @@ class Usuario:
         self.tipo = tipo
         self.ativo = bool(ativo)
 
+<<<<<<< dev
 
     @classmethod
     def login(cls, email):
@@ -30,11 +31,29 @@ class Usuario:
     
     def showInfo(self):
         print(f""" 
+=======
+    @classmethod
+    def login(cls, email):
+        DB = Database()
+        sql = "SELECT * FROM usuarios WHERE email = %s"
+        params = (email,)
+        result = DB.fetchOne(sql, params)
+        if not result: return Usuario()
+        user = Usuario(*result.values())
+        return user 
+    
+    def showInfo(self):
+        print(f"""  
+>>>>>>> dev
             ID: {self.id}
             Nome: {self.nome}
             Email: {self.email}
             Senha: {self.senha}
             Tipo: {self.tipo}
             Ativo: {self.ativo}
+<<<<<<< dev
         """)
         
+=======
+        """) 
+>>>>>>> dev
