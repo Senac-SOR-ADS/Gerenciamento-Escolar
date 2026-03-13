@@ -82,8 +82,19 @@ class Parent:
             print(f'Erro ao buscar os responsaveis{e}')
             raise RuntimeError
 
+    @classmethod
+    def getAllTelephones(cls):
+        try:
+            DB = Database()
+            sql = "SELECT * FROM telefones"
+            result = DB.fetchAll(sql)
+            return cls._getObjectList(result)
+        except Exception as e:
+                print(f'Erro ao buscar os responsaveis{e}')
+                raise RuntimeError
+
 if __name__ == "__main__":
-    todosResponsaveis = Parent.getAll()
+    todosResponsaveis = Parent.getAllTelephones()
     print(todosResponsaveis)
     
 
