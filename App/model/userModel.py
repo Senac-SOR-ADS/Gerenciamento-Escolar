@@ -7,7 +7,6 @@ class Usuario:
     senha = ""
     tipo = ""
     ativo = False
-
     def __init__(self, id=None, nome="", email="", senha="", tipo="", ativo=False):
         self.id = id
         self.nome = nome
