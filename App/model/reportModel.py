@@ -1,18 +1,13 @@
+from dataclasses import dataclass
 from App.config.database import Database
 
+@dataclass
 class Report:
-    id = None
-    date = ""
-    description = ""
-    alunoId = ""  
-    responsavelId = ""
-
-    def __init__(self, id=None, date="", description="", alunoId="", responsavelId=""):
-        self.id = id
-        self.date = date
-        self.description = description
-        self.alunoId = alunoId
-        self.responsavelId = responsavelId 
+    id: int = None
+    date: str = ""
+    description: str = ""
+    alunoId: int = ""  
+    responsavelId: int = ""
 
     @classmethod
     def create(cls, report:Report):
@@ -83,6 +78,6 @@ if __name__ == "__main__":
     # Report.create(v)
     # a = Report.searchDate("2023-10-27")
     # print(a)
-    Report.edit(11, "O pé doeu demais1")
+    Report.edit(4, "O pé doeu demais1")    
     report = Report.searchUnique(11)
     print(report.description)
