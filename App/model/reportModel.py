@@ -15,38 +15,59 @@ class Report:
         self.responsavelId = responsavelId 
 
     @classmethod
-    def create(cls, date, description, alunoId, responsavelId):
+    def create(cls, report:Report):
         try:
             DB = Database()
             sql = "INSERT INTO `relatorios`(`data`, `descricao`, `aluno_id`, `responsavel_id`) VALUES (%s,%s,%s,%s)"
-            Reporta = (date, description, alunoId, responsavelId)
+            Reporta = (report.date, report.description, report.alunoId, report.responsavelId)
             DB.insert(sql, Reporta)
             print("Relatório criado com sucesso")
         except Exception as e:
-            print(f'Erro ao criar relatorio')
+            print(f'Erro relatorio: {e}')
             raise RuntimeError
 
     @classmethod
-    def edit(cls):
-        # Atualiza o relatorio
-        sql = ""
-        pass
+    def edit(cls, id, description):
+        try:
+            DB = Database()
+            sql = "UPDATE relatorios SET descricao= %s WHERE id = %s"
+            params = (description, id)
+            update = DB.execute(sql, params)
+            print(update)
+            if not update: raise Exception("Erro ao editar relatorio")
+            return update
+        except Exception as e:
+            raise e
 
     @classmethod
-    def search(cls, id):
-        # busca por um id especifico
-        sql = ""
-        pass
+    def searchUnique(cls, id):
+        try:
+            DB = Database()
+            sql = "SELECT `id`, `data`, `descricao`, `aluno_id`, `responsavel_id` FROM `relatorios` WHERE id = %s"
+            Reporta = (id,)
+            result = DB.fetchOne(sql, Reporta)
+            if result: 
+                return cls._getObjectList([result])[0]
+            return cls()
+        except Exception as e:
+            print(f'Erro ao buscar relatorio')
+            raise RuntimeError
 
     @classmethod
-    def searchDate(cls, id, date):
-        # Mostra as infos gerais do relatorio
-        sql = ""
-        pass
+    def searchDate(cls, date):
+        try:
+            DB = Database()
+            sql = "SELECT `id`, `data`, `descricao`, `aluno_id`, `responsavel_id` FROM `relatorios` WHERE data = %s"
+            Reporta = (date,)
+            result = DB.fetchAll(sql, Reporta)
+            return cls._getObjectList(result)
+        except Exception as e:
+            print(f'Erro ao buscar relatorio')
+            raise RuntimeError
 
     @classmethod
     def _getObjectList(cls, lista):
-        return [cls(*user) for user in lista]
+        return [cls(*item.values()) for item in lista]
     
     @classmethod
     def getAll(cls):
@@ -56,6 +77,12 @@ class Report:
         return cls._getObjectList(result)
 
 if __name__ == "__main__":
-    allReports = Report.getAll()
-    print(allReports)
-    Report.create("2023-10-27", " relatório", 3, 1)
+    # allReports = Report.getAll()
+    # print(allReports)
+    # v = Report(date= "2023-10-28", description= " relatóriossss", alunoId= 3, responsavelId= 3)
+    # Report.create(v)
+    # a = Report.searchDate("2023-10-27")
+    # print(a)
+    Report.edit(11, "O pé doeu demais1")
+    report = Report.searchUnique(11)
+    print(report.description)
