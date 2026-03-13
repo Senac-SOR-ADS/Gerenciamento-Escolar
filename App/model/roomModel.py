@@ -20,7 +20,7 @@ class Room:
             DB = Database()
             sql = "SELECT `ativo` FROM salas WHERE id = %s"
             params = (id_status,)
-            result = DB.fetchone(sql, params)
+            result = DB.fetchOne(sql, params)
             if result and result[0] == 1:
                 print("Sala Ativa!")
                 return True
@@ -50,7 +50,7 @@ class Room:
             DB = Database()
             sql = "SELECT `turmas` FROM salas WHERE id = %s"
             params = (id,)
-            result = DB.fetchall(sql, params)
+            result = DB.fetchAll(sql, params)
             return result
         except Exception as e:
             print(f"Erro ao acessar as turmas {e} !")
@@ -75,7 +75,7 @@ class Room:
         try:
             DB = Database()
             sql = "SELECT `id`, `turmas`, `ativo` FROM salas"
-            result = DB.fetchall(sql)
+            result = DB.fetchAll(sql)
             return result
         except Exception as e:
             print(f"Erro ao acessar as salas {e} !")
