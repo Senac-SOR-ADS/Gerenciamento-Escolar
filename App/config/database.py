@@ -14,7 +14,6 @@ class Database(metaclass=Singleton):
         self.user = getenv("DB_USER")
         self.password = getenv("DB_PASSWORD")
         self.database = getenv("DB_NAME")
-
     def connect(self):
         try:
             conexao = mysql.connector.connect(

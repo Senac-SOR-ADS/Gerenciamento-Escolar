@@ -3,9 +3,6 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.uic import loadUi
 from App.controller.loginController import validateLogin
 
-# DEPENDENCIAS
-from App.controller.loginController import validateLogin
-
 class LoginUI(QDialog):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -16,11 +13,11 @@ class LoginUI(QDialog):
     def on_btn_concluir_clicked(self):
         nome = self.nome.text()
         senha = self.senha.text()
-        resp = validateLogin(nome, senha)
-        if (resp == True):
+        resp = validateLogin(nome , senha)
+        if resp:
             self.accept()
         else:
-            print("Usuario ou Senha Incorretos")
+            print("usuario ou senha incorreto")
 
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication

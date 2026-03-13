@@ -7,7 +7,7 @@ __currentUser = {
     "email": "",
     "tipo": ""
 }
-
+ 
 def isLogged():
     return __currentUser['id']
 
