@@ -6,50 +6,65 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>353</width>
-    <height>167</height>
+    <width>610</width>
+    <height>123</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="confirmarExTurma">
+  <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>110</y>
+     <x>20</x>
+     <y>10</y>
      <width>75</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
-    <string>CONFIRMAR</string>
+    <string>&lt;-</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="cancelarExTurma">
+  <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>110</y>
+     <x>500</x>
+     <y>80</y>
      <width>75</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
-    <string>CANCELAR</string>
+    <string>Responsável</string>
    </property>
   </widget>
-  <widget class="QLabel" name="excluirTurmaLabel">
+  <widget class="QDateTimeEdit" name="dateTimeEdit">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>20</y>
-     <width>241</width>
-     <height>61</height>
+     <x>390</x>
+     <y>10</y>
+     <width>194</width>
+     <height>22</height>
     </rect>
    </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>70</y>
+     <width>101</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
    <property name="text">
-    <string>TEM CERTEZA QUE QUER EXCLUIR A TURMA:</string>
+    <string>Ocorrências...</string>
    </property>
   </widget>
  </widget>
