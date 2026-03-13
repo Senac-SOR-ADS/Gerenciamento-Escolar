@@ -1,9 +1,12 @@
 from App.config.database import Database
+from typing import Optional
+from dataclasses import dataclass, field
 
+@dataclass
 class Room:
-    id = None
-    turmas = ""
-    ativo = True
+    id: Optional[int] = None
+    turmas: str = ""
+    ativo: bool = True
 
     def __init__(self, id=None, turmas="", ativo=False):
         self.id = id
@@ -32,6 +35,7 @@ class Room:
             print(f"Erro em obter informações do {e}")
             return False   
         
+    #========================================================    
     @classmethod
     def pickStudentRoom(cls, turma):
         try:
@@ -43,7 +47,8 @@ class Room:
         except Exception as e:
             print(f"Erro em buscar aluno {e}")
             return False
-    
+    #========================================================
+
     @classmethod
     def showClass(cls, id):
         try:
