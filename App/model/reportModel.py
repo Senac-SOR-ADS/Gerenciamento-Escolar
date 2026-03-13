@@ -19,8 +19,8 @@ class Report:
         try:
             DB = Database()
             sql = "INSERT INTO `relatorios`(`data`, `descricao`, `aluno_id`, `responsavel_id`) VALUES (%s,%s,%s,%s)"
-            Reporta = (report.date, report.description, report.alunoId, report.responsavelId)
-            DB.insert(sql, Reporta)
+            params = (report.date, report.description, report.alunoId, report.responsavelId)
+            DB.insert(sql, params)
             print("Relatório criado com sucesso")
         except Exception as e:
             print(f'Erro relatorio: {e}')
@@ -44,8 +44,8 @@ class Report:
         try:
             DB = Database()
             sql = "SELECT `id`, `data`, `descricao`, `aluno_id`, `responsavel_id` FROM `relatorios` WHERE id = %s"
-            Reporta = (id,)
-            result = DB.fetchOne(sql, Reporta)
+            params = (id,)
+            result = DB.fetchOne(sql, params)
             if result: 
                 return cls._getObjectList([result])[0]
             return cls()
@@ -58,8 +58,8 @@ class Report:
         try:
             DB = Database()
             sql = "SELECT `id`, `data`, `descricao`, `aluno_id`, `responsavel_id` FROM `relatorios` WHERE data = %s"
-            Reporta = (date,)
-            result = DB.fetchAll(sql, Reporta)
+            params= (date,)
+            result = DB.fetchAll(sql, params)
             return cls._getObjectList(result)
         except Exception as e:
             print(f'Erro ao buscar relatorio')
