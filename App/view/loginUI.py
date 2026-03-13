@@ -3,6 +3,8 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.uic import loadUi
 from App.controller.loginController import validateLogin
 
+from App.controller.loginController import validateLogin
+
 class LoginUI(QDialog):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
