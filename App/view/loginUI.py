@@ -13,10 +13,11 @@ class LoginUI(QDialog):
     def on_btn_concluir_clicked(self):
         nome = self.nome.text()
         senha = self.senha.text()
-        resp = validateLogin(nome, senha)
-        if (resp == True):
+        resp = validateLogin(nome , senha)
+        if resp:
             self.accept()
-        print("Usuario ou Senha Incorretos")
+        else:
+            print("usuario ou senha incorreto")
 
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
