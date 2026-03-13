@@ -48,7 +48,7 @@ class Parent:
         try:
             DB = Database()
             sql = "SELECT * FROM responsaveis"
-            result = DB.fetchall(sql)
+            result = DB.fetchAll(sql)
             return cls._getObjectList(result)
         except Exception as e:
             print(f'Erro ao buscar os responsaveis{e}')
@@ -60,7 +60,7 @@ class Parent:
             DB = Database()
             sql = "SELECT * FROM responsaveis WHERE id = %s"
             params = (id,)
-            result = DB.fetchone(sql, params)
+            result = DB.fetchOne(sql, params)
             if result: 
                 return cls._getObjectList([result])[0]
             return cls()
@@ -74,7 +74,7 @@ class Parent:
             DB = Database()
             sql = "SELECT * FROM responsaveis WHERE id = %s AND responsavel_legal = 1"
             params = (id,)
-            result = DB.fetchone(sql, params)
+            result = DB.fetchOne(sql, params)
             if result: 
                 return cls._getObjectList([result])[0]
             return cls()
@@ -85,5 +85,6 @@ class Parent:
 if __name__ == "__main__":
     todosResponsaveis = Parent.getAll()
     print(todosResponsaveis)
+    
 
 
