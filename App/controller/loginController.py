@@ -7,7 +7,7 @@ __currentUser = {
     "email": "",
     "tipo": ""
 }
-
+ 
 def isLogged():
     return __currentUser['id']
 
@@ -15,14 +15,15 @@ def logout():
     __setCurrentUser(None)
 
 def __setCurrentUser(id):
-    __currentUser['id'] = id
-    pass
+    __currentUser["id"] = id
 
 def validateLogin(email, password):
     user = Usuario.login(email)
-    # user.showInfo()
-    resultSenha = Criptografia.compararSenha(password, user.senha)
-    if user.id and user.email == email and resultSenha:
+    user.showInfo()
+
+    result_senha = Criptografia.compararSenha(password, user.senha)
+
+    if user.id and email == user.email and result_senha:
         __setCurrentUser(user.id)
         return True
     

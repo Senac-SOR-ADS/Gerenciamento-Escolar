@@ -1,13 +1,12 @@
 from App.config.database import Database
 
-class Usuario():
+class Usuario:
     id = None
     nome = ""
     email = ""
     senha = ""
     tipo = ""
     ativo = False
-    
     def __init__(self, id=None, nome="", email="", senha="", tipo="", ativo=False):
         self.id = id
         self.nome = nome
@@ -21,17 +20,17 @@ class Usuario():
         DB = Database()
         sql = "SELECT * FROM usuarios WHERE email = %s"
         params = (email,)
-        result = DB.fetchone(sql, params)
+        result = DB.fetchOne(sql, params)
         if not result: return Usuario()
-        user = Usuario(*result)
-        return user
+        user = Usuario(*result.values())
+        return user 
     
     def showInfo(self):
-        print(f"""
-              Id: {self.id}
-              Nome: {self.nome}
-              Email: {self.email}
-              Senha: {self.senha}
-              Tipo: {self.tipo}
-              Ativo: {self.ativo}
-        """)
+        print(f"""  
+            ID: {self.id}
+            Nome: {self.nome}
+            Email: {self.email}
+            Senha: {self.senha}
+            Tipo: {self.tipo}
+            Ativo: {self.ativo}
+        """) 
