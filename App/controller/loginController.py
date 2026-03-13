@@ -21,7 +21,7 @@ def validateLogin(email, password):
     user = Usuario.login(email)
     user.showInfo()
 
-    result_senha = Criptografia.compararSenha(password, user.senha)
+    result_senha = Criptografia.compararSenha(password, user.password)
 
     if user.id and email == user.email and result_senha:
         __setCurrentUser(user.id)
