@@ -45,11 +45,12 @@ class Room:
             return False
     
     @classmethod
-    def showClass(cls):
+    def showClass(cls, id):
         try:
             DB = Database()
-            sql = "SELECT `turmas` FROM salas"
-            result = DB.fetchall(sql)
+            sql = "SELECT `turmas` FROM salas WHERE id = %s"
+            params = (id,)
+            result = DB.fetchall(sql, params)
             return result
         except Exception as e:
             print(f"Erro ao acessar as turmas {e} !")
@@ -66,7 +67,7 @@ class Room:
             return True
             
         except Exception as e:
-            print(f"Erro ao atualizar a sala: {e}") 
+            print(f"Erro ao atualizar a sala: {e} ") 
             return False
         
     @classmethod
@@ -82,5 +83,8 @@ class Room:
 
 if __name__ == "__main__":
     print("iniciando o teste...")
+    #Room.updateRoom("", )
+    #print(Room.showClass(1))
+    #print(Room.status(1))
     
-    Room.updateRoom("2º Ano B", 2)
+    
