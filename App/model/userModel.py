@@ -61,7 +61,7 @@ class Usuario:
             result = DB.fetchOne(sql , params)
             if not result:
                 return None
-            return cls(*result)
+            return cls(*result.values())
             
         except Exception as e:
             print(f'Erro ao encontrar usuario por id {e}')
@@ -73,7 +73,7 @@ class Usuario:
             DB = Database()
             sql = "SELECT * FROM usuarios"
             result = DB.fetchAll(sql , )
-            user = [cls(*row) for row in result]
+            user = [cls(*row.values()) for row in result]
             return user
         except Exception as e:
             print(f'Erro ao buscar todos os usuarios {e}')
@@ -86,7 +86,7 @@ class Usuario:
             DB = Database()
             sql = "SELECT * FROM usuarios WHERE ativo = 1"
             result = DB.fetchAll(sql)
-            user = [cls(*row) for row in result]
+            user = [cls(*row.values()) for row in result]
             return user
         except Exception as e:
             print(f'Erro ao listar usuarios ativos {e}')
@@ -99,7 +99,7 @@ class Usuario:
         params = (email,)
         result = DB.fetchOne(sql, params)
         if not result: return Usuario()
-        user = Usuario(*result)
+        user = Usuario(*result.values())
         return user
     
     
@@ -116,8 +116,8 @@ class Usuario:
 if __name__ == "__main__":
     user = Usuario(id= 5 , name="Chico" , email="caique22@gmail.com" , password="123" , type="Agente" , active=True)
     Usuario.updateUser(user)
-    #user = Usuario.findById(1)
-    #print(user.showInfo())
+    user = Usuario.findById(1)
+    print(user.showInfo())
 
     # for u in todosUsuarios:
     #     print(u.showInfo())
