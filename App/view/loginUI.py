@@ -19,9 +19,6 @@ class LoginUI(QDialog):
         else:
             print("usuario ou senha incorreto")
 
-
-        print(nome , senha)
-
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
     app = QApplication([])
