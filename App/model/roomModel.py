@@ -32,15 +32,20 @@ class Room:
             print(f"Erro em obter informações do {e}")
             return False   
         
-                             
-
     @classmethod
-    def pickStudentRoom(cls):
-        "Procurar aluno pela sala de aula que frequenta"
-        pass
+    def pickStudentRoom(cls, turma):
+        try:
+            DB = Database()
+            sql = "SELECT * FROM `alunos` WHERE `turma` = %s"
+            result = DB.execute(sql, (turma,))
+            return cls._getObjectList(result)
+        
+        except Exception as e:
+            print(f"Erro em buscar aluno {e}")
+            return False
     
     @classmethod
-    def showRoom(cls):
+    def showClass(cls):
         try:
             DB = Database()
             sql = "SELECT `turmas` FROM salas"
@@ -49,16 +54,17 @@ class Room:
         except Exception as e:
             print(f"Erro ao acessar as turmas {e} !")
 
-   
     @classmethod
-    def updateRoom(cls, room: Room):
+    def updateRoom(cls, turmas, id):
         try:
             DB = Database()
             sql = "UPDATE salas SET `turmas` = %s WHERE id = %s"
-            params = (room.turmas, room.id_sala)
-            DB.execute(sql, params)
+            params = (turmas, id)
+            result = DB.execute(sql, params)
+            if result == True:
+                print("Atualizado com sucesso!")
             return True
-        
+            
         except Exception as e:
             print(f"Erro ao atualizar a sala: {e}") 
             return False
@@ -75,9 +81,6 @@ class Room:
             
 
 if __name__ == "__main__":
-    print("Iniciando o teste...")
+    print("iniciando o teste...")
     
-    roomUpdate = Room(id_sala=2, turmas="2º Ano B") 
-    print(Room.updateRoom(roomUpdate))
-
-    
+    Room.updateRoom("2º Ano B", 2)
