@@ -11,12 +11,17 @@ class LoginUI(QDialog):
         loadUi("App/view/ui/login.ui", self)
         self.show()
 
+    def clearText(self):
+        self.nome.clear()
+        self.senha.clear()
+
     @pyqtSlot()
     def on_btn_concluir_clicked(self):
         nome = self.nome.text()
         senha = self.senha.text()
         resp = validateLogin(nome , senha)
         if resp:
+            self.clearText()
             self.accept()
         else:
             print("usuario ou senha incorreto")

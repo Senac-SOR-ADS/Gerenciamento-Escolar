@@ -16,6 +16,12 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QLineEdit" name="nome">
+     <property name="maximumSize">
+      <size>
+       <width>200</width>
+       <height>16777215</height>
+      </size>
+     </property>
      <property name="placeholderText">
       <string>Nome</string>
      </property>
@@ -23,6 +29,12 @@
    </item>
    <item>
     <widget class="QLineEdit" name="senha">
+     <property name="maximumSize">
+      <size>
+       <width>200</width>
+       <height>16777215</height>
+      </size>
+     </property>
      <property name="echoMode">
       <enum>QLineEdit::Password</enum>
      </property>
@@ -33,6 +45,12 @@
    </item>
    <item>
     <widget class="QPushButton" name="btn_concluir">
+     <property name="maximumSize">
+      <size>
+       <width>100</width>
+       <height>16777215</height>
+      </size>
+     </property>
      <property name="text">
       <string>Concluir</string>
      </property>
