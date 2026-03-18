@@ -65,6 +65,24 @@ class Room:
             print(f"Erro ao acessar as turmas {e} !")
 
     @classmethod
+    def createRoom(cls, name, data):
+
+        data = str(data)
+        name = str(name)
+
+        try:
+            DB = Database()
+            sql = "INSERT INTO `salas` (`turmas`, `data`) VALUES (%s, %s)"
+            params = (name, data)
+            result = DB.insert(sql, params)
+            if not result:
+                return "Nao foi possivel adicionar!"
+            return f"Turma {name} adicionada com sucesso na data {data}"
+        except Exception as e:
+            print(f"Erro ao inserir {e}")
+            return "Erro interno ao adicionar turma!"
+
+    @classmethod
     def updateRoom(cls, turmas, id):
         try:
             DB = Database()
@@ -78,6 +96,13 @@ class Room:
         except Exception as e:
             print(f"Erro ao atualizar a sala: {e} ") 
             return False
+        
+    @classmethod
+    def searchRoomStudent(cls, idRoom, idStudent):
+        pass
+        # try:
+        #     DB = Database()
+        #     sql = "SELECT `id_alunos` `id_sala` FROM sala_alunos WHERE "
         
     @classmethod
     def getAll(cls):
@@ -94,5 +119,5 @@ if __name__ == "__main__":
     print("iniciando o teste...")
     #Room.updateRoom("", )
     #print(Room.showClass(1))
-    print(Room.status("3"))
+    print(Room.createRoom("3º Ano A - Portugues", "2027-02-05"))
     

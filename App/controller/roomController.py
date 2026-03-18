@@ -43,9 +43,17 @@ def updateRoomClass(id, novaTurma):
         return f"Sala {id} atualizada com sucesso para as turmas: '{novaTurma}'"
     return "Falha ao atualizar a sala."
 
+def createRoom(turma, data):
+    if not turma: 
+        return "Erro: Não é possivel criar sem a turma!"
+    sucess = Room.createRoom(turma, data)
+    if sucess:
+        return f"Nova turma adicionada com sucesso: '{turma}' na data de '{data}'."
+    return False
+
 
 if __name__ == "__main__":
-    print(validateStatus(1))
+    print(updateRoomClass(6, "3º Ano A - Ciências"))
 
 
 
