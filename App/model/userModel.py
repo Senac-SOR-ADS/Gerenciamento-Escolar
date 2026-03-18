@@ -6,9 +6,9 @@ class Usuario:
     email = ""
     password = ""
     type = ""
-    active = False
+    active = True
 
-    def __init__(self , id=None , name="" , email="" , password="" , type="" , active=False):
+    def __init__(self , id=None , name="" , email="" , password="" , type="" , active=True):
         self.id = id
         self.name = name
         self.email = email
@@ -91,6 +91,14 @@ class Usuario:
         except Exception as e:
             print(f'Erro ao listar usuarios ativos {e}')
             raise RuntimeError
+
+    # @classmethod
+    # def findByEmail(cls):
+    #     try:
+    #         DB = Database()
+    #         sql = "SELECT nome , email FROM usuarios WHERE email= %s"
+    #         result = DB.fetchOne()
+
 
     @classmethod
     def login(cls , email):
