@@ -1,5 +1,6 @@
 from App.model.userModel import Usuario
 from App.utils.validators import EmailValidator
+from App.utils.criptografia import Criptografia
 import re
 
 class UserController:
@@ -48,6 +49,7 @@ class UserController:
             if not cls.isValidPassword(user.password):
                 print(f'Senha não foi preenchida corretamente!')
                 return False
+            user.password = Criptografia.gerarHash(user.password)
             Usuario.createUser(user)
 
         except Exception as e:
@@ -57,7 +59,7 @@ class UserController:
 if __name__ == "__main__":
     usuario = {
         "name" : "chico ramos",
-        "email" : "chico@gmail.com",
+        "email" : "chico1@gmail.com",
         "password" : "12312244Q",
         "type" : "adm"
     }
