@@ -68,6 +68,21 @@ class Usuario:
             raise RuntimeError
 
     @classmethod
+    def findByEmail(cls , email):
+        try:
+            DB = Database()
+            sql = "SELECT * FROM usuarios WHERE email = %s"
+            params = (email , )
+            result = DB.fetchOne(sql , params)
+            if not result:
+                return None
+            return cls(*result.values()) 
+        except Exception as e:
+            print(f'Erro ao buscar o usuario por email {e}')
+            raise RuntimeError
+        
+
+    @classmethod
     def findAll(cls):
         try:
             DB = Database()
