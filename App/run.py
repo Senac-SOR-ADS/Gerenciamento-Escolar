@@ -17,5 +17,4 @@ while not isLogged():
         logout()
     else:
         break
-
 print('programa encerrado')
