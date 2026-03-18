@@ -91,7 +91,7 @@ class Address:
             sql = """SELECT cidade, bairro, rua, complemento
                 FROM enderecos
                 WHERE responsavel_id = %s;
-            """
+                """
             params = (address.responsible_id,)
             result = DB.fetchOne(sql, params)
             
@@ -122,15 +122,36 @@ class Address:
             print("Não foi possivel deletar endereço! ", e)
             raise RuntimeError("Falha ao excluir endereço!") from e
         
+    @classmethod
+    def responsibleforAddress(cls):
+        # buscar responsavel pelo endereço
+
+        try:
+            DB = Database()
+
+            sql = """SELECT bairro, responsavel_id
+                FROM enderecos
+                WHERE id = %s;
+                """
+            params = (address.id,)
+            result = DB.fetchOne(sql, params)
+
+            print(result)
+
+        except Exception as e:
+            print("Não foi possivel encontrar responsável!", e)
+            raise RuntimeError("Falha na procura!") from e
+            
+        
 
 
 if __name__ == "__main__":
     address = Address(
-        responsible_id=9,
+        id=11,
         city="Sorocaba",
         neighborhood="Centro",
         street="Rua Teste",
         complement="Casa"
     )
 
-    address.createAddress()
+    address.responsibleforAddress()
