@@ -6,15 +6,15 @@ class Report:
     id: int = None
     date: str = ""
     description: str = ""
-    alunoId: int = ""  
-    responsavelId: int = ""
+    studentID: int = ""  
+    parentID: int = ""
 
     @classmethod
     def create(cls, report:Report):
         try:
             DB = Database()
             sql = "INSERT INTO `relatorios`(`data`, `descricao`, `aluno_id`, `responsavel_id`) VALUES (%s,%s,%s,%s)"
-            params = (report.date, report.description, report.alunoId, report.responsavelId)
+            params = (report.date, report.description, report.studentID, report.parentID)
             DB.insert(sql, params)
             print("Relatório criado com sucesso")
         except Exception as e:
@@ -22,11 +22,11 @@ class Report:
             raise RuntimeError
 
     @classmethod
-    def edit(cls, id, description):
+    def edit(cls, report:Report):
         try:
             DB = Database()
             sql = "UPDATE relatorios SET descricao= %s WHERE id = %s"
-            params = (description, id)
+            params = (report.description, report.id)
             update = DB.execute(sql, params)
             print(update)
             if not update: raise Exception("Erro ao editar relatorio")
@@ -59,6 +59,46 @@ class Report:
         except Exception as e:
             print(f'Erro ao buscar relatorio')
             raise RuntimeError
+        
+    @classmethod
+    def searchParentID(cls, parentID):
+        try:
+            DB = Database()
+            sql = "SELECT `id`, `data`, `descricao`, `aluno_id`, `responsavel_id` FROM `responsaveis` WHERE responsavel_id = %s"
+            params = (parentID,)
+            result = DB.fetchAll(sql, params)
+            if result: 
+                return cls._getObjectList(result)
+            return cls()
+        except Exception as e:
+            print(f'Erro ao buscar relatorio')
+            raise RuntimeError
+    
+    @classmethod
+    def searchStudentID(cls, studentID):
+        try:
+            DB = Database()
+            sql = "SELECT `id`, `data`, `descricao`, `aluno_id`, `responsavel_id` FROM `responsaveis` WHERE responsavel_id = %s"
+            params = (studentID,)
+            result = DB.fetchAll(sql, params)
+            if result: 
+                return cls._getObjectList(result)
+            return cls()
+        except Exception as e:
+            print(f'Erro ao buscar relatorio')
+            raise RuntimeError
+        
+    @classmethod 
+    def searchIntervalDate(cls, initialDate, lastDate):
+        try:
+            DB = Database()
+            sql = "SELECT id, data, descricao, aluno_id FROM relatorios WHERE data BETWEEN %s AND %s"
+            params= (initialDate, lastDate)
+            result = DB.fetchAll(sql, params)
+            return cls._getObjectList(result)
+        except Exception as e:
+            print(f'Erro ao buscar relatorios')
+            raise RuntimeError
 
     @classmethod
     def _getObjectList(cls, lista):
@@ -76,8 +116,9 @@ if __name__ == "__main__":
     # print(allReports)
     # v = Report(date= "2023-10-28", description= " relatóriossss", alunoId= 3, responsavelId= 3)
     # Report.create(v)
-    # a = Report.searchDate("2023-10-27")
-    # print(a)
-    Report.edit(4, "O pé doeu demais1")    
-    report = Report.searchUnique(11)
-    print(report.description)
+    # report = Report.searchUnique(11)
+    # print(report.description)
+    # Report.edit(4, "O pé doeu demais1")    
+    # a = Report.searchIntervalDate("2023-10-27", "2026-02-07")
+    a = Report.searchUniqueParentID(1)
+    print(a)
