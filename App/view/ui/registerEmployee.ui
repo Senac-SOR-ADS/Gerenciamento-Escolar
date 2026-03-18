@@ -57,17 +57,17 @@
          <widget class="QComboBox" name="funcionario">
           <item>
            <property name="text">
-            <string>Administrador</string>
+            <string>adm</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>Agente</string>
+            <string>agente</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>Secretaria</string>
+            <string>secretaria</string>
            </property>
           </item>
          </widget>
