@@ -18,11 +18,15 @@ class Room:
         return [cls(*user) for user in lista]
 
     @classmethod
-    def status(cls, id_status):
+    def status(cls, id):
+
+        id = int(id)
+        print(f"DEBUG - Tipo de result: {type(result)} | Valor: {result}")
+
         try:
             DB = Database()
             sql = "SELECT `ativo` FROM salas WHERE id = %s"
-            params = (id_status,)
+            params = (id,)
             result = DB.fetchOne(sql, params)
             if result and result[0] == 1:
                 print("Sala Ativa!")
@@ -90,6 +94,5 @@ if __name__ == "__main__":
     print("iniciando o teste...")
     #Room.updateRoom("", )
     #print(Room.showClass(1))
-    #print(Room.status(1))
-    
+    print(Room.status("3"))
     
