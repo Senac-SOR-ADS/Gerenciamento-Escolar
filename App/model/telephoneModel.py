@@ -12,6 +12,10 @@ class Telephone:
         self.responsavel_id = responsavel_id
 
     @classmethod
+    def _getObjectList(cls, lista):
+        return [cls(*user) for user in lista]
+
+    @classmethod
     def create(cls, telephone, responsavel_id):
         try:
             DB = Database()
@@ -44,16 +48,46 @@ class Telephone:
             DB = Database()
             sql = "DELETE FROM telefones WHERE id = %s"
             values = (self.id, )
-            updated = DB.execute(sql, values)
+            deleted = DB.execute(sql, values)
             print('Telefone excluído com sucesso!')
-            return updated
+            return deleted
         except Exception as e:
             print(f'Erro ao excluir o telefone!{e}')
             raise RuntimeError
+        
+    @classmethod    
+    def parentTelephone(cls, responsavel_id):
+        try:
+            DB = Database()
+            sql = "SELECT telefone FROM telefones WHERE responsavel_id = %s"
+            values = (responsavel_id, )
+            telephone = DB.fetchAll(sql, values)
+            return cls._getObjectList(telephone)
+        except Exception as e:
+            print(f'Erro ao buscar os telefones do responsável!{e}')
+            raise RuntimeError
+        
+    @classmethod
+    def getAllTelephones(cls):
+        try:
+            DB = Database()
+            sql = "SELECT * FROM telefones"
+            result = DB.fetchAll(sql)
+            return cls._getObjectList(result)
+        except Exception as e:
+                print(f'Erro ao buscar os responsaveis{e}')
+                raise RuntimeError
+
 
 if __name__ == "__main__":
-    #Telephone.create("(24)99834-3434", 1)
-    phone = Telephone(8)
-    phone.delete()
+    telefones = Telephone.getAllTelephones()
+    print(telefones)
+    #todosTelefones = Telephone.parentTelephone
+    #print(todosTelefones)
+    #Telephone.create("(90)99834-3332", 1)
+    #phone = Telephone(8)
+    #phone.delete()
+
+#SELECT telefone FROM telefones WHERE responsavel_id = %s
 
         
