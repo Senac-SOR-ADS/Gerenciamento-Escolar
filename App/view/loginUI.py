@@ -21,9 +21,19 @@ class LoginUI(QDialog):
         else:
             print("usuario ou senha incorreto")
 
+    def on_btn_pushExit_clicked(self, sair):
+        try: 
+            logout(sair)
+            self.close()
+        except Exception as e:
+            print(f"Erro ao sair! {e}")
+    
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
     app = QApplication([])
     login = LoginUI()
     app.exec_()
+
+
+
 
