@@ -1,12 +1,9 @@
 from App.config.database import Database
-from typing import Optional
-from dataclasses import dataclass, field
 
-@dataclass
 class Room:
-    id: Optional[int] = None
-    turmas: str = ""
-    ativo: bool = True
+    id = None
+    turmas = ""
+    ativo = True
 
     def __init__(self, id=None, turmas="", ativo=False):
         self.id = id
@@ -18,15 +15,11 @@ class Room:
         return [cls(*user) for user in lista]
 
     @classmethod
-    def status(cls, id):
-
-        id = int(id)
-        print(f"DEBUG - Tipo de result: {type(result)} | Valor: {result}")
-
+    def status(cls, id_status):
         try:
             DB = Database()
             sql = "SELECT `ativo` FROM salas WHERE id = %s"
-            params = (id,)
+            params = (id_status,)
             result = DB.fetchOne(sql, params)
             if result and result[0] == 1:
                 print("Sala Ativa!")
@@ -39,7 +32,6 @@ class Room:
             print(f"Erro em obter informações do {e}")
             return False   
         
-    #========================================================    
     @classmethod
     def pickStudentRoom(cls, turma):
         try:
@@ -51,8 +43,7 @@ class Room:
         except Exception as e:
             print(f"Erro em buscar aluno {e}")
             return False
-    #========================================================
-
+    
     @classmethod
     def showClass(cls, id):
         try:
@@ -94,5 +85,6 @@ if __name__ == "__main__":
     print("iniciando o teste...")
     #Room.updateRoom("", )
     #print(Room.showClass(1))
-    print(Room.status("3"))
+    #print(Room.status(1))
+    
     
