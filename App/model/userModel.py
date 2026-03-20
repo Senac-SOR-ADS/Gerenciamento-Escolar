@@ -41,7 +41,7 @@ class Usuario:
             raise RuntimeError
         
     @classmethod
-    def deleteUser(cls, id):
+    def deactiveUser(cls, id):
         try:
             DB = Database()
             sql = "UPDATE usuarios SET ativo = 0 WHERE id = %s"

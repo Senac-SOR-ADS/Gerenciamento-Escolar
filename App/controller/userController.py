@@ -81,15 +81,47 @@ class UserController:
         except Exception as e:
             print(f'Não foi possivel fazer o login \n{e}')
 
+    @classmethod
+    def deactiveUser(cls , id):
+        try:
+            if type(id) != int or id <= 0:
+                raise ValueError("Esse id não existe!")
+            Usuario.deactiveUser(id)
+        except Exception as e:
+            print(f'Erro ao tentar desativar usuario \n{e}')
+        
+    @classmethod
+    def updateUser(cls , user:any):
+        try:
+            usuario = Usuario.findById(user["id"])
+            if not usuario:
+                raise ValueError("usuario não encontrado")
+           
+            if not cls.isValidEmail(user["email"]) or not cls.isValidPassword(user["password"]):
+                raise ValueError("Não foi possivel atualizar usuario. Por favor preencha os campos corretamente!")
             
+            if not Criptografia.compararSenha(user["password"] , usuario.password):
+                user["password"] = Criptografia.gerarHash(user["password"])
+            usuario.email = user["email"]
+            usuario.password = user["password"]
+            usuario.name = user["name"]
+            cls.normalizedEmail(user["email"])
+                          
+            Usuario.updateUser(usuario)
+        except Exception as e:
+            print(f'Não foi possivel atualizar o usuario \n{e}')
+
+
 
 if __name__ == "__main__":
     # print(isLogged())
     usuario = {
-        "name" : "Nelson Mandela",
+        "id" : 26,
+        "name" : "Nelson Junior",
         "email" : "nelson@gmail.com",
-        "password" : "Nelson123",
+        "password" : "123",
         "type" : "agente"
     }
-    UserController.login(usuario["email"] , usuario["password"])
-    print(isLogged())
+    #UserController.login(usuario["email"] , usuario["password"])
+    #print(isLogged())
+    UserController.updateUser(usuario)
