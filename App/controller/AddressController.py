@@ -23,6 +23,6 @@ class AddressController:
     
 
 
-result = AddressController.create(data)
-
+result = AddressController.create(data) 
+                
 print(result.city)
