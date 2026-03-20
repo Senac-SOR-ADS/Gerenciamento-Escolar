@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QDialog, QLineEdit, QPushButton
-from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtCore import pyqtSlot, QDate
 from PyQt5.uic import loadUi
 
 class NewReportUI(QDialog):
@@ -8,15 +8,21 @@ class NewReportUI(QDialog):
         loadUi("App/view/ui/newReport.ui", self)
         self.show()
         
-        self.btnSaveReport.clicked.connect(self.getDescriptionText)
+        self.dataOcorrencia.setCalendarPopup(True)
+        self.dataOcorrencia.setDate(QDate.currentDate())
+        self.btnSaveReport.clicked.connect(self.getText)
     
-    def getDescriptionText(self):
-        report = self.descricaoOcorrencia.text()
-        print(report)
+    def getText(self):
+        info = []
+        desc = self.descricaoOcorrencia.text()
+        resp = self.responsavelCombo.currentText()
+        name = self.nomeOcorrencia.text()
+        date = self.dataOcorrencia.text()
         
-        return report
+        info = desc, resp, name, date
+        print(info)
         
-    
+        return info   
     
 
 if __name__ == "__main__":
