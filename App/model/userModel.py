@@ -117,30 +117,31 @@ class Usuario:
 
     @classmethod
     def login(cls , email):
-        DB = Database()
-        sql = "SELECT * FROM usuarios WHERE email = %s AND ativo = 1"
-        params = (email,)
-        result = DB.fetchOne(sql, params)
-        if not result: return Usuario()
-        user = Usuario(*result.values())
-        return user
+        try:
+            DB = Database()
+            sql = "SELECT * FROM usuarios WHERE email = %s AND ativo = 1"
+            params = (email,)
+            result = DB.fetchOne(sql, params)
+            if not result: return None
+            return cls(*result.values())
+        except Exception as e:
+            pass
     
     
     def showInfo(self):
         print(f"""
-        ID : {self.id}
-        Name : {self.name}
-        Email: {self.email}
-        Password: {self.password}
-        Type: {self.type}
-        Active: {self.active}
-         """)
+            ID : {self.id}
+            Name : {self.name}
+            Email: {self.email}
+            Password: {self.password}
+            Type: {self.type}
+            Active: {self.active}
+        """)
 
 if __name__ == "__main__":
     user = Usuario(id= 5 , name="Chico" , email="caique22@gmail.com" , password="123" , type="Agente" , active=True)
     Usuario.updateUser(user)
     user = Usuario.findById(1)
     print(user.showInfo())
-
     # for u in todosUsuarios:
     #     print(u.showInfo())

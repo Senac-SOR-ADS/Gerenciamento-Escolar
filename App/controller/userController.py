@@ -3,7 +3,27 @@ from App.utils.validators import EmailValidator
 from App.utils.criptografia import Criptografia
 import re
 
+
+__currentUser = {
+    "id": None,
+    "nome": "",
+    "email": "",
+    "tipo": ""
+}
+
+def isLogged():
+    return __currentUser['id'] != None
+
+def logout():
+    _setCurrentUser(None)
+
+def _setCurrentUser(id):
+    __currentUser["id"] = id       
+            
+
+
 class UserController:
+
     @classmethod 
     def normalizedEmail(cls , email):
         emailNormalized = email.strip().lower()
@@ -27,16 +47,15 @@ class UserController:
             user:Usuario = Usuario(name=user["name"] , email=user["email"] , password=user["password"] , type=user["type"])
             user.email = cls.normalizedEmail(user.email)
             if not user.name.strip() or not user.type.strip():
-                print(f'E necessario preencher todos os dados')
-                return False
+                raise ValueError(f'E necessário preencher todos os dados!')
 
             if not cls.isValidEmail(user.email):
                 print(f'Email não foi preenchido corretamente!')
-                return False
+                raise ValueError('Email não preenchido corretamente')
             
             if not cls.isValidPassword(user.password):
-                print(f'Senha não foi preenchida corretamente!')
-                return False
+                raise ValueError("Senha não foi preenchida corretamente!")
+                
             user.password = Criptografia.gerarHash(user.password)
             Usuario.createUser(user)
 
@@ -47,23 +66,30 @@ class UserController:
     @classmethod
     def login(cls , email , senha):
         try:
-            sameEmail = Usuario.findByEmail(email)
-            if not sameEmail:
-                raise ValueError("Não encontramos seus dados de acesso")
-            comparePassword = Criptografia.compararSenha(senha ,sameEmail.password)
+            user = Usuario.login(email)
+            if not user:
+                raise TypeError("Não encontramos seus dados de acesso")
+            
+            comparePassword = Criptografia.compararSenha(senha ,user.password)
             if not comparePassword:
                 raise ValueError("Email ou senha incorretos")
             
+            _setCurrentUser(user.id)
+            print(f'Login efetuado com sucesso!')
+            return True
+            
+        except Exception as e:
+            print(f'Não foi possivel fazer o login \n{e}')
+
             
 
-
-        
-
 if __name__ == "__main__":
+    # print(isLogged())
     usuario = {
         "name" : "Nelson Mandela",
-        "email" : " nelson@gmail.com ",
-        "password" : "12312222R",
+        "email" : "nelson@gmail.com",
+        "password" : "Nelson123",
         "type" : "agente"
     }
-    UserController.createUser(usuario)
+    UserController.login(usuario["email"] , usuario["password"])
+    print(isLogged())
