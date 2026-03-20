@@ -1,10 +1,11 @@
 from dataclasses import dataclass
 from App.config.database import Database
+from datetime import datetime
 
 @dataclass
 class Report:
     id: int = None
-    date: str = ""
+    date: str = datetime.now()
     description: str = ""
     studentID: int = ""  
     parentID: int = ""
@@ -13,7 +14,7 @@ class Report:
     def create(cls, report:Report):
         try:
             DB = Database()
-            sql = "INSERT INTO `relatorios`(`data`, `descricao`, `aluno_id`, `responsavel_id`) VALUES (%s,%s,%s,%s)"
+            sql = "INSERT INTO `relatorios`(`data`, `descricao`, `aluno_id`, `responsavel_id`) VALUES (%s,%s,%s, %s)"
             params = (report.date, report.description, report.studentID, report.parentID)
             DB.insert(sql, params)
             print("Relatório criado com sucesso")
@@ -64,7 +65,7 @@ class Report:
     def searchParentID(cls, parentID):
         try:
             DB = Database()
-            sql = "SELECT `id`, `data`, `descricao`, `aluno_id`, `responsavel_id` FROM `responsaveis` WHERE responsavel_id = %s"
+            sql = "SELECT `id`, `data`, `descricao`, `aluno_id`, `responsavel_id` FROM `relatorios` WHERE responsavel_id = %s"
             params = (parentID,)
             result = DB.fetchAll(sql, params)
             if result: 
@@ -78,7 +79,7 @@ class Report:
     def searchStudentID(cls, studentID):
         try:
             DB = Database()
-            sql = "SELECT `id`, `data`, `descricao`, `aluno_id`, `responsavel_id` FROM `responsaveis` WHERE responsavel_id = %s"
+            sql = "SELECT `id`, `data`, `descricao`, `aluno_id`, `responsavel_id` FROM `relatorios` WHERE responsavel_id = %s"
             params = (studentID,)
             result = DB.fetchAll(sql, params)
             if result: 
@@ -93,7 +94,7 @@ class Report:
         try:
             DB = Database()
             sql = "SELECT id, data, descricao, aluno_id FROM relatorios WHERE data BETWEEN %s AND %s"
-            params= (initialDate, lastDate)
+            params = (initialDate, lastDate)
             result = DB.fetchAll(sql, params)
             return cls._getObjectList(result)
         except Exception as e:
@@ -112,13 +113,4 @@ class Report:
         return cls._getObjectList(result)
 
 if __name__ == "__main__":
-    # allReports = Report.getAll()
-    # print(allReports)
-    # v = Report(date= "2023-10-28", description= " relatóriossss", alunoId= 3, responsavelId= 3)
-    # Report.create(v)
-    # report = Report.searchUnique(11)
-    # print(report.description)
-    # Report.edit(4, "O pé doeu demais1")    
-    # a = Report.searchIntervalDate("2023-10-27", "2026-02-07")
-    a = Report.searchUniqueParentID(1)
-    print(a)
+    pass
