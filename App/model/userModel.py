@@ -1,3 +1,4 @@
+from __future__ import annotations
 from App.config.database import Database
 
 class Usuario:
