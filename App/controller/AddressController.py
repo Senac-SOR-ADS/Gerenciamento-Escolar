@@ -5,102 +5,77 @@ import asyncio
 
 class AddressController:
 
-    cep = ""
-
-    def __init__(self, cep=""):
-        self.cep = cep
-
-    data = {
-        "city": "São Paulo",
-        "street": "Rua A",
-        "neighborhood": "Eden",
-        "complement": "Casa",
-        "responsible_id": 1
-        }
-
-
-
     @classmethod
-    def requestCep(cls, cep):
-        try:
-            cep = cep.replace("-", "").strip()
+    async def requestCep(cls, cep):
+        # CONSULTAR CEP NA API
 
-            url = f"https://viacep.com.br/ws/{cep}/json/"
-            res = httpx.get(url)
-            dados = res.json()
+        cep = cep.replace("-", "").strip()
+        url = f"https://viacep.com.br/ws/{cep}/json/"
+
+        try:
+            async with httpx.AsyncClient(timeout=5.0) as client:
+                res = await client.get(url)  
+                res.raise_for_status()
+                dados = res.json()
 
             if "erro" in dados:
-                return {"error": "CEP não existe"}
+                print("CEP não existe")
+                return None
 
             return {
-                "city": dados.get("localidade"),
-                "street": dados.get("logradouro"),
-                "neighborhood": dados.get("bairro"),
+                "city": dados.get("localidade", ""),
+                "neighborhood": dados.get("bairro", ""),
+                "street": dados.get("logradouro", "")
             }
 
-        except httpx.exceptions.RequestException:
-            return {"error": "Erro ao conectar com a API"}
+        except httpx.RequestError:
+            print("Erro ao conectar com a API")
+            return None
         
         
 
 
-    def create(self, data):
+    def create(self, form_data):
+        # RECEBE OS DADOS DO CEP E ENVIA PARA A MODEL
+        if not form_data:
+            return {"success": False, "error": "HOUVE UM PROBLEMA NO ENVIO DE DADOS, PREENCHA MANUALMENTE"}
 
-        if "city" not in data or "street" not in data or "neighborhood" not in data:
-            print("Faltam dados obrigatórios")
-            return
+        # VALIDANDO OS CAMPOS OBRIGATÓRIOS (sem CEP)
+        required_fields = ["city", "neighborhood", "street", "responsible_id"]
+        for field in required_fields:
+            if not form_data.get(field):
+                return {"success": False, "error": f"PREENCHA TODOS CAMPOS OBRIGATÓRIOS, FALTA: {field}"}
 
-        address = Address(
-            cep=data.get("cep"),
-            city=data["city"],
-            neighborhood=data["neighborhood"],
-            street=data["street"],
-            complement=data.get("complement"),
-            responsible_id=data["responsible_id"]
-        )
+        # CAMPOS OPCIONAIS
+        complement = form_data.get("complement")  
+        cep = form_data.get("cep")  
 
-        print("Endereço criado")
-        print("CEP:", address.cep)
-        print("Cidade:", address.city)
-        print("Rua:", address.street)
-        print("Bairro:", address.neighborhood)
-        print("Complemento:", address.complement)
-        print("Responsável ID:", address.responsible_id)
+        # MONTANDO OS DADOS
+        try:
+            address = Address(
+                cep=cep,
+                city=form_data["city"],
+                neighborhood=form_data["neighborhood"],
+                street=form_data["street"],
+                complement=complement,
+                responsible_id=form_data["responsible_id"]
+            )
 
-        return address
+            # METODO DA MODEL
+            address.createAddress(address)  
+
+    
+            return {
+                "success": True,
+                "address_id": getattr(address, "id", None),
+                "cep": address.cep,
+                "city": address.city,
+                "neighborhood": address.neighborhood,
+                "street": address.street,
+                "complement": address.complement
+            }
+
+        except Exception as e:
+            return {"success": False, "error": str(e)}
 
 
-if __name__ == "__main__":
-
-    controller = AddressController()
-
-    cep = input("Digite o CEP: ")
-
-    resultado = controller.requestCep(cep)
-
-    if "error" in resultado:
-        print(resultado["error"])
-
-        data = {
-            "cep": cep,
-            "city": input("Digite a cidade: "),
-            "street": input("Digite a rua: "),
-            "neighborhood": input("Digite o bairro: "),
-            "complement": input("Digite o complemento (opcional): "),
-            "responsible_id": 1
-        }
-
-    else:
-        print("Dados pelo CEP:")
-        print(resultado)
-
-        data = {
-            "cep": cep,
-            "city": resultado["city"],
-            "street": resultado["street"],
-            "neighborhood": resultado["neighborhood"],
-            "complement": input("Digite o complemento (opcional): "),
-            "responsible_id": 1
-        }
-
-    controller.create(data)
