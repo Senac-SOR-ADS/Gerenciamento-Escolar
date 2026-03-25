@@ -27,7 +27,7 @@ class Parent:
             raise RuntimeError
 
     @classmethod
-    def update(cls, parent:Parent):
+    def update(cls, parent:"Parent"):
         try:
             DB = Database()
             sql = "UPDATE responsaveis SET nome = %s, cpf = %s WHERE id = %s"
