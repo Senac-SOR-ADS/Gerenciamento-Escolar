@@ -19,13 +19,9 @@ class Room:
 
     @classmethod
     def status(cls, id):
-
-        id = int(id)
-        print(f"DEBUG - Tipo de result: {type(result)} | Valor: {result}")
-
         try:
             DB = Database()
-            sql = "SELECT `ativo` FROM salas WHERE id = %s"
+            sql = "SELECT ativo FROM salas WHERE id = %s"
             params = (id,)
             result = DB.fetchOne(sql, params)
             if result and result[0] == 1:
@@ -64,6 +60,17 @@ class Room:
         except Exception as e:
             print(f"Erro ao acessar as turmas {e} !")
 
+    @classmethod
+    def getById(cls, id):
+        try:
+            DB = Database()
+            sql = "SELECT turmas FROM salas WHERE id = %s"
+            params = (id,)
+            result = DB.fetchOne(sql, params)
+            return result
+        except Exception as e:
+            print(f"Erro ao buscar turma! {e}")
+    
     @classmethod
     def createRoom(cls, name, data):
 
@@ -113,6 +120,17 @@ class Room:
             return result
         except Exception as e:
             print(f"Erro ao acessar as salas {e} !")
+
+    @classmethod
+    def deleteRoom(cls, id):
+        try:
+            DB = Database()
+            sql = "DELETE FROM salas WHERE id = %s"
+            params = (id,)
+            result = DB.fetchOne(sql, params)
+            return result
+        except Exception as e:
+            print(f"Erro em deletar turma {e} ")
             
 
 if __name__ == "__main__":
@@ -121,3 +139,7 @@ if __name__ == "__main__":
     #print(Room.showClass(1))
     print(Room.createRoom("3º Ano A - Portugues", "2027-02-05"))
     
+
+
+
+
