@@ -11,7 +11,6 @@ class Address:
     responsible_id = None
 
     def __init__(self, id=None, city="", neighborhood="", street="", complement="", cep=None, responsible_id=None ):
-        
         self.id = id
         self.city = city
         self.neighborhood = neighborhood
@@ -79,13 +78,7 @@ class Address:
         except Exception as e:
             print("Não foi possível atualizar:", e)
             raise RuntimeError("Falha ao atualizar o endereço!") from e
-      
-
-        
-
-        
-        
-        
+    
     @classmethod
     def readAddress(cls, address):
         # CONSULTAR ENDEREÇO ATRAVÉS DO RESPONSAVEL
@@ -106,8 +99,7 @@ class Address:
             print("Não foi possível selecionar:", e)
             raise RuntimeError("Falha ao selecionar o endereço!") from e
 
-            
-        
+
     @classmethod
     def deleteAddress(cls, address):
         #DELETAR ENDEREÇO PELO ID DO RESPONSAVEL
@@ -125,7 +117,7 @@ class Address:
         except Exception as e:
             print("Não foi possivel deletar endereço! ", e)
             raise RuntimeError("Falha ao excluir endereço!") from e
-        
+    
     @classmethod
     def responsibleforAddress(cls, address):
         # buscar responsavel pelo endereço
@@ -145,5 +137,5 @@ class Address:
         except Exception as e:
             print("Não foi possivel encontrar responsável!", e)
             raise RuntimeError("Falha na procura!") from e
-            
+
         

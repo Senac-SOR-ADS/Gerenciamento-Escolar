@@ -32,10 +32,8 @@ class AddressController:
             print("Erro ao conectar com a API")
             return None
         
-        
-
     @classmethod
-    def create(cls, form_data):
+    def create(self, form_data):
         # RECEBE OS DADOS DO CEP E ENVIA PARA A MODEL
         if not form_data:
             return {"HOUVE UM PROBLEMA NO ENVIO DE DADOS, PREENCHA MANUALMENTE"}
@@ -48,7 +46,7 @@ class AddressController:
 
         try:
             address = Address(
-                cep=form_data.get("cep"),
+                cep=form_data.get("cep")  ,
                 city=form_data.get("city"),
                 neighborhood=form_data.get("neighborhood"),
                 street=form_data.get("street"),
@@ -56,13 +54,12 @@ class AddressController:
                 responsible_id=form_data.get("responsible_id")
             )
 
-            address.createAddress(address) 
-            
-
-
+            adressID = address.createAddress(address)
+            address.id = adressID
     
             return {
-                "address_id": "id",
+                "success": True,
+                "address_id": address.id,
                 "cep": address.cep,
                 "city": address.city,
                 "neighborhood": address.neighborhood,
@@ -78,4 +75,16 @@ class AddressController:
 
 
 
+if __name__ == "__main__":
+    endereco = {
+        "cep": "18053000",
+        "city": "sorocaba",
+        "neighborhood": "Julio de Mesquita",
+        "street": "Americo Figueiredo",
+        "complement": "",
+        "responsible_id": 1}
+    cep = asyncio.run(AddressController.requestCep("18053000"))
+    print(cep)
 
+    res = AddressController.create(endereco)
+    print(res)
