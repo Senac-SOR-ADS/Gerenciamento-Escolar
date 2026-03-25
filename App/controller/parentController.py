@@ -1,4 +1,5 @@
 from App.model.parentModel import Parent 
+from App.controller.AddressController import AddressController
 import re
 
 class ParentController:
@@ -9,16 +10,18 @@ class ParentController:
 
 
     @classmethod
-    def createParent(cls, parent:any):
+    def create(cls, parent:any):
         try:
-            parent:Parent = Parent(name=parent["name"], cpf=parent["cpf"])
-            if not parent.name.strip() or not parent.cpf:
+            newParent:Parent = Parent(name=parent["name"], cpf=parent["cpf"])
+            if not newParent.name.strip() or not newParent.cpf:
                 print(f'E necessario preencher todos os dados')
                 return False
-            parent_create = Parent.create(parent.name, parent.cpf)
-            if parent_create:
-                return
-
+            parentID = Parent.create(newParent.name, newParent.cpf)
+            if parentID:
+                address = parent.get('address')
+                address['responsible_id'] = parentID
+                resp = AddressController.create(address)
+                print(resp)
         except Exception as e:
             print(f'Erro ao tentar a criação de usuario {e}')
             raise RuntimeError
@@ -26,8 +29,9 @@ class ParentController:
     
 
 if __name__ == "__main__":
-    usuario = {
+    testParent = {
         "name" : "cavalo",
-        
+        "cpf" : "1234567233",
+        "address" : {"city" : "Sorocaba" , "neighborhood" : "Paineras" , "street" : "Vitor Gomes", "complement" : "Scrum-Master", "cep" : "1909192"}
     }
-    Parent.createUser(usuario)
+    ParentController.create(testParent)
