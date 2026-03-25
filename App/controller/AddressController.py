@@ -33,7 +33,7 @@ class AddressController:
             return None
         
     @classmethod
-    def create(self, form_data):
+    def create(cls, form_data):
         # RECEBE OS DADOS DO CEP E ENVIA PARA A MODEL
         if not form_data:
             return {"HOUVE UM PROBLEMA NO ENVIO DE DADOS, PREENCHA MANUALMENTE"}
