@@ -27,7 +27,7 @@ class Parent:
             raise RuntimeError
 
     @classmethod
-    def update(cls, parent:Parent):
+    def update(cls, parent:"Parent"):
         try:
             DB = Database()
             sql = "UPDATE responsaveis SET nome = %s, cpf = %s WHERE id = %s"
@@ -80,10 +80,10 @@ class Parent:
             return cls()
         except Exception as e:
             print(f'Erro ao buscar os responsaveis{e}')
-            raise RuntimeError
+            raise RuntimeError    
 
 if __name__ == "__main__":
-    todosResponsaveis = Parent.getAll()
+    todosResponsaveis = Parent.getAllTelephones()
     print(todosResponsaveis)
     
 
