@@ -34,40 +34,35 @@ class AddressController:
         
         
 
-
-    def create(self, form_data):
+    @classmethod
+    def create(cls, form_data):
         # RECEBE OS DADOS DO CEP E ENVIA PARA A MODEL
         if not form_data:
-            return {"success": False, "error": "HOUVE UM PROBLEMA NO ENVIO DE DADOS, PREENCHA MANUALMENTE"}
+            return {"HOUVE UM PROBLEMA NO ENVIO DE DADOS, PREENCHA MANUALMENTE"}
 
         # VALIDANDO OS CAMPOS OBRIGATÓRIOS (sem CEP)
         required_fields = ["city", "neighborhood", "street", "responsible_id"]
         for field in required_fields:
             if not form_data.get(field):
-                return {"success": False, "error": f"PREENCHA TODOS CAMPOS OBRIGATÓRIOS, FALTA: {field}"}
+                return {f"PREENCHA TODOS CAMPOS OBRIGATÓRIOS, FALTA: {field}"} 
 
-        # CAMPOS OPCIONAIS
-        complement = form_data.get("complement")  
-        cep = form_data.get("cep")  
-
-        # MONTANDO OS DADOS
         try:
             address = Address(
-                cep=cep,
-                city=form_data["city"],
-                neighborhood=form_data["neighborhood"],
-                street=form_data["street"],
-                complement=complement,
-                responsible_id=form_data["responsible_id"]
+                cep=form_data.get("cep"),
+                city=form_data.get("city"),
+                neighborhood=form_data.get("neighborhood"),
+                street=form_data.get("street"),
+                complement=form_data.get("complement"),
+                responsible_id=form_data.get("responsible_id")
             )
 
-            # METODO DA MODEL
-            address.createAddress(address)  
+            address.createAddress(address) 
+            
+
 
     
             return {
-                "success": True,
-                "address_id": getattr(address, "id", None),
+                "address_id": "id",
                 "cep": address.cep,
                 "city": address.city,
                 "neighborhood": address.neighborhood,
@@ -76,6 +71,11 @@ class AddressController:
             }
 
         except Exception as e:
-            return {"success": False, "error": str(e)}
+            return {"ERRO AO INSERIR DADOS" : str(e)}
+        
+
+
+
+
 
 
