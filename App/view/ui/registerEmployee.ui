@@ -15,13 +15,6 @@
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_2">
    <item>
-    <widget class="QPushButton" name="pushButton">
-     <property name="text">
-      <string>&lt;-</string>
-     </property>
-    </widget>
-   </item>
-   <item>
     <widget class="QWidget" name="widget" native="true">
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
@@ -42,13 +35,42 @@
         </item>
         <item>
          <widget class="QLineEdit" name="senha">
+          <property name="echoMode">
+           <enum>QLineEdit::Password</enum>
+          </property>
           <property name="placeholderText">
            <string>Senha</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="funcionario"/>
+         <widget class="QLineEdit" name="senha_2">
+          <property name="echoMode">
+           <enum>QLineEdit::Password</enum>
+          </property>
+          <property name="placeholderText">
+           <string>Confirmar senha</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="funcionario">
+          <item>
+           <property name="text">
+            <string>adm</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>agente</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>secretaria</string>
+           </property>
+          </item>
+         </widget>
         </item>
        </layout>
       </item>
