@@ -7,27 +7,29 @@ class Address:
     neighborhood = ""
     street = ""
     complement = ""
+    cep = None
     responsible_id = None
 
-    def __init__(self, id=None, city="", neighborhood="", street="", complement="", responsible_id=None ):
+    def __init__(self, id=None, city="", neighborhood="", street="", complement="", cep=None, responsible_id=None ):
         
         self.id = id
         self.city = city
         self.neighborhood = neighborhood
         self.street = street
         self.complement = complement
+        self.cep = cep 
         self.responsible_id = responsible_id
 
     @classmethod
-    def createAddress(cls):
+    def createAddress(cls, address):
         # INSERIR NOVO ENDEREÇO EM UM ID DE RESPONSAVEL VALIDO
         try:
             DB = Database()
 
             sql = """
                 INSERT INTO enderecos
-                (cidade, bairro, rua, complemento, responsavel_id)
-                VALUES (%s, %s, %s, %s, %s)
+                (cidade, bairro, rua, complemento, CEP, responsavel_id)
+                VALUES (%s, %s, %s, %s, %s, %s)
             """
 
             params = (
@@ -35,6 +37,7 @@ class Address:
                 address.neighborhood,
                 address.street,
                 address.complement,
+                address.cep,
                 address.responsible_id
             )
 
@@ -48,7 +51,7 @@ class Address:
             raise RuntimeError("Falha ao inserir endereço!") from e
 
     @classmethod
-    def updateAddress(cls):
+    def updateAddress(cls, address):
 
         try:
             DB = Database()
@@ -57,7 +60,8 @@ class Address:
             SET cidade = %s,
                 bairro = %s,
                 rua = %s,
-                complemento = %s
+                complemento = %s,
+                CEP = %s,
                 WHERE responsavel_id = %s
             """
 
@@ -83,12 +87,12 @@ class Address:
         
         
     @classmethod
-    def readAddress(cls):
+    def readAddress(cls, address):
         # CONSULTAR ENDEREÇO ATRAVÉS DO RESPONSAVEL
 
         try:
             DB = Database()
-            sql = """SELECT cidade, bairro, rua, complemento
+            sql = """SELECT cidade, bairro, rua, complemento, CEP
                 FROM enderecos
                 WHERE responsavel_id = %s;
                 """
@@ -105,7 +109,7 @@ class Address:
             
         
     @classmethod
-    def deleteAddress(cls):
+    def deleteAddress(cls, address):
         #DELETAR ENDEREÇO PELO ID DO RESPONSAVEL
 
         try:
@@ -123,13 +127,13 @@ class Address:
             raise RuntimeError("Falha ao excluir endereço!") from e
         
     @classmethod
-    def responsibleforAddress(cls):
+    def responsibleforAddress(cls, address):
         # buscar responsavel pelo endereço
 
         try:
             DB = Database()
 
-            sql = """SELECT bairro, responsavel_id
+            sql = """SELECT responsavel_id
                 FROM enderecos
                 WHERE id = %s;
                 """
@@ -143,15 +147,3 @@ class Address:
             raise RuntimeError("Falha na procura!") from e
             
         
-
-
-if __name__ == "__main__":
-    address = Address(
-        id=11,
-        city="Sorocaba",
-        neighborhood="Centro",
-        street="Rua Teste",
-        complement="Casa"
-    )
-
-    address.responsibleforAddress()
