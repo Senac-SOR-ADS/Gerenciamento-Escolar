@@ -42,7 +42,7 @@ class AddressController:
         required_fields = ["city", "neighborhood", "street", "responsible_id"]
         for field in required_fields:
             if not form_data.get(field):
-                return {f"PREENCHA TODOS CAMPOS OBRIGATÓRIOS, FALTA: {field}"} 
+                return {f"PREENCHA TODOS CAMPOS OBRIGATÓRIOS"} 
 
         try:
             address = Address(
@@ -58,7 +58,6 @@ class AddressController:
             address.id = adressID
     
             return {
-                "success": True,
                 "address_id": address.id,
                 "cep": address.cep,
                 "city": address.city,
@@ -68,7 +67,7 @@ class AddressController:
             }
 
         except Exception as e:
-            return {"ERRO AO INSERIR DADOS" : str(e)}
+            return {"ERRO AO INSERIR DADOS" : e}
         
 
 
