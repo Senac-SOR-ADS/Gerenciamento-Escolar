@@ -14,14 +14,14 @@ class RegisterEmployeeUI(QDialog):
         self.nome.clear()
         self.login.clear()
         self.senha.clear()
-        self.senha_2.clear()
+        self.confirmar_senha.clear()
         self.funcionario.setCurrentIndex(0)
 
     def validarCampos(self):
         nome = self.nome.text()
         login = self.login.text()
         senha = self.senha.text()
-        senha_2 = self.senha_2.text()
+        confirmar_senha = self.confirmar_senha.text()
         funcionario = self.funcionario.currentText()
 
 
@@ -29,7 +29,7 @@ class RegisterEmployeeUI(QDialog):
             print(f'Preencha os campos!')
             return
 
-        if senha != senha_2:
+        if senha != confirmar_senha:
             print(f'As senhas são diferentes!')
             return
         return {
@@ -45,8 +45,12 @@ class RegisterEmployeeUI(QDialog):
 
         if user:
             print(user)
-            UserController.createUser(user)
-            self.clearText()
+            try:
+                UserController.createUser(user)
+                self.clearText()
+            except Exception as e:
+                print(f"Erro: \n{e}")
+
 
 
 if __name__ == "__main__":
@@ -54,11 +58,3 @@ if __name__ == "__main__":
     app = QApplication([])
     login = RegisterEmployeeUI()
     app.exec_()
-
-# if user:
-#     print(user)
-#     try:
-#         UserController.createUser(user)
-#         self.clearText()
-#     except Exception as e:
-#         print(f"Erro: \n{e}")
