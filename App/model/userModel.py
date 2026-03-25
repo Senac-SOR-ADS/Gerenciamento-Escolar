@@ -17,7 +17,7 @@ class Usuario:
         self.active = bool(active)
 
     @classmethod
-    def createUser(cls , user:Usuario):
+    def createUser(cls , user:"Usuario"):
         try:
             DB = Database()
             sql = "INSERT INTO usuarios (nome_user , email , senha , tipo_user) VALUES(%s , %s , %s , %s)"
@@ -29,7 +29,7 @@ class Usuario:
             raise RuntimeError
 
     @classmethod
-    def updateUser(cls ,user:Usuario):
+    def updateUser(cls ,user:"Usuario"):
         try:
             DB = Database()
             sql = "UPDATE usuarios SET nome_user = %s , email = %s , senha = %s WHERE id = %s"
