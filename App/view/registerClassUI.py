@@ -2,12 +2,13 @@ from PyQt5.QtWidgets import QDialog, QDateEdit
 from PyQt5.QtCore import QDate
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.uic import loadUi
-from App.controller.roomController import createRoom
+from App.controller.roomController import RoomController
 
 class RegisterClassUI(QDialog):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         loadUi("App/view/ui/registerClass.ui", self)
+        self.clearText()
         self.show()
 
     def clearText(self):
@@ -16,7 +17,8 @@ class RegisterClassUI(QDialog):
         
     def validarCampos(self):
         turma = self.turma.text()
-        data = self.data.currentDate()
+        data = self.data.date() #retorna um QDate
+        data = data.toString("yyyy/MM/dd") #transforma em padrão EUA
 
         if not turma and not data:
             print(f'Preencha os campos!')
@@ -32,7 +34,7 @@ class RegisterClassUI(QDialog):
 
         if classe:
             try:
-                createRoom(classe)
+                RoomController.createRoom(*classe.values())
                 self.clearText()
             except Exception as e:
                 print(f"Erro: \n{e}")

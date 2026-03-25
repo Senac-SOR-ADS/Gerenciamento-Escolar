@@ -137,7 +137,8 @@ if __name__ == "__main__":
     print("iniciando o teste...")
     #Room.updateRoom("", )
     #print(Room.showClass(1))
-    print(Room.createRoom("3º Ano A - Portugues", "2027-02-05"))
+    # print(Room.createRoom("3º Ano A - Portugues", "2027-02-05"))
+    print(Room.createRoom("3º Ano A - Portugues", "01/01/2000"))
     
 
 
