@@ -32,9 +32,7 @@ class AddressController:
             print("Erro ao conectar com a API")
             return None
         
-        
-
-
+    @classmethod
     def create(self, form_data):
         # RECEBE OS DADOS DO CEP E ENVIA PARA A MODEL
         if not form_data:
@@ -46,28 +44,22 @@ class AddressController:
             if not form_data.get(field):
                 return {"success": False, "error": f"PREENCHA TODOS CAMPOS OBRIGATÓRIOS, FALTA: {field}"}
 
-        # CAMPOS OPCIONAIS
-        complement = form_data.get("complement")  
-        cep = form_data.get("cep")  
-
-        # MONTANDO OS DADOS
         try:
             address = Address(
-                cep=cep,
-                city=form_data["city"],
-                neighborhood=form_data["neighborhood"],
-                street=form_data["street"],
-                complement=complement,
-                responsible_id=form_data["responsible_id"]
+                cep=form_data.get("cep")  ,
+                city=form_data.get("city"),
+                neighborhood=form_data.get("neighborhood"),
+                street=form_data.get("street"),
+                complement=form_data.get("complement"),
+                responsible_id=form_data.get("responsible_id")
             )
 
-            # METODO DA MODEL
-            address.createAddress(address)  
-
+            adressID = address.createAddress(address)
+            address.id = adressID
     
             return {
                 "success": True,
-                "address_id": getattr(address, "id", None),
+                "address_id": address.id,
                 "cep": address.cep,
                 "city": address.city,
                 "neighborhood": address.neighborhood,
@@ -78,4 +70,16 @@ class AddressController:
         except Exception as e:
             return {"success": False, "error": str(e)}
 
+if __name__ == "__main__":
+    endereco = {
+        "cep": "18053000",
+        "city": "sorocaba",
+        "neighborhood": "Julio de Mesquita",
+        "street": "Americo Figueiredo",
+        "complement": "",
+        "responsible_id": 1}
+    cep = asyncio.run(AddressController.requestCep("18053000"))
+    print(cep)
 
+    res = AddressController.create(endereco)
+    print(res)
