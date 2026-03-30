@@ -1,22 +1,22 @@
 from App.model.addressModel import Address
 import httpx
 import time
-import asyncio
+import requests
 
 class AddressController:
 
     @classmethod
-    async def requestCep(cls, cep):
+    def requestCep(cls, cep):
         # CONSULTAR CEP NA API
 
         cep = cep.replace("-", "").strip()
         url = f"https://viacep.com.br/ws/{cep}/json/"
 
         try:
-            async with httpx.AsyncClient(timeout=5.0) as client:
-                res = await client.get(url)  
-                res.raise_for_status()
-                dados = res.json()
+            
+            res = requests.get(url, timeout=5)  
+            res.raise_for_status()
+            dados = res.json()
 
             if "erro" in dados:
                 print("CEP não existe")
@@ -28,7 +28,7 @@ class AddressController:
                 "street": dados.get("logradouro", "")
             }
 
-        except httpx.RequestError:
+        except requests.exceptions.RequestException:
             print("Erro ao conectar com a API")
             return None
         
