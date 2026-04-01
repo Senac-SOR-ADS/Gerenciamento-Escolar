@@ -95,14 +95,27 @@ class Parent:
         except Exception as e:
             print(f'Erro ao buscar os dados{e}')
             raise RuntimeError
+        
+    @classmethod
+    def getParentByStudentId(cls, id):
+        try:
+            DB = Database()
+            sql = "SELECT r.id, nome , CPF , responsavel_legal FROM responsaveis r JOIN responsavel_aluno ra ON r.id = ra.responsavel_id WHERE ra.aluno_id = %s;"
+            params = (id, )
+            result = DB.fetchAll(sql, params)
+            if not result:
+                return None
+            return result
+        except Exception as e:
+            print(f'Erro ao buscar os responsaveis{e}')
+            raise RuntimeError
          
      
 
 if __name__ == "__main__":
-    detalhes = Parent.findParentDetails(1)
+    detalhes = Parent.getParentByStudentId(1)
     if detalhes:
-        print(f"Nome:     {detalhes['nome']}")
-        print(f"CPF:      {detalhes['CPF']}")
-        print(f"Cidade:   {detalhes['cidade']}")
-        print(f"Telefone: {detalhes['telefone']}")
+        for parent in detalhes:
+            print(parent)
+        
 
