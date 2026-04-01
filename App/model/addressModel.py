@@ -80,16 +80,16 @@ class Address:
             raise RuntimeError("Falha ao atualizar o endereço!") from e
     
     @classmethod
-    def readAddress(cls, address):
+    def readAddress(cls, responsible_id):
         # CONSULTAR ENDEREÇO ATRAVÉS DO RESPONSAVEL
 
         try:
             DB = Database()
-            sql = """SELECT cidade, bairro, rua, complemento, CEP
+            sql = """SELECT id, cidade, bairro, rua, complemento, CEP
                 FROM enderecos
                 WHERE responsavel_id = %s;
                 """
-            params = (address.responsible_id,)
+            params = (responsible_id,)
             result = DB.fetchOne(sql, params)
             
             print("Seleção feita!")

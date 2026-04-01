@@ -65,21 +65,56 @@ class AddressController:
         except Exception as e:
             return {"ERRO AO INSERIR DADOS" : e}
         
+    @classmethod
+    def update(cls, data):
 
+        try:
+            
+            data = {
+                data.city,
+                data.neighborhood,
+                data.street,
+                data.complement,
+                data.responsible.id,
+            }
 
+            print(data)
+            Address.updateAddress(data)
 
+        except Exception as e:
+            return {"Erro na atualização dos dados": e}
+        
+    @classmethod
+    def findAddressByParentId(cls, ParentId):
+
+        try: 
+
+            if ParentId:
+                Address.readAddress(ParentId)
+
+            else:
+                print("Nao existe Id")
+
+        except Exception as e:
+            return {"Erro ao puxar endereço": e}
 
 
 if __name__ == "__main__":
-    endereco = {
-        "cep": "18053000",
-        "city": "sorocaba",
-        "neighborhood": "Julio de Mesquita",
-        "street": "Americo Figueiredo",
-        "complement": "",
-        "responsible_id": 1}
+
+    address = Address(
+        city="Votorantim",
+        neighborhood="Julio de Mesquita",
+        street="Americo Figueiredo",
+        complement="",
+        responsible_id= 1,
+
+    )
     
-    cep = AddressController.requestCep("18075000")
-    print(cep)
-    res = AddressController.create(endereco)
-    print(res)
+    AddressController.update(address)
+
+
+
+
+    
+    #cep = AddressController.requestCep("18075000")
+    #print(cep)
