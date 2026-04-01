@@ -1,6 +1,4 @@
 from App.model.addressModel import Address
-import httpx
-import time
 import requests
 
 class AddressController:
@@ -81,7 +79,7 @@ if __name__ == "__main__":
         "street": "Americo Figueiredo",
         "complement": "",
         "responsible_id": 1}
-    cep = asyncio.run(AddressController.requestCep("18053000"))
+    cep = AddressController.requestCep("18053000")
     print(cep)
 
     res = AddressController.create(endereco)
