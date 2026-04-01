@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 from PyQt5.QtWidgets import QApplication
-from App.view.loginUi import LoginUI
+from App.view.loginUI import LoginUI
 from App.view.homeUI import HomeUI
 from App.controller.loginController import isLogged , logout
 
