@@ -6,19 +6,29 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>315</width>
-    <height>272</height>
+    <width>500</width>
+    <height>387</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0">
    <item>
-    <widget class="QDateTimeEdit" name="dataOcorrencia"/>
+    <widget class="QDateTimeEdit" name="dataOcorrencia">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="displayFormat">
+      <string>dd/MM/yyyy</string>
+     </property>
+    </widget>
    </item>
    <item>
     <widget class="QLineEdit" name="nomeOcorrencia">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="text">
       <string>Nome</string>
      </property>
@@ -35,8 +45,40 @@
    </item>
    <item>
     <widget class="QLineEdit" name="descricaoOcorrencia">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>70</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#descricaoOcorrencia{
+
+	align-items: flex-start;
+	background-color: #fff;
+	
+	padding: 10px;
+
+}</string>
+     </property>
      <property name="text">
       <string>Descrição...</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+    </widget>
+   </item>
+   <item alignment="Qt::AlignHCenter">
+    <widget class="QPushButton" name="btnSaveReport">
+     <property name="maximumSize">
+      <size>
+       <width>90</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Salvar</string>
      </property>
     </widget>
    </item>
