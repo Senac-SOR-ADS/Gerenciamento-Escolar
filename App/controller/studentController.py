@@ -1,32 +1,126 @@
-from App.config.database import Database
 from App.model.studentModel import Student
- 
+from datetime import datetime
 class StudentController:
-
-    
-
-    CAMPOS_OBRIGATORIOS = ['nome', 'CPF', 'data_nasc', 'RA', 'RM']
-    
-
-    LIMITES_CARACTERES = {
-        'nome': 100,
-        'nome_social': 100,
-        'CPF': 14,  # Formato: 000.000.000-00
-        'RA': 20,
-        'RM': 20,
-        'obs': 500
-    }
-    
+ 
     @classmethod
-    def validarCampoPreenchido(cls, valor, nome_campo):
-        """Valida se um campo está preenchido."""
-        if valor is None or str(valor).strip() == '':
-            return False, f"O campo '{nome_campo}' é obrigatório."
-        return True, None
-    
+    def validateRequiredFields(cls, data):
+ 
+        campos_necessarios = ['nome', 'CPF', 'data_nasc', 'RA', 'RM']
+        for campo in campos_necessarios:
+            if not data.get(campo):
+                print(f"Erro: O campo '{campo}' é obrigatório e não pode estar vazio.")
+                return False
+        return True
+ 
     @classmethod
-    def validarTamanhoMaximo(cls, valor, nome_campo, limite):
-        """Valida se o campo não excede o tamanho máximo."""
-        if valor and len(str(valor)) > limite:
-            return False, f"O campo '{nome_campo}' deve ter no máximo {limite} caracteres."
-        return True, None
+    def  create(cls, data: dict):
+        try:
+            data_nasc=data.get("data_nasc")
+            data_nasc= datetime.strptime(data_nasc, "%d/%m/%Y")
+            if not cls.validateRequiredFields(data):
+                return False
+           
+ 
+            student = Student(
+                nome=data.get("nome"),
+                nome_social=data.get("nome_social"),
+                CPF=data.get("CPF"),
+                data_nasc=data_nasc,
+                RA=data.get("RA"),
+                RM=data.get("RM")
+            )
+           
+            novo_id = Student.Create(student)
+            if novo_id:
+                return novo_id
+            return False
+           
+        except Exception as e:
+            print(f"Erro no controller ao tentar criar aluno: {e}")
+            return False
+ 
+    @classmethod
+    def update(cls, id: int, data: dict):
+        try:
+
+            data_nasc=data.get("data_nasc")
+            data_nasc= datetime.strptime(data_nasc, "%d/%m/%Y")
+            
+
+ 
+            student = Student(
+                id=id,
+                nome=data.get("nome"),
+                nome_social=data.get("nome_social"),
+                CPF=data.get("CPF"),
+                data_nasc=data_nasc,
+                RA=data.get("RA"),
+                RM=data.get("RM"),
+                obs=data.get("observacao"),
+                status=data.get("status", True)
+            )
+ 
+            result = Student.Update(student)
+            return result
+           
+        except Exception as e:
+            print(f"Erro ao atualizar os dados do aluno: {e}")
+            return False
+ 
+    @classmethod
+    def delete(cls, id: int):
+        try:
+            return Student.delete(id)
+        except Exception as e:
+            print(f"Erro no controller ao desativar aluno: {e}")
+            return False
+ 
+    @classmethod
+    def activate(cls, id: int):
+        try:
+            return Student.activate(id)
+        except Exception as e:
+            print(f"Erro ao ativar aluno: {e}")
+            return False
+ 
+    @classmethod
+    def getById(cls, id: int):
+        try:
+            return Student.findById(id)
+        except Exception as e:
+            print(f"Erro ao buscar aluno por ID: {e}")
+            return None
+ 
+    @classmethod
+    def getAll(cls):
+        try:
+            return Student.findAll()
+        except Exception as e:
+            print(f"Erro ao listar todos os alunos: {e}")
+            return []
+ 
+    @classmethod
+    def getActive(cls):
+        try:
+            return Student.findActive()
+        except Exception as e:
+            print(f"Erro ao listar todos os alunos: {e}")
+            return []
+ 
+if __name__ == "__main__":
+ 
+    aluno_teste = {
+        "nome": "João Silva",
+        "data_nasc": "12/02/1222",
+        "nome_social": "kar212la",
+        "CPF": "3215321643",
+        "RA": "311231",
+        "RM": "323231151",
+
+    } 
+    StudentController.create(aluno_teste)
+    #StudentController.update(7,aluno_teste)
+
+    
+    
+ 
