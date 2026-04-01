@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS gerenciamento_escola
-USE gerenciamento_escola
+CREATE DATABASE IF NOT EXISTS gerenciamento_escolar
+USE gerenciamento_escolar
 
 CREATE TABLE IF NOT EXISTS `salas` (
     `id` INTEGER PRIMARY KEY AUTO_INCREMENT,
