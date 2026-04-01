@@ -49,130 +49,102 @@
      </layout>
     </item>
     <item>
-     <layout class="QGridLayout" name="gridLayout" rowminimumheight="0,0,0" columnminimumwidth="0,0,0,0,0,0">
-      <item row="0" column="2">
-       <widget class="QPushButton" name="pushButton_4">
+     <layout class="QGridLayout" name="gridLayout" rowminimumheight="0,0,0,0,0" columnminimumwidth="0,0,0,0,0,0">
+      <item row="0" column="0">
+       <widget class="QPushButton" name="RegisterStudent">
         <property name="text">
-         <string>registerClass</string>
+         <string>registerStudent</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="4">
-       <widget class="QPushButton" name="pushButton_13">
+      <item row="1" column="5">
+       <widget class="QPushButton" name="Report">
         <property name="text">
-         <string>login</string>
+         <string>report</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
-       <widget class="QPushButton" name="pushButton_7">
+      <item row="0" column="5">
+       <widget class="QPushButton" name="NewReport">
         <property name="text">
-         <string>deleteClass</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QPushButton" name="pushButton_3">
-        <property name="text">
-         <string>registerParent</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QPushButton" name="pushButton_8">
-        <property name="text">
-         <string>PushButton</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QPushButton" name="pushButton_6">
-        <property name="text">
-         <string>studentCard</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="3">
-       <widget class="QPushButton" name="pushButton_11">
-        <property name="text">
-         <string>studentEdit</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="QPushButton" name="pushButton_9">
-        <property name="text">
-         <string>PushButton</string>
+         <string>newReport</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="ParentEdit">
         <property name="text">
          <string>parentEdit</string>
         </property>
        </widget>
       </item>
+      <item row="1" column="4">
+       <widget class="QPushButton" name="StudentInfo">
+        <property name="text">
+         <string>studentInfo</string>
+        </property>
+       </widget>
+      </item>
       <item row="1" column="1">
-       <widget class="QPushButton" name="pushButton_5">
+       <widget class="QPushButton" name="ParentInfo">
         <property name="text">
          <string>parentInfo</string>
         </property>
        </widget>
       </item>
       <item row="0" column="3">
-       <widget class="QPushButton" name="pushButton_12">
+       <widget class="QPushButton" name="RegisterEmployee">
         <property name="text">
          <string>registerEmployee</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="3">
-       <widget class="QPushButton" name="pushButton_10">
+      <item row="0" column="4">
+       <widget class="QPushButton" name="Login">
         <property name="text">
-         <string>PushButton</string>
+         <string>login</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="0">
-       <widget class="QPushButton" name="pushButton">
+      <item row="0" column="2">
+       <widget class="QPushButton" name="RegisterClass">
         <property name="text">
-         <string>registerStudent</string>
+         <string>registerClass</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="4">
-       <widget class="QPushButton" name="pushButton_14">
+      <item row="0" column="1">
+       <widget class="QPushButton" name="RegisterParent">
         <property name="text">
-         <string>StudentInfo</string>
+         <string>registerParent</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="4">
-       <widget class="QPushButton" name="pushButton_15">
+      <item row="1" column="3">
+       <widget class="QPushButton" name="StudentEdit">
         <property name="text">
-         <string>PushButton</string>
+         <string>studentEdit</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="5">
-       <widget class="QPushButton" name="pushButton_16">
+      <item row="1" column="2">
+       <widget class="QPushButton" name="StudentCard">
         <property name="text">
-         <string>newReport</string>
+         <string>studentCard</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="5">
-       <widget class="QPushButton" name="pushButton_17">
+      <item row="2" column="0">
+       <widget class="QPushButton" name="DeleteClass">
         <property name="text">
-         <string>report</string>
+         <string>deleteClass</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="5">
-       <widget class="QPushButton" name="pushButton_18">
+      <item row="2" column="1">
+       <widget class="QPushButton" name="Home">
         <property name="text">
-         <string>PushButton</string>
+         <string>Home</string>
         </property>
        </widget>
       </item>
