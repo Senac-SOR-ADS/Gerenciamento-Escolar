@@ -1,6 +1,4 @@
 from App.model.addressModel import Address
-import httpx
-import time
 import requests
 
 class AddressController:
@@ -18,8 +16,7 @@ class AddressController:
             dados = res.json()
 
             if "erro" in dados:
-                print("CEP não existe")
-                return None
+                raise requests.exceptions.RequestException("CEP não existe")
 
             return {
                 "city": dados.get("localidade", ""),
@@ -27,9 +24,9 @@ class AddressController:
                 "street": dados.get("logradouro", "")
             }
 
-        except requests.exceptions.RequestException:
-            print("Erro ao conectar com a API")
-            return None
+        except requests.exceptions.RequestException as e:
+            print(e)
+            return {}
         
     @classmethod
     def create(cls, form_data):
@@ -81,8 +78,8 @@ if __name__ == "__main__":
         "street": "Americo Figueiredo",
         "complement": "",
         "responsible_id": 1}
-    cep = asyncio.run(AddressController.requestCep("18053000"))
+    
+    cep = AddressController.requestCep("18075000")
     print(cep)
-
     res = AddressController.create(endereco)
     print(res)
