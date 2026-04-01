@@ -13,7 +13,6 @@ class AddressController:
         url = f"https://viacep.com.br/ws/{cep}/json/"
 
         try:
-            
             res = requests.get(url, timeout=5)  
             res.raise_for_status()
             dados = res.json()
