@@ -6,7 +6,7 @@ from PyQt5.uic import loadUi
 from App.view.loginUI import LoginUI
 from App.view.newReportUI import NewReportUI
 from App.view.homeUI import HomeUI
-from App.view.deleteClassUI import DeleteClassUI
+from App.view.registerClassUI import RegisterClassUI
 from App.view.parentEditUI import ParentEditUI
 from App.view.studentEditUI import StudentEditUI
 from App.view.parentInfoUI import ParentInfoUI
@@ -52,7 +52,7 @@ class ScreenForTesting(QMainWindow):
             self.home = HomeUI()
             self.home.show()
         elif sender == self.RegisterClass:
-            self.registerClass = DeleteClassUI()
+            self.registerClass = RegisterClassUI()
             self.registerClass.show()
         elif sender == self.ParentEdit:
             self.parentEdit = ParentEditUI()
