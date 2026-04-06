@@ -1,72 +1,83 @@
 from App.model.reportModel import Report
 from datetime import datetime
-
+ 
 class ReportController:
-
-    def create(self, description, studentID, parentID):
+ 
+    @classmethod
+    def create(cls, description, studentID, parentID):
         try:
-            description = self.validateDescription(description)
-            studentID = self.validateID(studentID, "studentID")
-            parentID = self.validateID(parentID, "parentID")
+            description = ReportController.validateDescription(description)
+            studentID = ReportController.validateID(studentID)
+            parentID = ReportController.validateID(parentID)
             rep = Report(description=description, studentID=studentID, parentID=parentID)
             Report.create(rep)
         except Exception as e:
             raise e
-
-    def getAll(self, ):
+ 
+    @classmethod
+    def getAll(cls):
         lista = Report.getAll()
         for item in lista:
             print(item.id, item.description)
-
-    def edit(self, id, description):
+ 
+    @classmethod
+    def edit(cls, id, description):
         if not description:
             print("Não foi possivel editar a descrição")
         else:
             try:
-                description = self.validateDescription(description)
+                description = ReportController.validateDescription(description)
                 rep = Report(description=description, id=id)
                 Report.edit(rep)
             except Exception as e:
                 raise e
-            
-    def checkIntervalDate(self, initialDate, lastDate):
+           
+    @classmethod
+    def validateIntervalDate(cls, initialDate, lastDate):
         try:
-            initialDate = self.validateDate(initialDate)
-            lastDate = self.validateDate(lastDate)
+            initialDate = ReportController.validateDate(initialDate)
+            lastDate = ReportController.validateDate(lastDate)
             a = Report.searchIntervalDate(initialDate, lastDate)
             if a == []:
                 return False
             return a
         except Exception as e:
                 raise e
-        
-    def checkDate(self, date):
+   
+    @classmethod
+    def validateDate(cls, date):
         try:
-            date = self.validateDate(date)
+            date = ReportController.validateDate(date)
             a = Report.searchDate(date)
             if a == []:
                 return False
             return a
         except Exception as e:
                 raise e
-             
-    def validateDescription(self, value):
-        description = value.strip()
+       
+ 
+    @classmethod    
+    def validateDescription(cls, value):
+        description = value
         if not description: raise ValueError("Falta a descricao")
         return description
-
-    def validateID(self, value):
+   
+ 
+    @classmethod
+    def validateID(cls, value):
         if not isinstance(value, int): raise TypeError(f"ID incorreto")
         if value <= 0: raise ValueError("Id invalido")
         return value
-
-    def validateDate(self, date):
+ 
+    @classmethod
+    def validateDate(cls, date):
         try:
             validate = datetime.strptime(date, "%Y-%m-%d")
             return validate
         except ValueError:
             print("Erro: Data Inválida.")
             return
-
+ 
 if __name__ == "__main__":
-    pass
+    ReportController.create("Tá doendo dms", 2, 4)
+ 
