@@ -26,7 +26,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0">
+   <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0">
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0,0">
       <item>
@@ -49,7 +49,7 @@
      </layout>
     </item>
     <item>
-     <layout class="QGridLayout" name="gridLayout" rowminimumheight="0,0,0,0,0" columnminimumwidth="0,0,0,0,0,0">
+     <layout class="QGridLayout" name="gridLayout" rowminimumheight="0,0,0" columnminimumwidth="0,0,0,0,0,0">
       <item row="0" column="0">
        <widget class="QPushButton" name="RegisterStudent">
         <property name="text">
@@ -149,6 +149,13 @@
        </widget>
       </item>
      </layout>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btnAddCard">
+      <property name="text">
+       <string>Add card in stackAlunos</string>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QFrame" name="frame">

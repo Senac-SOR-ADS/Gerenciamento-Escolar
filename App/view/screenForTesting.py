@@ -32,6 +32,7 @@ class ScreenForTesting(QMainWindow):
         self.StudentEdit.clicked.connect(self.openScreens)
         self.ParentInfo.clicked.connect(self.openScreens)
         self.StudentInfo.clicked.connect(self.openScreens)
+        self.btnAddCard.clicked.connect(self.addCardInStack)
         
           
     def openScreens(self):
@@ -66,6 +67,10 @@ class ScreenForTesting(QMainWindow):
         elif sender == self.StudentInfo:
             self.studentInfo = StudentInfoUI()
             self.studentInfo.show()
+    
+    def addCardInStack(self):
+        # stack item inside stack widget
+        self.stackWidget.addWidget(self.studentCard)
     
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
