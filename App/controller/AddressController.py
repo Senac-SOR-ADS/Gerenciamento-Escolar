@@ -66,23 +66,35 @@ class AddressController:
             return {"ERRO AO INSERIR DADOS" : e}
         
     @classmethod
-    def update(cls, data):
-
+    def update(cls, form_data):
         try:
-            
-            data = {
-                data.city,
-                data.neighborhood,
-                data.street,
-                data.complement,
-                data.responsible.id,
+            address = Address(
+                id=form_data.get("id"),
+                cep=form_data.get("cep"),
+                city=form_data.get("city"),
+                neighborhood=form_data.get("neighborhood"),
+                street=form_data.get("street"),
+                complement=form_data.get("complement"),
+                responsible_id=form_data.get("responsible_id")
+            )
+
+
+            Address.updateAddress(address)
+
+            return {
+                "address_id": address.id,
+                "cep": address.cep,
+                "city": address.city,
+                "neighborhood": address.neighborhood,
+                "street": address.street,
+                "complement": address.complement
             }
 
-            print(data)
-            Address.updateAddress(data)
-
         except Exception as e:
-            return {"Erro na atualização dos dados": e}
+            print("ERRO:", e)
+            return {"ERRO AO ATUALIZAR DADOS": e}
+        
+
         
     @classmethod
     def findAddressByParentId(cls, ParentId):
@@ -101,16 +113,19 @@ class AddressController:
 
 if __name__ == "__main__":
 
-    address = Address(
-        city="Votorantim",
-        neighborhood="Julio de Mesquita",
-        street="Americo Figueiredo",
-        complement="",
-        responsible_id= 1,
+    form_data = {
+        "id": None,
+        "city": "Votorantim",
+        "neighborhood": "Julio de Mesquita",
+        "street": "Americo Figueiredo",
+        "complement": "",
+        "cep": "18071-360",
+        "responsible_id": 1,
+    }
 
-    )
+    AddressController.findAddressByParentId(1)
     
-    AddressController.update(address)
+
 
 
 

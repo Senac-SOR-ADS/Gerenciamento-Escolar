@@ -60,8 +60,8 @@ class Address:
                 bairro = %s,
                 rua = %s,
                 complemento = %s,
-                CEP = %s,
-                WHERE responsavel_id = %s
+                CEP = %s
+            WHERE responsavel_id = %s
             """
 
             params = (
@@ -69,8 +69,9 @@ class Address:
                 address.neighborhood,
                 address.street,
                 address.complement,
+                address.cep,
                 address.responsible_id
-                )
+            )
 
             DB.execute(sql, params)
             print("Atualização feita!")
@@ -90,13 +91,14 @@ class Address:
                 WHERE responsavel_id = %s;
                 """
             params = (responsible_id,)
-            result = DB.fetchOne(sql, params)
+            result = DB.fetchAll(sql, params)
             
             print("Seleção feita!")
             print(result)
 
         except Exception as e:
             print("Não foi possível selecionar:", e)
+            print("Causa:", e.__cause__)  # <-- adiciona isso
             raise RuntimeError("Falha ao selecionar o endereço!") from e
 
 
