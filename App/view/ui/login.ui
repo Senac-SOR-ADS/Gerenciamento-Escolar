@@ -97,7 +97,7 @@ QLabel {
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>../../../../../../Downloads/marca-vertical-85.png</pixmap>
+      <pixmap>imagens/logo.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>false</bool>
