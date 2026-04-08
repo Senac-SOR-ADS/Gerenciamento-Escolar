@@ -27,7 +27,8 @@ class StudentController:
                 CPF=data.get("CPF"),
                 data_nasc=data_nasc,
                 RA=data.get("RA"),
-                RM=data.get("RM")
+                RM=data.get("RM"),
+                obs=data.get("observacao"),
             )
            
             novo_id = Student.Create(student)
@@ -47,7 +48,7 @@ class StudentController:
             data_nasc= datetime.strptime(data_nasc, "%d/%m/%Y")
             
 
- 
+        
             student = Student(
                 id=id,
                 nome=data.get("nome"),
