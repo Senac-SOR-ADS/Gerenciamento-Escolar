@@ -6,39 +6,94 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>315</width>
-    <height>272</height>
+    <width>935</width>
+    <height>587</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
-    <widget class="QDateTimeEdit" name="dataOcorrencia"/>
-   </item>
-   <item>
-    <widget class="QLineEdit" name="nomeOcorrencia">
-     <property name="text">
-      <string>Nome</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QComboBox" name="responsavelCombo">
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>imagens/68045.png</normaloff>imagens/68045.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QLineEdit, QDateTimeEdit, QComboBox, QTextEdit {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 6px;
+    background: white;
+}
+
+QLineEdit:focus, QDateTimeEdit:focus {
+    border: 2px solid #4CAF50;
+}
+
+	
+	
+</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <layout class="QVBoxLayout" name="verticalLayout" stretch="3,3,3,3">
      <item>
-      <property name="text">
-       <string>Responsável</string>
-      </property>
+      <widget class="QDateTimeEdit" name="dataOcorrencia">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="displayFormat">
+        <string>dd/MM/yyyy</string>
+       </property>
+      </widget>
      </item>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLineEdit" name="descricaoOcorrencia">
-     <property name="text">
-      <string>Descrição...</string>
-     </property>
-    </widget>
+     <item>
+      <widget class="QLineEdit" name="nomeOcorrencia">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="placeholderText">
+        <string>Nome</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="responsavelCombo">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>40</height>
+        </size>
+       </property>
+       <item>
+        <property name="text">
+         <string>Responsável</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTextEdit" name="textEdit">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="placeholderText">
+        <string>Descrição...</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>
