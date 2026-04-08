@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QDialog, QLineEdit
+from PyQt5.QtWidgets import QDialog, QLineEdit, QCheckBox
 from PyQt5.QtCore import pyqtSlot, pyqtSignal
 from PyQt5.uic import loadUi
 from App.utils.qthread import Trabalhador
@@ -10,6 +10,7 @@ class RegisterParentUI(QDialog):
         loadUi("App/view/ui/registerParent.ui", self)
         self.show()
         self.cep.editingFinished.connect(self.buscarCEP)
+        QCheckBox.setCheckable
         
     def buscarCEP(self):
         cep = self.cep.text()
@@ -23,32 +24,48 @@ class RegisterParentUI(QDialog):
         self.bairro.setText(dadosCEP.get("neighborhood"))
         self.rua.setText(dadosCEP.get("street"))
 
-    def validadeAll(self):
+    def validarCampos(self):
         nome = self.nome.text()
         telefone = self.telefone.text()
+        resp_legal = self.resp_legal.isChecked()
         cep = self.cep.text()
-        resp_legal = self.resp_legal.text()
+        cidade = self.cidade.text()
+        rua = self.rua.text()
+        bairro = self.bairro.text()
+        numero = self.numero.text()
+        complemento = self.complemento.text()
 
         return {
-            "name": nome,
-            "phone": telefone,
+            "nome": nome,
+            "telefone": telefone,
             "resp_legal": resp_legal,
-            "cep": cep
+            "cep": cep,
+            "cidade": cidade,
+            "rua": {rua, numero},
+            # "numero": numero,
+            "bairro": bairro,
+            "complemento": complemento,
         }
 
     @pyqtSlot()
     def on_btn_concluir_clicked(self):
-        resp = self.validadeAll()
+        resp = self.validarCampos()
+        # self.clearText()
         print(resp)
 
-
-
+    def clearText(self):
+        self.nome.clear()
+        self.telefone.clear()
+        self.resp_legal.setChecked(False)
+        self.cep.clear()
+        self.cidade.clear()
+        self.rua.clear()
+        self.bairro.clear()
+        self.numero.clear()
+        self.complemento.clear()
 
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
     app = QApplication([])
     login = RegisterParentUI()
     app.exec_()
-
-
-    # 18053000
