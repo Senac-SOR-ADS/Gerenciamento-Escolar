@@ -60,8 +60,8 @@ class Address:
                 bairro = %s,
                 rua = %s,
                 complemento = %s,
-                CEP = %s,
-                WHERE responsavel_id = %s
+                CEP = %s
+            WHERE responsavel_id = %s
             """
 
             params = (
@@ -69,8 +69,9 @@ class Address:
                 address.neighborhood,
                 address.street,
                 address.complement,
+                address.cep,
                 address.responsible_id
-                )
+            )
 
             DB.execute(sql, params)
             print("Atualização feita!")
@@ -80,23 +81,24 @@ class Address:
             raise RuntimeError("Falha ao atualizar o endereço!") from e
     
     @classmethod
-    def readAddress(cls, address):
+    def readAddress(cls, responsible_id):
         # CONSULTAR ENDEREÇO ATRAVÉS DO RESPONSAVEL
 
         try:
             DB = Database()
-            sql = """SELECT cidade, bairro, rua, complemento, CEP
+            sql = """SELECT id, cidade, bairro, rua, complemento, CEP
                 FROM enderecos
                 WHERE responsavel_id = %s;
                 """
-            params = (address.responsible_id,)
-            result = DB.fetchOne(sql, params)
+            params = (responsible_id,)
+            result = DB.fetchAll(sql, params)
             
             print("Seleção feita!")
             print(result)
 
         except Exception as e:
             print("Não foi possível selecionar:", e)
+            print("Causa:", e.__cause__)  # <-- adiciona isso
             raise RuntimeError("Falha ao selecionar o endereço!") from e
 
 

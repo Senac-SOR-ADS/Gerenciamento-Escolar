@@ -64,6 +64,15 @@ class RegisterParentUI(QDialog):
         self.numero.clear()
         self.complemento.clear()
 
+    @pyqtSlot()
+    def on_btn_concluir_clicked(self):
+        self.cep =Trabalhador(AddressController.requestCep)
+        self.cep.finalizado.connect(self.create)
+        self.cep.finished.connect(self.cep.deleteLater)
+        self.cep.start()
+
+        self.btn_concluir.setEnabled(False)
+
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
     app = QApplication([])
