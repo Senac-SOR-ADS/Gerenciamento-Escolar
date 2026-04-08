@@ -79,5 +79,6 @@ class ReportController:
             return
  
 if __name__ == "__main__":
-    ReportController.create("Tá doendo dms", 2, 4)
+    # ReportController.create("Tá doendo dms", 2, 4)
+    pass
  
