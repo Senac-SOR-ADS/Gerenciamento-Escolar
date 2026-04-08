@@ -19,35 +19,41 @@ class AddressController:
                 raise requests.exceptions.RequestException("CEP não existe")
 
             return {
+                "cep": dados.get("cep", ""),
                 "city": dados.get("localidade", ""),
                 "neighborhood": dados.get("bairro", ""),
-                "street": dados.get("logradouro", "")
+                "street": dados.get("logradouro", ""),
             }
+        
 
         except requests.exceptions.RequestException as e:
             print(e)
             return {}
         
     @classmethod
-    def create(cls, form_data):
+    def create(cls, responsible_id, form_data):
         # RECEBE OS DADOS DO CEP E ENVIA PARA A MODEL
+
+        if not responsible_id:
+            return {"RESPONSAVEL NÃO ENCONTRADO!"}
+
         if not form_data:
             return {"HOUVE UM PROBLEMA NO ENVIO DE DADOS, PREENCHA MANUALMENTE"}
 
         # VALIDANDO OS CAMPOS OBRIGATÓRIOS (sem CEP)
-        required_fields = ["city", "neighborhood", "street", "responsible_id"]
+        required_fields = ["city", "neighborhood", "street"]
         for field in required_fields:
             if not form_data.get(field):
                 return {f"PREENCHA TODOS CAMPOS OBRIGATÓRIOS"} 
 
         try:
             address = Address(
-                cep=form_data.get("cep")  ,
+                cep=form_data.get("cep"),
                 city=form_data.get("city"),
                 neighborhood=form_data.get("neighborhood"),
                 street=form_data.get("street"),
                 complement=form_data.get("complement"),
-                responsible_id=form_data.get("responsible_id")
+                responsible_id=responsible_id
             )
 
             adressID = address.createAddress(address)
@@ -113,23 +119,10 @@ class AddressController:
 
 if __name__ == "__main__":
 
-    form_data = {
-        "id": None,
-        "city": "Votorantim",
-        "neighborhood": "Julio de Mesquita",
-        "street": "Americo Figueiredo",
-        "complement": "",
-        "cep": "18071-360",
-        "responsible_id": 1,
-    }
 
-    AddressController.findAddressByParentId(1)
-    
+    #AddressController.findAddressByParentId(1)
+       
+    cep = AddressController.requestCep("18071-360")
+    dados = AddressController.create(10, cep)
+    print(dados)
 
-
-
-
-
-    
-    #cep = AddressController.requestCep("18075000")
-    #print(cep)
