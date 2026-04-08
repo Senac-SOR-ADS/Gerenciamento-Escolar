@@ -1,12 +1,12 @@
-CREATE DATABASE IF NOT EXISTS gerenciamento_escolar
-USE gerenciamento_escolar
-
+CREATE DATABASE IF NOT EXISTS `gerenciamento_escolar`;
+USE `gerenciamento_escolar`;
+ 
 CREATE TABLE IF NOT EXISTS `salas` (
     `id` INTEGER PRIMARY KEY AUTO_INCREMENT,
     `turmas` VARCHAR(30) NOT NULL UNIQUE,
-    `ativo` BOOLEAN,
-    `data` DATE NOT NULL
-);
+    `ativo` BOOLEAN DEFAULT 1,
+    `data` DATE NOT NULL DEFAULT (CURRENT_DATE));
+
 CREATE TABLE IF NOT EXISTS `alunos` (
     `id` INTEGER PRIMARY KEY AUTO_INCREMENT,
     `nome` VARCHAR(150) NOT NULL,
@@ -17,8 +17,8 @@ CREATE TABLE IF NOT EXISTS `alunos` (
     `RM` VARCHAR(15) NOT NULL UNIQUE,
     `Observacao` TEXT,
     `status` BOOLEAN NOT NULL DEFAULT 1,
-    `data_registro` DATE NOT NULL DEFAULT (CURRENT_DATE)
-);
+    `data_registro` DATE NOT NULL DEFAULT (CURRENT_DATE));
+    
 CREATE TABLE IF NOT EXISTS `responsaveis` (
     `id` INTEGER PRIMARY KEY AUTO_INCREMENT,
     `nome` VARCHAR(150) NOT NULL,
