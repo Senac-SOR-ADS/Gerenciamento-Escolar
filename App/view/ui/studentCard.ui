@@ -15,21 +15,21 @@
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout" stretch="3,1,1">
    <item>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="studentName">
      <property name="text">
       <string>Nome aluno</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="pushButton_2">
+    <widget class="QPushButton" name="newReport">
      <property name="text">
       <string>Nova Ocorrência</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="pushButton_3">
+    <widget class="QPushButton" name="parentInfo">
      <property name="text">
       <string>Responsável</string>
      </property>
