@@ -65,21 +65,71 @@ class AddressController:
         except Exception as e:
             return {"ERRO AO INSERIR DADOS" : e}
         
+    @classmethod
+    def update(cls, form_data):
+        try:
+            address = Address(
+                id=form_data.get("id"),
+                cep=form_data.get("cep"),
+                city=form_data.get("city"),
+                neighborhood=form_data.get("neighborhood"),
+                street=form_data.get("street"),
+                complement=form_data.get("complement"),
+                responsible_id=form_data.get("responsible_id")
+            )
 
 
+            Address.updateAddress(address)
 
+            return {
+                "address_id": address.id,
+                "cep": address.cep,
+                "city": address.city,
+                "neighborhood": address.neighborhood,
+                "street": address.street,
+                "complement": address.complement
+            }
+
+        except Exception as e:
+            print("ERRO:", e)
+            return {"ERRO AO ATUALIZAR DADOS": e}
+        
+
+        
+    @classmethod
+    def findAddressByParentId(cls, ParentId):
+
+        try: 
+
+            if ParentId:
+                Address.readAddress(ParentId)
+
+            else:
+                print("Nao existe Id")
+
+        except Exception as e:
+            return {"Erro ao puxar endereço": e}
 
 
 if __name__ == "__main__":
-    endereco = {
-        "cep": "18053000",
-        "city": "sorocaba",
+
+    form_data = {
+        "id": None,
+        "city": "Votorantim",
         "neighborhood": "Julio de Mesquita",
         "street": "Americo Figueiredo",
         "complement": "",
-        "responsible_id": 1}
+        "cep": "18071-360",
+        "responsible_id": 1,
+    }
+
+    AddressController.findAddressByParentId(1)
     
-    cep = AddressController.requestCep("18075000")
-    print(cep)
-    res = AddressController.create(endereco)
-    print(res)
+
+
+
+
+
+    
+    #cep = AddressController.requestCep("18075000")
+    #print(cep)
