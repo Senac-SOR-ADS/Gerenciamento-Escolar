@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>203</width>
-    <height>154</height>
+    <width>252</width>
+    <height>222</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,14 +15,17 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLineEdit" name="turmaCreate">
+    <widget class="QLineEdit" name="turma">
      <property name="text">
       <string>Turma</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QDateEdit" name="data"/>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btn_confirmar">
      <property name="text">
       <string>Confirmar</string>
      </property>

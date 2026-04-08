@@ -57,19 +57,21 @@ class Student:
             params = (student.nome, student.nome_social, student.CPF, student.data_nasc, 
                      student.RA, student.RM, student.obs, student.status, student.id)
                   
-            result = DB.execute(sql, params)
-            return result
+            DB.execute(sql, params)
+            print(f"Aluno atualizado con sucesso, RA: {student.RA}, ID: {student.id}")
+            return student.RA, student.id
         except Exception as erro:
             print(f'Não foi possível atualizar os dados do aluno: {erro}')
         raise RuntimeError
         
     @classmethod
-    def delet(cls, id):
+    def delete(cls, id):
         try:
             DB = Database()
             sql = "UPDATE alunos SET status = 0 WHERE id = %s"
             params = (id , )
             result = DB.execute(sql, params)
+            print('aluno desativado com sucesso!')
             return result
         except Exception as erro:
             print(f'Erro ao tentar desativar o aluno {erro}')
@@ -81,6 +83,7 @@ class Student:
             sql = "UPDATE alunos SET status = 1 WHERE id = %s"
             params = (id , )
             result = DB.execute(sql, params)
+            print('aluno ativado com sucesso!')
             return result
         except Exception as erro:
             print(f'Erro ao tentar desativar o aluno {erro}')
@@ -126,16 +129,22 @@ class Student:
         except Exception as erro:
             print(f'Erro lista de alunos ativos {erro}')
             raise RuntimeError
+    
+    def showInfo(self):
+        print(f"""
+            ID : {self.id}
+            Nome : {self.nome}
+            Nome Social: {self.nome_social}
+            CPF: {self.CPF}
+            Data Nascimento: {self.data_nasc}
+            RA: {self.RA}
+            RM: {self.RM}
+            STATUS: {self.status}
+            Data Registro: {self.data_registro}
+            Observações: {self.obs}
+        """)
+
 
 
 if __name__ == "__main__":
-    Student.findById(2)
- 
-
-
-        
-
-
-
-
-    
+    Student.Update(2)

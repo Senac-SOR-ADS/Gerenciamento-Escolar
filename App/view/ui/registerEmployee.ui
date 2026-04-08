@@ -44,7 +44,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="senha_2">
+         <widget class="QLineEdit" name="confirmar_senha">
           <property name="echoMode">
            <enum>QLineEdit::Password</enum>
           </property>

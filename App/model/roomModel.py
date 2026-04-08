@@ -61,6 +61,17 @@ class Room:
             print(f"Erro ao acessar as turmas {e} !")
 
     @classmethod
+    def deactivateRoom(cls, roomId):
+        try:
+            DB = Database()
+            sql = "UPDATE salas SET ativo = 0 WHERE id = %s" 
+            params = (roomId,)
+            result = DB.execute(sql, params)
+            return result
+        except Exception as e:
+            raise Exception(f"Erro ao desativar sala: {e}")
+
+    @classmethod
     def getById(cls, id):
         try:
             DB = Database()
@@ -88,6 +99,17 @@ class Room:
         except Exception as e:
             print(f"Erro ao inserir {e}")
             return "Erro interno ao adicionar turma!"
+
+    @classmethod
+    def setAlwaysActive(cls, roomId):
+        try:
+            DB = Database()
+            sql = "UPDATE salas SET ativo = 1 WHERE id = %s"
+            params = (roomId,)
+            result = DB.execute(sql, params)
+            return result
+        except Exception as e:
+            raise Exception(f"Erro ativar a sala{e}")
 
     @classmethod
     def updateRoom(cls, turmas, id):
@@ -137,7 +159,8 @@ if __name__ == "__main__":
     print("iniciando o teste...")
     #Room.updateRoom("", )
     #print(Room.showClass(1))
-    print(Room.createRoom("3º Ano A - Portugues", "2027-02-05"))
+    # print(Room.createRoom("3º Ano A - Portugues", "2027-02-05"))
+    print(Room.createRoom("3º Ano A - Portugues", "01/01/2000"))
     
 
 
