@@ -45,34 +45,34 @@ QPushButton:pressed {
     background-color: #154360;
 }
 
-QPushButton#btnAluno {
+QPushButton#studentName {
     background-color: #00796B;
 }
 
-QPushButton#btnAluno:hover {
+QPushButton#studentName:hover {
     background-color: #00897B;
 }
 
-QPushButton#btnOcorrencia {
+QPushButton#newReport {
     background-color: #E67E22;
 }
 
-QPushButton#btnOcorrencia:hover {
+QPushButton#newReport:hover {
     background-color: #D35400;
 }
 
-QPushButton#btnResp {
+QPushButton#parentInfo {
     background-color: #1976D2;
 }
 
-QPushButton#btnResp:hover {
+QPushButton#parentInfo:hover {
     background-color: #1565C0;
 }
    </string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,1,1">
    <item>
-    <widget class="QPushButton" name="btnAluno">
+    <widget class="QPushButton" name="studentName">
      <property name="text">
       <string>Nome do aluno</string>
      </property>
@@ -89,7 +89,7 @@ QPushButton#btnResp:hover {
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="btnOcorrencia">
+    <widget class="QPushButton" name="newReport">
      <property name="text">
       <string>Nova Ocorrência</string>
      </property>
@@ -106,7 +106,7 @@ QPushButton#btnResp:hover {
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="btnResp">
+    <widget class="QPushButton" name="parentInfo">
      <property name="text">
       <string>Responsável</string>
      </property>
