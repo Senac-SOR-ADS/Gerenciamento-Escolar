@@ -2,220 +2,352 @@
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>543</width>
-    <height>271</height>
+    <width>910</width>
+    <height>413</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Informações do Estudante</string>
   </property>
-  <widget class="QWidget" name="widget_2" native="true">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>263</width>
-     <height>252</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QLineEdit" name="nome_4">
-      <property name="text">
-       <string>Nome</string>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>imagens/68045.png</normaloff>imagens/68045.png</iconset>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <widget class="QWidget" name="widget_2" native="true">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit, QDateTimeEdit {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 6px;
+    background: white;
+}
+
+QLineEdit:focus, QDateTimeEdit:focus {
+    border: 2px solid #4CAF50;
+}
+
+QPushButton {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    padding: 6px 12px;
+}
+
+QPushButton:hover {
+    background-color: #45a049;
+}
+
+QPushButton:pressed {
+    background-color: #3d8b40;
+}
+</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="leftMargin">
+       <number>9</number>
       </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="nomeSocial">
-      <property name="text">
-       <string>Nome social</string>
+      <property name="topMargin">
+       <number>9</number>
       </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QDateTimeEdit" name="data_6">
-      <property name="maximumSize">
-       <size>
-        <width>150</width>
-        <height>16777215</height>
-       </size>
+      <property name="rightMargin">
+       <number>9</number>
       </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="cpf_3">
-      <property name="maximumSize">
-       <size>
-        <width>150</width>
-        <height>16777215</height>
-       </size>
+      <property name="bottomMargin">
+       <number>9</number>
       </property>
-      <property name="text">
-       <string>CPF</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="ra">
-      <property name="maximumSize">
-       <size>
-        <width>150</width>
-        <height>16777215</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>RA</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="rm">
-      <property name="maximumSize">
-       <size>
-        <width>150</width>
-        <height>16777215</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>RM</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="widget_4" native="true">
-   <property name="geometry">
-    <rect>
-     <x>279</x>
-     <y>10</y>
-     <width>263</width>
-     <height>252</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout_3">
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
-       <widget class="QPushButton" name="pushButton_4">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>30</height>
-         </size>
-        </property>
+       <widget class="QLineEdit" name="nome_4">
         <property name="maximumSize">
          <size>
-          <width>50</width>
+          <width>350</width>
           <height>16777215</height>
          </size>
         </property>
         <property name="text">
-         <string>Turma</string>
+         <string/>
+        </property>
+        <property name="maxLength">
+         <number>32676</number>
+        </property>
+        <property name="placeholderText">
+         <string>Nome</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_5">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>30</height>
-         </size>
-        </property>
+       <widget class="QLineEdit" name="nomeSocial">
         <property name="maximumSize">
          <size>
-          <width>50</width>
+          <width>350</width>
           <height>16777215</height>
          </size>
         </property>
         <property name="text">
-         <string>Status</string>
+         <string/>
         </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="observacao">
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>80</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>Observações...</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <item>
-       <widget class="QPushButton" name="pushButton_3">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>70</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Ocorrências</string>
+        <property name="placeholderText">
+         <string>Nome social</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_2">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>40</height>
-         </size>
-        </property>
+       <widget class="QDateTimeEdit" name="data_6">
         <property name="maximumSize">
          <size>
-          <width>70</width>
+          <width>150</width>
           <height>16777215</height>
          </size>
         </property>
-        <property name="text">
-         <string>Editar</string>
+        <property name="displayFormat">
+         <string>dd/MM/yyyy</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>40</height>
-         </size>
-        </property>
+       <widget class="QLineEdit" name="cpf_3">
         <property name="maximumSize">
          <size>
-          <width>70</width>
+          <width>150</width>
           <height>16777215</height>
          </size>
         </property>
         <property name="text">
-         <string>Fechar</string>
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>CPF</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="ra">
+        <property name="maximumSize">
+         <size>
+          <width>150</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>RA</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="rm">
+        <property name="maximumSize">
+         <size>
+          <width>150</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>RM</string>
         </property>
        </widget>
       </item>
      </layout>
-    </item>
-   </layout>
-  </widget>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QWidget" name="widget_4" native="true">
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-weight: bold;
+    border: none;
+}
+
+QPushButton:hover {
+    background-color: #45a049;
+}
+
+QPushButton:pressed {
+    background-color: #3d8b40;
+}
+
+QPushButton:disabled {
+    background-color: #cccccc;
+    color: #666666;
+}
+QLineEdit {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 8px;
+    background: #fefefe;
+    font-size: 14px;
+    font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    min-height: 80px;
+    max-height: 150px; 
+}
+
+QLineEdit:focus {
+    border: 2px solid #4CAF50;
+    background: #fff;
+}
+QTextEdit#obs {
+	border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 6px;
+    background: white;
+}</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item alignment="Qt::AlignBottom">
+         <widget class="QPushButton" name="btnStatus">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>70</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Status</string>
+          </property>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignBottom">
+         <widget class="QPushButton" name="btnTurma">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>70</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Turma</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <widget class="QTextEdit" name="obs">
+        <property name="maximumSize">
+         <size>
+          <width>400</width>
+          <height>120</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QTextEdit {
+	border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 6px;
+    background: white;
+}</string>
+        </property>
+        <property name="placeholderText">
+         <string>Observações...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,1,1">
+        <item alignment="Qt::AlignTop">
+         <widget class="QPushButton" name="btnOcorrencias">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>90</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Ocorrências</string>
+          </property>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignTop">
+         <widget class="QPushButton" name="btnEdit">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>70</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Editar</string>
+          </property>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignTop">
+         <widget class="QPushButton" name="btnClose">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>70</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Fechar</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

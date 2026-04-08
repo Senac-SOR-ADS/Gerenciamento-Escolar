@@ -88,7 +88,17 @@
       </string>
      </property>
      <property name="text">
-      <string>Nome aluno</string>
+      <string>Nome do aluno</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>imagens/3413591.png</normaloff>imagens/3413591.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>26</width>
+       <height>26</height>
+      </size>
      </property>
     </widget>
    </item>
@@ -129,6 +139,16 @@
      </property>
      <property name="text">
       <string>Nova Ocorrência</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>imagens/11331280.png</normaloff>imagens/11331280.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>26</width>
+       <height>26</height>
+      </size>
      </property>
     </widget>
    </item>
@@ -172,6 +192,16 @@
      </property>
      <property name="text">
       <string>Responsável</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>imagens/547479.png</normaloff>imagens/547479.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>26</width>
+       <height>26</height>
+      </size>
      </property>
     </widget>
    </item>
