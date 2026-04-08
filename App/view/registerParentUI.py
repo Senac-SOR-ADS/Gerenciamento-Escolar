@@ -1,8 +1,9 @@
-from PyQt5.QtWidgets import QDialog, QLineEdit, QCheckBox
-from PyQt5.QtCore import pyqtSlot, pyqtSignal
+from PyQt5.QtWidgets import QDialog
+from PyQt5.QtCore import pyqtSlot
 from PyQt5.uic import loadUi
 from App.utils.qthread import Trabalhador
 from App.controller.AddressController import AddressController
+from App.controller.parentController import ParentController
 
 class RegisterParentUI(QDialog):
     def __init__(self, **kwargs):
@@ -10,7 +11,22 @@ class RegisterParentUI(QDialog):
         loadUi("App/view/ui/registerParent.ui", self)
         self.show()
         self.cep.editingFinished.connect(self.buscarCEP)
-        QCheckBox.setCheckable
+        self.popular() #REMOVER 
+    
+    def popular(self):
+        """PRECISA REMOVER POSTERIORMENTE
+        ESTA SENDO USADO APENAS PARA TESTE"""
+        self.nome.setText("fulano da silva")
+        self.telefone.setText("15981331300")
+        self.cpf.setText("123456789-55")
+        self.resp_legal.setChecked(True)
+
+        self.cep.setText("18053000")
+        self.cidade.setText('sorocaba')
+        self.bairro.setText("bairro")
+        self.rua.setText('rua das flores')
+        self.numero.setText("123")
+        self.complemento.setText("askdh")
         
     def buscarCEP(self):
         cep = self.cep.text()
@@ -24,9 +40,10 @@ class RegisterParentUI(QDialog):
         self.bairro.setText(dadosCEP.get("neighborhood"))
         self.rua.setText(dadosCEP.get("street"))
 
-    def validarCampos(self):
+    def validateAll(self):
         nome = self.nome.text()
         telefone = self.telefone.text()
+        cpf = self.cpf.text()
         resp_legal = self.resp_legal.isChecked()
         cep = self.cep.text()
         cidade = self.cidade.text()
@@ -36,26 +53,35 @@ class RegisterParentUI(QDialog):
         complemento = self.complemento.text()
 
         return {
-            "nome": nome,
+            "name": nome,
             "telefone": telefone,
+            "cpf": cpf,
             "resp_legal": resp_legal,
-            "cep": cep,
-            "cidade": cidade,
-            "rua": {rua, numero},
-            # "numero": numero,
-            "bairro": bairro,
-            "complemento": complemento,
+            "address" : {
+                "city" : cidade ,
+                "neighborhood" : bairro ,
+                "street" : f'{rua}, {numero}',
+                "complement" : complemento,
+                "cep" : cep
+                }
         }
 
     @pyqtSlot()
     def on_btn_concluir_clicked(self):
-        resp = self.validarCampos()
-        # self.clearText()
-        print(resp)
+        user = self.validateAll()
+
+        if user:
+            print(user)
+            try:
+                ParentController.create(user)
+                # self.clearText()
+            except Exception as e:
+                print(f"Erro: \n{e}")
 
     def clearText(self):
         self.nome.clear()
         self.telefone.clear()
+        self.cpf.clear()
         self.resp_legal.setChecked(False)
         self.cep.clear()
         self.cidade.clear()
@@ -64,15 +90,8 @@ class RegisterParentUI(QDialog):
         self.numero.clear()
         self.complemento.clear()
 
-    @pyqtSlot()
-    def on_btn_concluir_clicked(self):
-        self.cep =Trabalhador(AddressController.requestCep)
-        self.cep.finalizado.connect(self.create)
-        self.cep.finished.connect(self.cep.deleteLater)
-        self.cep.start()
 
-        self.btn_concluir.setEnabled(False)
-
+        
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
     app = QApplication([])
