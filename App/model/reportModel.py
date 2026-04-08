@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 from App.config.database import Database
 from datetime import datetime
- 
 @dataclass
 class Report:
     id: int = None
@@ -9,7 +8,7 @@ class Report:
     description: str = ""
     studentID: int = ""  
     parentID: int = ""
- 
+    
     @classmethod
     def create(cls, report:Report):
         try:
@@ -34,7 +33,7 @@ class Report:
             return update
         except Exception as e:
             raise e
- 
+        
     @classmethod
     def searchUnique(cls, id):
         try:
@@ -42,13 +41,13 @@ class Report:
             sql = "SELECT `id`, `data`, `descricao`, `aluno_id`, `responsavel_id` FROM `relatorios` WHERE id = %s"
             params = (id,)
             result = DB.fetchOne(sql, params)
-            if result:
+            if result: 
                 return cls._getObjectList([result])[0]
             return cls()
         except Exception as e:
             print(f'Erro ao buscar relatorio')
             raise RuntimeError
- 
+        
     @classmethod
     def searchDate(cls, date):
         try:
@@ -60,7 +59,7 @@ class Report:
         except Exception as e:
             print(f'Erro ao buscar relatorio')
             raise RuntimeError
-       
+        
     @classmethod
     def searchParentID(cls, parentID):
         try:
@@ -68,13 +67,13 @@ class Report:
             sql = "SELECT `id`, `data`, `descricao`, `aluno_id`, `responsavel_id` FROM `relatorios` WHERE responsavel_id = %s"
             params = (parentID,)
             result = DB.fetchAll(sql, params)
-            if result:
+            if result: 
                 return cls._getObjectList(result)
             return cls()
         except Exception as e:
             print(f'Erro ao buscar relatorio')
             raise RuntimeError
-   
+    
     @classmethod
     def searchStudentID(cls, studentID):
         try:
@@ -82,7 +81,7 @@ class Report:
             sql = "SELECT `id`, `data`, `descricao`, `aluno_id`, `responsavel_id` FROM `relatorios` WHERE responsavel_id = %s"
             params = (studentID,)
             result = DB.fetchAll(sql, params)
-            if result:
+            if result: 
                 return cls._getObjectList(result)
             return cls()
         except Exception as e:
@@ -100,11 +99,11 @@ class Report:
         except Exception as e:
             print(f'Erro ao buscar relatorios')
             raise RuntimeError
- 
+
     @classmethod
     def _getObjectList(cls, lista):
         return [cls(*item.values()) for item in lista]
-   
+    
     @classmethod
     def getAll(cls):
         DB = Database()

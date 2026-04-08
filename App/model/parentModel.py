@@ -27,7 +27,7 @@ class Parent:
             raise RuntimeError
 
     @classmethod
-    def update(cls, parent:Parent):
+    def update(cls, parent:"Parent"):
         try:
             DB = Database()
             sql = "UPDATE responsaveis SET nome = %s, cpf = %s WHERE id = %s"
@@ -82,9 +82,27 @@ class Parent:
             print(f'Erro ao buscar os responsaveis{e}')
             raise RuntimeError
 
-if __name__ == "__main__":
-    todosResponsaveis = Parent.getAll()
-    print(todosResponsaveis)
-    
+    @classmethod
+    def findParentDetails(cls, id):
+        try:
+            DB = Database()
+            sql = "SELECT re.nome , re.CPF , e.cidade , t.telefone FROM responsaveis re JOIN enderecos e ON re.id = e.responsavel_id JOIN telefones t ON re.id = t.responsavel_id WHERE re.id = %s"
+            params = (id, )
+            result = DB.fetchOne(sql, params)
+            if not result:
+                return None
+            return result
+        except Exception as e:
+            print(f'Erro ao buscar os dados{e}')
+            raise RuntimeError
+         
+     
 
+if __name__ == "__main__":
+    detalhes = Parent.findParentDetails(1)
+    if detalhes:
+        print(f"Nome:     {detalhes['nome']}")
+        print(f"CPF:      {detalhes['CPF']}")
+        print(f"Cidade:   {detalhes['cidade']}")
+        print(f"Telefone: {detalhes['telefone']}")
 
