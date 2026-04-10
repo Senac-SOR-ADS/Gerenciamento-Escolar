@@ -10,12 +10,12 @@ class LoginUI(QDialog):
         self.show()
         self.timer = QTimer()
         self.timer.timeout.connect(self.clearText)
-        # self.label.setStyleSheet("QLabel {backgroud-color: red; color: white; }")
 
 
     def clearText(self):
         self.senha.clear()
         self.mensagem.clear()
+        self.senha.setStyleSheet("")
 
 
     @pyqtSlot()
@@ -27,10 +27,10 @@ class LoginUI(QDialog):
             self.clearText()
             self.accept()
         else:
-            #  self.mensagem(self)
-             self.clearText()
-             self.mensagem.setText("Usuário ou senha incorretos")
-             self.timer.start(4000)
+            self.clearText()
+            self.mensagem.setText("Usuário ou senha incorretos")
+            self.senha.setStyleSheet("border: 1.8px solid red")
+            self.timer.start(2000)
 
     def on_btn_pushExit_clicked(self, sair):
         try: 

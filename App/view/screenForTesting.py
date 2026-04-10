@@ -1,6 +1,6 @@
 # File created specifically for testing all the funtionalities of view.
 
-from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QScrollArea
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.uic import loadUi
 from App.view.loginUI import LoginUI
@@ -19,6 +19,21 @@ class ScreenForTesting(QMainWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         loadUi("App/view/ui/homeTest.ui", self)
+        self.stackAlunos.setCurrentWidget(self.page_7)
+        self.page7Layout = QVBoxLayout(self.page_7)
+        self.page7Layout.setContentsMargins(0, 0, 0, 0)
+
+        self.cardScrollArea = QScrollArea(self.page_7)
+        self.cardScrollArea.setWidgetResizable(True)
+        self.cardScrollArea.setFrameShape(QScrollArea.NoFrame)
+
+        self.cardContainer = QWidget()
+        self.cardsLayout = QVBoxLayout(self.cardContainer)
+        self.cardsLayout.setContentsMargins(0, 0, 0, 0)
+        self.cardsLayout.setSpacing(12)
+        self.cardsLayout.addStretch()
+        self.cardScrollArea.setWidget(self.cardContainer)
+        self.page7Layout.addWidget(self.cardScrollArea)
         self.show()
 
         self.NewReport.clicked.connect(self.openScreens)
@@ -32,6 +47,7 @@ class ScreenForTesting(QMainWindow):
         self.StudentEdit.clicked.connect(self.openScreens)
         self.ParentInfo.clicked.connect(self.openScreens)
         self.StudentInfo.clicked.connect(self.openScreens)
+        self.btnAddCard.clicked.connect(lambda: self.addCardInStack(StudentCardUI()))
         
           
     def openScreens(self):
@@ -66,6 +82,13 @@ class ScreenForTesting(QMainWindow):
         elif sender == self.StudentInfo:
             self.studentInfo = StudentInfoUI()
             self.studentInfo.show()
+    
+    def addCardInStack(self, interface):
+        self.cardsLayout.insertWidget(self.cardsLayout.count() - 1, interface)
+        self.stackAlunos.setCurrentWidget(self.page_7)
+        
+        
+        
     
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
