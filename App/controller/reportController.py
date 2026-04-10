@@ -17,16 +17,15 @@ class ReportController:
     def getAll(cls):
         lista = Report.getAll()
         for item in lista:
-            print(item.id, item.description)
+            print(f"ID: {item.id}, Data: {item.date}, Descrição: {item.description}, alunoID: {item.studentID}, responsavelID: {item.parentID}")
 
     @classmethod
-    def getStudentID(cls, studentID):
+    def getByStudentID(cls, studentID):
         try:
             studentID = ReportController.validateID(studentID)
             lista = Report.searchStudentID(studentID)
             for item in lista:
-                print(f"ID: {item.id}, Descrição: {item.description}")
-
+                print(f"ID: {item.id}, Data: {item.date}, Descrição: {item.description}, alunoID: {item.studentID}, responsavelID: {item.parentID}")
         except Exception as e:
             raise e
 
