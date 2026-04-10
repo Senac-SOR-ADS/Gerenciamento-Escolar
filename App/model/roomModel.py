@@ -1,12 +1,14 @@
 from App.config.database import Database
 from typing import Optional
-from dataclasses import dataclass, field
+from dataclasses import dataclass
+from datetime import datetime
 
 @dataclass
 class Room:
     id: Optional[int] = None
     turmas: str = ""
     ativo: bool = True
+    
 
     def __init__(self, id=None, turmas="", ativo=False):
         self.id = id
@@ -33,21 +35,7 @@ class Room:
             
         except Exception as e:
             print(f"Erro em obter informações do {e}")
-            return False   
-        
-    #========================================================    
-    @classmethod
-    def pickStudentRoom(cls, turma):
-        try:
-            DB = Database()
-            sql = "SELECT * FROM `alunos` WHERE `turma` = %s"
-            result = DB.execute(sql, (turma,))
-            return cls._getObjectList(result)
-        
-        except Exception as e:
-            print(f"Erro em buscar aluno {e}")
-            return False
-    #========================================================
+            return False      
 
     @classmethod
     def showClass(cls, id):
@@ -83,19 +71,19 @@ class Room:
             print(f"Erro ao buscar turma! {e}")
     
     @classmethod
-    def createRoom(cls, name, data):
+    def createRoom(cls, turma, data):
 
         data = str(data)
-        name = str(name)
+        turma = str(turma)
 
         try:
             DB = Database()
             sql = "INSERT INTO `salas` (`turmas`, `data`) VALUES (%s, %s)"
-            params = (name, data)
+            params = (turma, data)
             result = DB.insert(sql, params)
             if not result:
                 return "Nao foi possivel adicionar!"
-            return f"Turma {name} adicionada com sucesso na data {data}"
+            return f"Turma {turma} adicionada com sucesso na data {data}"
         except Exception as e:
             print(f"Erro ao inserir {e}")
             return "Erro interno ao adicionar turma!"
@@ -127,13 +115,6 @@ class Room:
             return False
         
     @classmethod
-    def searchRoomStudent(cls, idRoom, idStudent):
-        pass
-        # try:
-        #     DB = Database()
-        #     sql = "SELECT `id_alunos` `id_sala` FROM sala_alunos WHERE "
-        
-    @classmethod
     def getAll(cls):
         try:
             DB = Database()
@@ -147,20 +128,35 @@ class Room:
     def deleteRoom(cls, id):
         try:
             DB = Database()
-            sql = "DELETE FROM salas WHERE id = %s"
+            sql = "DELETE FROM `salas` WHERE id = %s"
             params = (id,)
-            result = DB.fetchOne(sql, params)
+            result = DB.execute(sql, params)
             return result
         except Exception as e:
             print(f"Erro em deletar turma {e} ")
             
+    @classmethod
+    def getByYear(cls):
+        try:
+            DB = Database()
+            year = datetime.now().year
+            sql = "SELECT data FROM salas WHERE YEAR(data) = %s"
+            params = (year,)
+            result = DB.fetchAll(sql, params)
+            return result
+        except Exception as e:
+            print(f"Erro ao obter dados {e}")
+
 
 if __name__ == "__main__":
     print("iniciando o teste...")
     #Room.updateRoom("", )
     #print(Room.showClass(1))
     # print(Room.createRoom("3º Ano A - Portugues", "2027-02-05"))
-    print(Room.createRoom("3º Ano A - Portugues", "01/01/2000"))
+    # print(Room.createRoom("3º Ano A - Portugues", "01/01/2000"))
+    # print(Room.getByYear())
+    # print(Room.deleteRoom(7))
+
     
 
 

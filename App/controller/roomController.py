@@ -1,21 +1,6 @@
 from App.model.roomModel import Room
 
 class RoomController:
-
-    @classmethod
-    def listRooms(cls):
-        room = Room.getAll()
-        if room is None:
-            return ("Nao foi possivel acessar essa sala!")
-        return room
-    
-    @classmethod
-    def getStatus(cls, id):
-        if not id:
-            return "Erro em obter id! adicione um id valido."
-        activate = Room.status(id)
-        statusText = "Ativa" if activate  else "Inativa"
-        return statusText
     
     @classmethod
     def activatedRoom(cls, roomId):
@@ -23,12 +8,12 @@ class RoomController:
             if not activate:
                 print ("Sala Ja esta Ativada!")
             else:
-                print ("Sala Ativada!")
+                print ("Sala Ativada com sucesso!")
                 return True
             
     @classmethod
-    def disabledRoom(cls, room_id):
-        disabled = Room.deactivateRoom(room_id)
+    def disabledRoom(cls, roomId):
+        disabled = Room.deactivateRoom(roomId)
         
         if disabled:
             print("Sala desativada com sucesso!")
@@ -36,14 +21,6 @@ class RoomController:
         else:
             raise ValueError("Não foi possível desativar. A sala não foi encontrada!")
 
-    @classmethod
-    def getRoomById(cls, id):
-        if not id:
-            return "Erro: adicione um id correto!"
-        room = Room.getById(id)
-        if not room:
-            return "Não foi encontrada essa sala!"
-        return {f"Turma encontrada: {room} "}
     
     @classmethod       
     def updateRoomClass(cls, id, newRoom):
@@ -66,12 +43,42 @@ class RoomController:
     @classmethod
     def deleteRoom(cls, id):
         if not id:
-            print ("Não foi possivel deletar sem o id!")
+            print ("Não foi possivel deletar")
         delete = Room.deleteRoom(id)
-        if delete == delete:
+        if delete:
             return f"Sala deletada!"
         raise TypeError("Erro ao deletar!")
     
+    @classmethod
+    def getRoomById(cls, id):
+        if not id:
+            return "Erro: adicione um id correto!"
+        room = Room.getById(id)
+        if not room:
+            return "Não foi encontrada essa sala!"
+        return {f"Turma encontrada: {room} "}
+    
+    @classmethod
+    def getStatus(cls, id):
+        if not id:
+            return "Erro em obter id! adicione um id valido."
+        activate = Room.status(id)
+        statusText = "Ativa" if activate  else "Inativa"
+        return statusText
+    
+    @classmethod
+    def getRoomByYear(cls, year):
+        if not year:
+            print("Erro de busca!")
+        activate = Room.getByYear(year)
+        return activate
+    
+    @classmethod
+    def getAllRooms(cls):
+        rooms = Room.getAll()
+        if not rooms:
+            return "Nenhuma sala encontrada!"
+        return rooms
 
 
 if __name__ == "__main__":
@@ -84,8 +91,13 @@ if __name__ == "__main__":
     ]
 
     # print(controller.createRoom(sala[0], sala[1]))
-    # print(controller.disabledRoom(2))
-    # print(controller.activatedRoom(2))
+    # print(controller.disabledRoom(7))
+    # print(controller.activatedRoom(7))
+    # print(Room.getRoomByYear())
+    # Room.createRoom("1º Ano B", "2029-01-20")
+    # print(Room.getById(7))
+    # print(Room.getAll())
+    # print(Room.deleteRoom(6))
 
 
 

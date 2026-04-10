@@ -125,20 +125,12 @@ class StudentController:
  
 if __name__ == "__main__":
  
-    aluno_teste = {
-        "nome": "João Silva",
-        "data_nasc": "12/02/1222",
-        "nome_social": "kar212la",
-        "CPF": "3215321643",
-        "RA": "311231",
-        "RM": "323231151",
-
-    } 
-
+    # s = StudentController.linkStudentToClassroom(13, 3)
     # lista = StudentController.getByRoomID(1)
     # print(lista)
     # StudentController.create(aluno_teste)
     #StudentController.update(7,aluno_teste)
+    pass
 
     
     
