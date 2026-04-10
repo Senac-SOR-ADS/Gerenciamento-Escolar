@@ -62,6 +62,7 @@ class Telephone:
             sql = "SELECT telefone FROM telefones WHERE responsavel_id = %s"
             values = (responsavel_id, )
             telephone = DB.fetchAll(sql, values)
+            print(telephone)
             return cls._getObjectList(telephone)
         except Exception as e:
             print(f'Erro ao buscar os telefones do responsável!{e}')
