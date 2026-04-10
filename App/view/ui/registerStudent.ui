@@ -20,6 +20,9 @@
       <item>
        <widget class="QLineEdit" name="nome">
         <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
          <string>Nome</string>
         </property>
        </widget>
@@ -27,7 +30,10 @@
       <item>
        <widget class="QLineEdit" name="nome_social">
         <property name="text">
-         <string>Nome social</string>
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Nome Social</string>
         </property>
        </widget>
       </item>
@@ -50,6 +56,9 @@
          </size>
         </property>
         <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
          <string>CPF</string>
         </property>
        </widget>
@@ -63,6 +72,9 @@
          </size>
         </property>
         <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
          <string>RA</string>
         </property>
        </widget>
@@ -76,6 +88,9 @@
          </size>
         </property>
         <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
          <string>RM</string>
         </property>
        </widget>
@@ -95,6 +110,9 @@
          </size>
         </property>
         <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
          <string>Observações...</string>
         </property>
        </widget>
