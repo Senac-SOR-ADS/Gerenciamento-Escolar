@@ -1,15 +1,14 @@
-from PyQt5.QtWidgets import QDialog
+from PyQt5.QtWidgets import QWidget
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.uic import loadUi
 
 from App.view.newReportUI import NewReportUI
 from App.view.parentInfoUI import ParentInfoUI
 
-class StudentCardUI(QDialog):
+class StudentCardUI(QWidget):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         loadUi("App/view/ui/studentCard.ui", self)
-        self.show()
         
         self.studentName.clicked.connect(self.openScreen)
         self.newReport.clicked.connect(self.openScreen)
@@ -33,4 +32,5 @@ if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
     app = QApplication([])
     login = StudentCardUI()
+    login.show()
     app.exec_()

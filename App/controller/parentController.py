@@ -19,8 +19,7 @@ class ParentController:
             parentID = Parent.create(newParent.name, newParent.cpf)
             if parentID:
                 address = parent.get('address')
-                address['responsible_id'] = parentID
-                resp = AddressController.create(address)
+                resp = AddressController.create(parentID, address)
                 print(resp)
         except Exception as e:
             print(f'Erro ao tentar a criação de usuario {e}')
