@@ -16,16 +16,14 @@ class ReportController:
     @classmethod
     def getAll(cls):
         lista = Report.getAll()
-        for item in lista:
-            print(f"ID: {item.id}, Data: {item.date}, Descrição: {item.description}, alunoID: {item.studentID}, responsavelID: {item.parentID}")
+        return lista
 
     @classmethod
     def getByStudentID(cls, studentID):
         try:
             studentID = ReportController.validateID(studentID)
             lista = Report.searchStudentID(studentID)
-            for item in lista:
-                print(f"ID: {item.id}, Data: {item.date}, Descrição: {item.description}, alunoID: {item.studentID}, responsavelID: {item.parentID}")
+            return lista
         except Exception as e:
             raise e
 
@@ -89,7 +87,8 @@ class ReportController:
 if __name__ == "__main__":
     # ReportController.create("Tá doendo dms", 2, 4)
     # controller = ReportController()
-    # lista = controller.getStudentID(18)
+    # lista = controller.getByStudentID(18)
+    # print(lista)
     # ReportController.create("Tá doendo dms", 18, 1)
     pass
  
