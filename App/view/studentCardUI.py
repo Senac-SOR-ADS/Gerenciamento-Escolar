@@ -32,4 +32,5 @@ if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
     app = QApplication([])
     login = StudentCardUI()
+    login.show()
     app.exec_()

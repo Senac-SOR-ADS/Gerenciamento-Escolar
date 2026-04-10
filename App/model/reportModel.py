@@ -78,7 +78,7 @@ class Report:
     def searchStudentID(cls, studentID):
         try:
             DB = Database()
-            sql = "SELECT `id`, `data`, `descricao`, `aluno_id`, `responsavel_id` FROM `relatorios` WHERE responsavel_id = %s"
+            sql = "SELECT `id`, `data`, `descricao`, `aluno_id`, `responsavel_id` FROM `relatorios` WHERE aluno_id = %s"
             params = (studentID,)
             result = DB.fetchAll(sql, params)
             if result: 

@@ -25,14 +25,14 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="nomeSocial">
+       <widget class="QLineEdit" name="nome_social">
         <property name="text">
          <string>Nome social</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QDateTimeEdit" name="data_3">
+       <widget class="QDateEdit" name="data_nasc">
         <property name="maximumSize">
          <size>
           <width>150</width>
@@ -42,7 +42,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="cpf_3">
+       <widget class="QLineEdit" name="cpf">
         <property name="maximumSize">
          <size>
           <width>150</width>
@@ -100,7 +100,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="btn_continuar">
         <property name="minimumSize">
          <size>
           <width>0</width>
