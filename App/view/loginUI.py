@@ -9,7 +9,6 @@ class LoginUI(QDialog):
         loadUi("App/view/ui/login.ui", self)
         self.show()
         self.timer = QTimer()
-        self.timer.timeout.connect(self.clearText)
 
 
     def clearText(self):
@@ -30,7 +29,7 @@ class LoginUI(QDialog):
             self.clearText()
             self.mensagem.setText("Usuário ou senha incorretos")
             self.senha.setStyleSheet("border: 1.8px solid red")
-            self.timer.start(2000)
+            self.timer.singleShot(2000, self.clearText)
 
     def on_btn_pushExit_clicked(self, sair):
         try: 
