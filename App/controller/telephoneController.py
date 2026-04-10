@@ -51,6 +51,21 @@ class TelephoneController:
 
         except Exception as e:
             return {"Erro ao puxar telefone": e}
+        
+    @classmethod
+    def delete(cls, id_telephone):
+
+        try:
+
+            if not id_telephone:
+                return {" TELEFONE NÃO FOI PASSADO "}
+            
+            Telephone.delete(id_telephone)
+
+        except Exception as e:
+            return {"Erro ao Excluir telefone"}
+    
+
 
         
         
@@ -59,7 +74,7 @@ class TelephoneController:
 
 if __name__ == "__main__":
 
-    TelephoneController.findTelephoneByParentId(5)
+    TelephoneController.delete(54)
 
 
 

@@ -42,12 +42,12 @@ class Telephone:
             print(f'Erro ao atualizar o telefone!{e}')
             raise RuntimeError
 
-
-    def delete(self):
+    @classmethod
+    def delete(cls, id_telephone):
         try:
             DB = Database()
             sql = "DELETE FROM telefones WHERE id = %s"
-            values = (self.id, )
+            values = (id_telephone, )
             deleted = DB.execute(sql, values)
             print('Telefone excluído com sucesso!')
             return deleted
