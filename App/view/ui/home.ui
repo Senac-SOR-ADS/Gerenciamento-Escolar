@@ -6,94 +6,172 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>820</width>
+    <height>609</height>
    </rect>
   </property>
+  <property name="maximumSize">
+   <size>
+    <width>820</width>
+    <height>610</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Home</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../../../../Downloads/home.png</normaloff>../../../../../../Downloads/home.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow, #centralwidget {
+    background-color: #F0F4FF;
+}
+
+QLabel {
+    color: #2B3653;
+    font-size: 16px;
+    font-weight: 800;
+    font-family: 'Segoe UI', -apple-system, sans-serif;
+    qproperty-alignment: AlignCenter;
+    padding-bottom: 8px;
+}
+
+
+QLabe::label_4l {
+    color: #2B3653;
+    font-size: 10px;
+    font-weight: 800;
+    font-family: 'Segoe UI', -apple-system, sans-serif;
+    qproperty-alignment: AlignCenter;
+    padding-bottom: 8px;
+}
+
+QListView {
+    background-color: #FFFFFF;
+    color: #334155;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 8px;
+    font-size: 14px;
+    font-family: 'Segoe UI', -apple-system, sans-serif;
+    outline: none;
+}
+
+QListView:hover {
+    border: 1.5px solid #CBD5E1;
+}
+
+QListView::item {
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 4px;
+}
+
+QListView::item:selected {
+    background-color: #3B82F6;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+QListView::item:hover:!selected {
+    background-color: #F1F5F9;
+    color: #0F172A;
+}
+
+QPushButton {
+    background-color: #FF6B6B;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+QPushButton:hover {
+    background-color: #E55A5A;
+}
+
+QPushButton:pressed {
+    background-color: #B91C1C;
+}
+
+
+</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushExit">
+   <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>700</x>
-      <y>10</y>
-      <width>75</width>
-      <height>23</height>
+      <x>11</x>
+      <y>101</y>
+      <width>801</width>
+      <height>522</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Exit</string>
-    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QListView" name="listTurmas"/>
+     </item>
+     <item>
+      <widget class="QListView" name="listAlunos"/>
+     </item>
+     <item>
+      <widget class="QListView" name="listGerencia"/>
+     </item>
+    </layout>
    </widget>
-   <widget class="QListView" name="listGerencia">
+   <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>80</y>
-      <width>131</width>
-      <height>491</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QListView" name="listTurmas">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>80</y>
-      <width>131</width>
-      <height>491</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelTurmas">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>50</y>
-      <width>47</width>
-      <height>13</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Turmas</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelAlunos">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>50</y>
-      <width>47</width>
-      <height>13</height>
+      <x>110</x>
+      <y>70</y>
+      <width>61</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
      <string>Alunos</string>
     </property>
    </widget>
-   <widget class="QListView" name="listAlunos">
+   <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>80</y>
-      <width>481</width>
-      <height>491</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelGerencia">
-    <property name="geometry">
-     <rect>
-      <x>680</x>
-      <y>50</y>
-      <width>61</width>
-      <height>20</height>
+      <x>730</x>
+      <y>10</y>
+      <width>75</width>
+      <height>23</height>
      </rect>
     </property>
     <property name="text">
-     <string>Gerência</string>
+     <string>Quit</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>70</y>
+      <width>61</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Turmas</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>70</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Gerenciar</string>
     </property>
    </widget>
   </widget>
