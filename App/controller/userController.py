@@ -102,8 +102,8 @@ class UserController:
             
             if not Criptografia.compararSenha(user["password"] , usuario.password):
                 user["password"] = Criptografia.gerarHash(user["password"])
+                usuario.password = user["password"]
             usuario.email = user["email"]
-            usuario.password = user["password"]
             usuario.name = user["name"]
             cls.normalizedEmail(user["email"])
                           
@@ -117,9 +117,9 @@ if __name__ == "__main__":
     # print(isLogged())
     usuario = {
         "id" : 26,
-        "name" : "Nelson Junior",
-        "email" : "nelson@gmail.com",
-        "password" : "123",
+        "name" : "Nelsinho Junior",
+        "email" : "bolsonarolula1322@gmail.com",
+        "password" : "Nelson137982",
         "type" : "agente"
     }
     #UserController.login(usuario["email"] , usuario["password"])
