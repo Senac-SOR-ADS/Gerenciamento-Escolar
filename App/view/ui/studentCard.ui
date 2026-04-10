@@ -154,7 +154,6 @@
    </item>
    <item>
     <widget class="QPushButton" name="parentInfo">
-<<<<<<< HEAD
      <property name="minimumSize">
       <size>
        <width>0</width>
@@ -191,8 +190,6 @@
        }
       </string>
      </property>
-=======
->>>>>>> dev
      <property name="text">
       <string>Responsável</string>
      </property>
