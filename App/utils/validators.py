@@ -1,5 +1,4 @@
 import re
-
 class EmailValidator:
 
     EMAIL_REGEX = r'^[\w\.-]+@[\w\.-]+\.\w+$'
@@ -16,3 +15,4 @@ if __name__ == "__main__":
         print("Email válido")
     else:
         print("Email inválido")
+     
