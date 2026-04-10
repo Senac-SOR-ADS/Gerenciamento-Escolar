@@ -2,7 +2,6 @@ from App.model.reportModel import Report
 from datetime import datetime
  
 class ReportController:
- 
     @classmethod
     def create(cls, description, studentID, parentID):
         try:
@@ -17,9 +16,17 @@ class ReportController:
     @classmethod
     def getAll(cls):
         lista = Report.getAll()
-        for item in lista:
-            print(item.id, item.description)
- 
+        return lista
+
+    @classmethod
+    def getByStudentID(cls, studentID):
+        try:
+            studentID = ReportController.validateID(studentID)
+            lista = Report.searchStudentID(studentID)
+            return lista
+        except Exception as e:
+            raise e
+
     @classmethod
     def edit(cls, id, description):
         if not description:
@@ -55,7 +62,6 @@ class ReportController:
         except Exception as e:
                 raise e
        
- 
     @classmethod    
     def validateDescription(cls, value):
         description = value
@@ -80,5 +86,9 @@ class ReportController:
  
 if __name__ == "__main__":
     # ReportController.create("Tá doendo dms", 2, 4)
+    # controller = ReportController()
+    # lista = controller.getByStudentID(18)
+    # print(lista)
+    # ReportController.create("Tá doendo dms", 18, 1)
     pass
  

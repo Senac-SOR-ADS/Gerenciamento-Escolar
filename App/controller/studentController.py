@@ -107,21 +107,30 @@ class StudentController:
         except Exception as e:
             print(f"Erro ao listar todos os alunos: {e}")
             return []
+        
+    @classmethod
+    def linkStudentToClassroom(cls, student_id, room_id):
+            
+        try:
+
+            if not student_id:
+                return {" PREENCHA TODOS CAMPOS OBRIGATÓRIOS "}
+            
+            if not room_id:
+                return {" PREENCHA TODOS CAMPOS OBRIGATÓRIOS "}
+
+            Student.linkStudentInClassroom(student_id, room_id)
+            
+
+        except Exception as e:
+            print(f"Erro ao inserir aluno: {e}")
+            return []
+
  
 if __name__ == "__main__":
  
-    aluno_teste = {
-        "nome": "João Silva",
-        "data_nasc": "12/02/1222",
-        "nome_social": "kar212la",
-        "CPF": "3215321643",
-        "RA": "311231",
-        "RM": "323231151",
+    s = StudentController.linkStudentToClassroom(13, 3)
 
-    } 
-    StudentController.create(aluno_teste)
-    #StudentController.update(7,aluno_teste)
-
-    
+    print(s)
     
  
