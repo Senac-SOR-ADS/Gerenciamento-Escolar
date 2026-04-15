@@ -33,6 +33,21 @@ class Room:
             print(f"Erro ao acessar as turmas {e} !")
 
     @classmethod
+    def status(cls, id):
+        try:
+            DB = Database()
+            sql = "SELECT ativo FROM salas WHERE id = %s"
+            result = DB.fetchOne(sql, (id,))
+            
+            if result and result['ativo'] == 1:  
+                return True
+            return False
+            
+        except Exception as e:
+            print(f"Erro ao obter status da sala: {e}")
+            return False     
+
+    @classmethod
     def deactivateRoom(cls, roomId):
         try:
             DB = Database()
@@ -153,6 +168,7 @@ if __name__ == "__main__":
     # print(Room.createRoom("2º Ano A", "2027-02-05"))
     # Room.updateRoom("2º Ano B", 2)
     # print(Room.showClass(8))
+    # print(Room.status(1))
     # print(Room.getById(1))
     # print(Room.getByYear("2026"))
     # print(Room.getAll())
