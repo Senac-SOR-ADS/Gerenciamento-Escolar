@@ -6,9 +6,11 @@ from App.view.newReportUI import NewReportUI
 from App.view.parentInfoUI import ParentInfoUI
 
 class StudentCardUI(QWidget):
-    def __init__(self, **kwargs):
+    def __init__(self, student, **kwargs):
         super().__init__(**kwargs)
         loadUi("App/view/ui/studentCard.ui", self)
+
+        self.student = student
         
         self.studentName.clicked.connect(self.openScreen)
         self.newReport.clicked.connect(self.openScreen)
@@ -21,16 +23,18 @@ class StudentCardUI(QWidget):
             self.studentCard = StudentCardUI()
             self.studentCard.show()
         elif sender == self.newReport:
-            self.newReport = NewReportUI()
-            self.newReport.show()
+            self.freshReport = NewReportUI(studentID = self.student.id)
+            self.freshReport.show()
         elif sender == self.parentInfo:
-            self.parentInfo = ParentInfoUI()
-            self.parentInfo.show()
-        
+            self.parentData = ParentInfoUI()
+            self.parentData.show()
+
 
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
+    from App.controller.studentController import Student
+    student = Student.findById(1)
     app = QApplication([])
-    login = StudentCardUI()
+    login = StudentCardUI(student)
     login.show()
     app.exec_()
