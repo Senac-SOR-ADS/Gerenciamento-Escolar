@@ -8,18 +8,18 @@ class Room:
     id: Optional[int] = None
     turmas: str = ""
     ativo: bool = True
-    data: datetime = None
+    date: datetime = None
     
 
     def __init__(self, id=None, turmas="", ativo=False, data=""):
         self.id = id
         self.turmas = turmas
         self.ativo = bool(ativo)
-        self.data = data
+        self.date = data
 
     @classmethod
     def _getObjectList(cls, lista):
-        return [cls(*user) for user in lista]
+        return [cls(*user.values()) for user in lista]
 
     @classmethod
     def status(cls, id):
@@ -138,15 +138,16 @@ class Room:
             print(f"Erro em deletar turma {e} ")
             
     @classmethod
-    def getRoomByYear(cls, year):
+    def getByYear(cls, year):
         try:
             DB = Database()
-            year = datetime.now().year
+            year = year or datetime.now().year
             sql = "SELECT * FROM salas WHERE YEAR(data) = %s"
             params = (year,)
             result = DB.fetchAll(sql, params)
-            data = cls._getObjectList(result)
-            return data
+            # print(result)
+            result = cls._getObjectList(result)
+            return result
         except Exception as e:
             print(f"Erro ao obter dados {e}")
 

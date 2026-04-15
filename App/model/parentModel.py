@@ -7,11 +7,11 @@ class Parent:
     cpf = ""
     legal_guardian = True
 
-    def __init__(self, id=None, name="", cpf="", legal_guardian=True):
+    def __init__(self, id=None, nome="", cpf="", responsavel_legal=True):
         self.id = id
-        self.name = name
+        self.name = nome
         self.cpf = cpf
-        self.legal_guardian = bool(legal_guardian)
+        self.legal_guardian = bool(responsavel_legal)
 
     @classmethod
     def create(cls, name, cpf):
@@ -41,7 +41,7 @@ class Parent:
 
     @classmethod
     def _getObjectList(cls, lista):
-        return [cls(*user) for user in lista]
+        return [cls(*user.values()) for user in lista]
 
     @classmethod
     def getAll(cls):
@@ -111,7 +111,7 @@ class Parent:
      
 
 if __name__ == "__main__":
-    detalhes = Parent.findParentForStudent(1)
+    detalhes = Parent.getAll()
     for detalhe in detalhes:
         print(detalhe.name)
         

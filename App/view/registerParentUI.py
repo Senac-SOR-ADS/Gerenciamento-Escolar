@@ -11,22 +11,6 @@ class RegisterParentUI(QDialog):
         loadUi("App/view/ui/registerParent.ui", self)
         self.show()
         self.cep.editingFinished.connect(self.buscarCEP)
-        self.popular() #REMOVER 
-    
-    def popular(self):
-        """PRECISA REMOVER POSTERIORMENTE
-        ESTA SENDO USADO APENAS PARA TESTE"""
-        self.nome.setText("fulano da silva")
-        self.telefone.setText("15981331300")
-        self.cpf.setText("123456789-55")
-        self.resp_legal.setChecked(True)
-
-        self.cep.setText("18053000")
-        self.cidade.setText('sorocaba')
-        self.bairro.setText("bairro")
-        self.rua.setText('rua das flores')
-        self.numero.setText("123")
-        self.complemento.setText("askdh")
         
     def buscarCEP(self):
         cep = self.cep.text()

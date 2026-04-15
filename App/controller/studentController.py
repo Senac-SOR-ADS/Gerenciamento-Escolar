@@ -107,20 +107,30 @@ class StudentController:
         except Exception as e:
             print(f"Erro ao listar todos os alunos: {e}")
             return []
+        
+    @classmethod
+    def validateID(cls, value):
+        if not isinstance(value, int): raise TypeError(f"ID incorreto")
+        if value <= 0: raise ValueError("Id invalido")
+        return value
+        
+    @classmethod
+    def getByRoomID(cls, roomID):
+        try:
+            roomID = StudentController.validateID(roomID)
+            lista = Student.findByRoomID(roomID)
+            return lista
+        except Exception as e:
+            raise e
  
 if __name__ == "__main__":
  
-    aluno_teste = {
-        "nome": "João Silva",
-        "data_nasc": "12/02/1222",
-        "nome_social": "kar212la",
-        "CPF": "3215321643",
-        "RA": "311231",
-        "RM": "323231151",
-
-    } 
-    StudentController.create(aluno_teste)
+    # s = StudentController.linkStudentToClassroom(13, 3)
+    # lista = StudentController.getByRoomID(1)
+    # print(lista)
+    # StudentController.create(aluno_teste)
     #StudentController.update(7,aluno_teste)
+    pass
 
     
     

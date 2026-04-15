@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS `sala_alunos` (
     FOREIGN KEY (`id_aluno`) REFERENCES `alunos`(`id`),
     FOREIGN KEY (`id_sala`) REFERENCES `salas`(`id`) 
 );
+
 CREATE TABLE IF NOT EXISTS `responsavel_aluno` (
     `id` INTEGER PRIMARY KEY AUTO_INCREMENT,
     `aluno_id` INTEGER NOT NULL,
@@ -54,8 +55,10 @@ CREATE TABLE IF NOT EXISTS `enderecos` (
     `id` INTEGER PRIMARY KEY AUTO_INCREMENT,
     `cidade` VARCHAR(100) NOT NULL,
     `bairro` VARCHAR(100) NOT NULL,
-    `rua` VARCHAR(100) NOT NULL,
+    `rua` VARCHAR(100) NOT NULL,  
+    `numero` VARCHAR(5),
     `complemento` VARCHAR(100),
+    `CEP` VARCHAR(9), 
     `responsavel_id` INTEGER NOT NULL,
     FOREIGN KEY (`responsavel_id`) REFERENCES `responsaveis`(`id`)
 );
