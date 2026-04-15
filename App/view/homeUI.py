@@ -8,6 +8,8 @@ from App.view.registerClassUI import RegisterClassUI
 from App.controller.loginController import logout
 from App.view.registerStudentUI import RegisterStudentUI
 from App.view.registerEmployeeUI import RegisterEmployeeUI
+from App.controller.studentController import StudentController
+from App.view.studentCardUI import StudentCardUI
 
 class HomeUI(QMainWindow):
     def __init__(self, **kwargs):
@@ -48,10 +50,22 @@ class HomeUI(QMainWindow):
     def consultarTurmas(self):
         todas_turmas = RoomController.getRoomByYear(2026)
         for i in todas_turmas:
-            self.addCardInStackTurmas(ClassCardUI(i))
+            card = ClassCardUI(i)
+            card.signal_idDaTurma.connect(self.consultarAlunos)
+            self.addCardInStackTurmas(card)
+    
+    def consultarAlunos(self, idTurma):
+        alunos = StudentController.getByRoomID(idTurma)
+        for i in alunos:
+            card = StudentCardUI()
+            self.addCardInStackStudents(card)
             
+                    
     def addCardInStackTurmas(self, interface):
         self.scrollAreaWidgetContents_2.layout().addWidget(interface)
+    
+    def addCardInStackStudents(self, interface):
+        self.scrollAreaWidgetContentAlunos.layout().addWidget(interface)
     
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
