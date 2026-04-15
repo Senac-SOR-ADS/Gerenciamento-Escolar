@@ -11,6 +11,8 @@ class StudentCardUI(QWidget):
         loadUi("App/view/ui/studentCard.ui", self)
 
         self.student = student
+
+        self.studentName.setText(self.student.nome)
         
         self.studentName.clicked.connect(self.openScreen)
         self.newReport.clicked.connect(self.openScreen)
@@ -33,7 +35,7 @@ class StudentCardUI(QWidget):
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
     from App.controller.studentController import Student
-    student = Student.findById(1)
+    student = Student.findById(2)
     app = QApplication([])
     login = StudentCardUI(student)
     login.show()
