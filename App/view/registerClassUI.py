@@ -55,8 +55,9 @@ class RegisterClassUI(QDialog):
    
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
+
     app = QApplication([])
-    login = RegisterClassUI(turmas=[0])
+    login = RegisterClassUI(turmas=[1])
     app.exec_()
 
 
