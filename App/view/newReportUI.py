@@ -3,7 +3,6 @@ from PyQt5.QtCore import pyqtSlot, QDate
 from PyQt5.uic import loadUi
 from App.controller.reportController import ReportController as rc
 
-
 class NewReportUI(QDialog):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -16,7 +15,7 @@ class NewReportUI(QDialog):
     
     def getInfo(self):
         info = []
-        desc = self.descricaoOcorrencia.text()
+        desc = self.descricaoOcorrencia.toPlainText()
         resp = self.responsavelCombo.currentText()
         name = self.nomeOcorrencia.text()
         date = self.dataOcorrencia.text()
@@ -32,8 +31,6 @@ class NewReportUI(QDialog):
         except Exception as e:
             print(f"Erro ao criar o relatório! {e}")
     
-    
-
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
     app = QApplication([])

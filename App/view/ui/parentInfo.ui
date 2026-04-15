@@ -6,136 +6,169 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>538</width>
-    <height>279</height>
+    <width>478</width>
+    <height>498</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Informação de Parentesco</string>
   </property>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>521</width>
-     <height>261</height>
-    </rect>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>imagens/68045.png</normaloff>imagens/68045.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QLineEdit {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 6px;
+    background: white;
+}
+
+QLineEdit:focus, QDateTimeEdit:focus {
+    border: 2px solid #4CAF50;
+}
+QCheckBox {
+    border-radius: 8px;
+    padding: 6px;
+    background: white;
+}
+QPushButton {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    padding: 6px 12px;
+}
+
+QPushButton:hover {
+    background-color: #45a049;
+}
+
+QPushButton:pressed {
+    background-color: #3d8b40;
+}
+</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="rightMargin">
+    <number>9</number>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QWidget" name="widget" native="true">
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
-        <widget class="QLineEdit" name="lineEdit">
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="placeholderText">
-          <string>Nome</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit_2">
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="placeholderText">
-          <string>Telefone</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit_3">
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="placeholderText">
-          <string>Endereço</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item>
-     <widget class="QWidget" name="widget_2" native="true">
-      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,1">
-       <item>
-        <widget class="QLineEdit" name="lineEdit_4">
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="placeholderText">
-          <string>CPF</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QCheckBox" name="checkBox">
-         <property name="text">
-          <string>Responsável 
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QWidget" name="widget" native="true">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0">
+        <property name="spacing">
+         <number>50</number>
+        </property>
+        <item>
+         <widget class="QLineEdit" name="lineEdit">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="placeholderText">
+           <string>Nome</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_2">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="placeholderText">
+           <string>Telefone</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_3">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="placeholderText">
+           <string>Endereço</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_4">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="placeholderText">
+           <string>CPF</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="checkBox">
+          <property name="text">
+           <string>Responsável 
 Legal</string>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>20</width>
-           <height>20</height>
-          </size>
-         </property>
-         <property name="tristate">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <widget class="QPushButton" name="pushButton_2">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>70</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>Editar</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>70</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>Fechar</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-    </item>
-   </layout>
-  </widget>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="tristate">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QPushButton" name="pushButton_2">
+            <property name="minimumSize">
+             <size>
+              <width>70</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>70</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Editar</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton">
+            <property name="minimumSize">
+             <size>
+              <width>70</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>70</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Fechar</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

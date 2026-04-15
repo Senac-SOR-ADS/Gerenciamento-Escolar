@@ -65,7 +65,7 @@ class Student:
         raise RuntimeError
         
     @classmethod
-    def delet(cls, id):
+    def delete(cls, id):
         try:
             DB = Database()
             sql = "UPDATE alunos SET status = 0 WHERE id = %s"
@@ -90,6 +90,21 @@ class Student:
             raise RuntimeError
         
     @classmethod
+    def linkStudentInClassroom(cls, student_id, room_id):
+
+        try:
+            DB = Database()
+            sql = """INSERT INTO sala_alunos (id_aluno, id_sala) VALUES (%s, %s)"""
+
+            params = (student_id, room_id)
+            result = DB.insert(sql, params)
+            print(f"Aluno inserido na sala {result}")
+
+        except Exception as erro:
+            print(f'Erro ao tentar inserir aluno na sala {erro}')
+            raise RuntimeError
+        
+    @classmethod
     def findById(cls, id):
         try:
             DB = Database()
@@ -104,7 +119,7 @@ class Student:
             raise RuntimeError
 
     @classmethod
-    def _getObjectlist(cls, lista):
+    def _getObjectList(cls, lista):
         return [cls(*user)for user in lista]
 
     @classmethod
@@ -113,7 +128,7 @@ class Student:
             DB = Database()
             sql = "SELECT * FROM alunos"
             result = DB.fetchAll(sql)
-            return cls._getObjectlist(result)
+            return cls._getObjectList(result)
         except Exception as erro:
             print(f'Erro lsitagem de alunos: {erro}')
             raise RuntimeError
@@ -129,7 +144,42 @@ class Student:
         except Exception as erro:
             print(f'Erro lista de alunos ativos {erro}')
             raise RuntimeError
+    
+    def showInfo(self):
+        print(f"""
+            ID : {self.id}
+            Nome : {self.nome}
+            Nome Social: {self.nome_social}
+            CPF: {self.CPF}
+            Data Nascimento: {self.data_nasc}
+            RA: {self.RA}
+            RM: {self.RM}
+            STATUS: {self.status}
+            Data Registro: {self.data_registro}
+            Observações: {self.obs}
+        """)
 
-
+    @classmethod
+    def findByRoomID(cls, roomID):
+        try:
+            DB = Database()
+            sql = """
+            SELECT a.id, a.nome, a.nome_social 
+            FROM alunos AS a
+            JOIN sala_alunos AS sa ON a.id = sa.id_aluno 
+            WHERE sa.id_sala = %s
+            """
+            params = (roomID,)
+            result = DB.fetchAll(sql, params)
+            if result: 
+                return cls._getObjectList(result)
+            return cls()
+        except Exception as e:
+            print(f'Erro ao buscar alunos')
+            raise RuntimeError
+        
 if __name__ == "__main__":
-    Student.findById(2)
+    # Student.Update(2)
+    # s = Student.findByRoomID(2)
+    # print(s)
+    pass

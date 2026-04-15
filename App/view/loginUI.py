@@ -1,5 +1,5 @@
-from PyQt5.QtWidgets import QDialog
-from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtWidgets import QDialog, QVBoxLayout
+from PyQt5.QtCore import pyqtSlot, QTimer
 from PyQt5.uic import loadUi
 from App.controller.userController import UserController, logout
 
@@ -8,10 +8,14 @@ class LoginUI(QDialog):
         super().__init__(**kwargs)
         loadUi("App/view/ui/login.ui", self)
         self.show()
+        self.timer = QTimer()
+
 
     def clearText(self):
-        self.nome.clear()
         self.senha.clear()
+        self.mensagem.clear()
+        self.senha.setStyleSheet("")
+
 
     @pyqtSlot()
     def on_btn_concluir_clicked(self):
@@ -22,7 +26,10 @@ class LoginUI(QDialog):
             self.clearText()
             self.accept()
         else:
-            print("usuario ou senha incorreto")
+            self.clearText()
+            self.mensagem.setText("Usuário ou senha incorretos")
+            self.senha.setStyleSheet("border: 1.8px solid red")
+            self.timer.singleShot(2000, self.clearText)
 
     def on_btn_pushExit_clicked(self, sair):
         try: 
