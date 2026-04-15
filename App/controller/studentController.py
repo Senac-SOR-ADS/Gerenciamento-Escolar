@@ -141,7 +141,3 @@ if __name__ == "__main__":
     # StudentController.create(aluno_teste)
     #StudentController.update(7,aluno_teste)
     pass
-
-    
-    
- 
