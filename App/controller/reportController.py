@@ -87,8 +87,8 @@ class ReportController:
 if __name__ == "__main__":
     # ReportController.create("Tá doendo dms", 2, 4)
     # controller = ReportController()
-    # lista = controller.getByStudentID(18)
-    # print(lista)
+    lista = ReportController.getByStudentID(18)
+    print(lista)
     # ReportController.create("Tá doendo dms", 18, 1)
     pass
  
