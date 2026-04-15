@@ -1,9 +1,13 @@
 from PyQt5.QtWidgets import QDialog, QDateEdit
-from PyQt5.QtCore import pyqtSlot, QDate
+from PyQt5.QtCore import pyqtSlot, QDate , pyqtSignal
 from PyQt5.uic import loadUi
 from App.controller.studentController import StudentController
 
+
 class RegisterStudentUI(QDialog):
+
+    signal_alunoRegistrado = pyqtSignal(object)
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         loadUi("App/view/ui/registerStudent.ui", self)
@@ -36,7 +40,8 @@ class RegisterStudentUI(QDialog):
         if user:
             print(user)
             try:
-                StudentController.create(user)
+                student = StudentController.create(user)
+                self.signal_alunoRegistrado.emit(student.id)
                 self.clearText()
             except Exception as e:
                 print(f"Erro: \n{e}")

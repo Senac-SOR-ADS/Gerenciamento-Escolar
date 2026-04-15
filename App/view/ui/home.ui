@@ -10,10 +10,16 @@
     <height>609</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
   <property name="maximumSize">
    <size>
-    <width>820</width>
-    <height>610</height>
+    <width>800</width>
+    <height>600</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -101,78 +107,92 @@ QPushButton:pressed {
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="horizontalLayoutWidget">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>11</x>
-      <y>101</y>
-      <width>801</width>
-      <height>522</height>
+      <x>10</x>
+      <y>100</y>
+      <width>781</width>
+      <height>491</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
+    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,3">
      <item>
-      <widget class="QListView" name="listTurmas"/>
+      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QLabel" name="labelTurmas_2">
+         <property name="text">
+          <string>Turmas</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QScrollArea" name="scrollAreaTurma">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents_2">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>189</width>
+            <height>466</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_6"/>
+         </widget>
+        </widget>
+       </item>
+      </layout>
      </item>
      <item>
-      <widget class="QListView" name="listAlunos"/>
-     </item>
-     <item>
-      <widget class="QListView" name="listGerencia"/>
+      <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,1">
+       <item>
+        <widget class="QLabel" name="labelAluno">
+         <property name="text">
+          <string>Alunos</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QStackedWidget" name="stackAluno">
+         <widget class="QWidget" name="page_9"/>
+         <widget class="QWidget" name="page_10"/>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QWidget" name="layoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>70</y>
-      <width>61</width>
-      <height>31</height>
+      <x>170</x>
+      <y>30</y>
+      <width>491</width>
+      <height>51</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Alunos</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>730</x>
-      <y>10</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Quit</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>70</y>
-      <width>61</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Turmas</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>640</x>
-      <y>70</y>
-      <width>81</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Gerenciar</string>
-    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="0,0,0">
+     <item>
+      <widget class="QToolButton" name="btnOptions">
+       <property name="text">
+        <string>...</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="barPesquisa"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnPesquisa">
+       <property name="text">
+        <string>Pesquisar</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
  </widget>
