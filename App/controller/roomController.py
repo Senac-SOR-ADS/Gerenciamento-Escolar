@@ -61,20 +61,11 @@ class RoomController:
         return {f"Turma encontrada: {room} "}
     
     @classmethod
-    def getStatus(cls, id):
-        if not id:
-            return "Erro em obter id! adicione um id valido."
-        activate = Room.status(id)
-        statusText = "Ativa" if activate  else "Inativa"
-        return statusText
-    
-    @classmethod
     def getRoomByYear(cls, year):
         if not year:
             print("Erro de busca!")
-            return None
-         
-        return Room.getByYear(year)
+        activate = Room.getByYear(year)
+        return activate
     
     @classmethod
     def getAllRooms(cls):
@@ -97,7 +88,7 @@ if __name__ == "__main__":
     # print(controller.getRoomById(1))
     # print(controller.updateRoomClass(1, "1º Ano A"))
     # print(controller.getAllRooms())
-    print(RoomController.getRoomByYear("2026"))
+    # print(RoomController.getRoomByYear("2026"))
     # print(controller.disabledRoom(1))
     # print(controller.activatedRoom(1))
     # print(controller.deleteRoom(29))

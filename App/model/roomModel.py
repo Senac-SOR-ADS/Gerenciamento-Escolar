@@ -112,6 +112,7 @@ class Room:
             DB = Database()
             sql = "SELECT `id`, `turmas`, `ativo` FROM salas"
             result = DB.fetchAll(sql)
+            result = cls._getObjectList(result)
             return result
         except Exception as e:
             print(f"Erro ao acessar as salas {e} !")
@@ -140,12 +141,11 @@ class Room:
             sql = "SELECT * FROM salas WHERE YEAR(data) = %s"
             params = (year,)
             result = DB.fetchAll(sql, params)
-            print("resultado bruto:", result)  
+            # print(result)
             result = cls._getObjectList(result)
-            
+            return result
         except Exception as e:
             print(f"Erro ao obter dados {e}")
-            return None
 
 
 if __name__ == "__main__":
@@ -153,11 +153,12 @@ if __name__ == "__main__":
     # print(Room.createRoom("2º Ano A", "2027-02-05"))
     # Room.updateRoom("2º Ano B", 2)
     # print(Room.showClass(8))
-    print(Room.getByYear("2026"))
+    # print(Room.getById(1))
+    # print(Room.getByYear("2026"))
+    # print(Room.getAll())
     # print(Room.deleteRoom(10))
     # print(Room.deactivateRoom(0))
     # print(Room.setAlwaysActive(2))
-    # print(Room.getById(1))
 
     
 
