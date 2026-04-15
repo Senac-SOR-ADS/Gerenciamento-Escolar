@@ -19,25 +19,7 @@ class Room:
 
     @classmethod
     def _getObjectList(cls, lista):
-        return [cls(*user.values()) for user in lista]
-
-    @classmethod
-    def status(cls, id):
-        try:
-            DB = Database()
-            sql = "SELECT ativo FROM salas WHERE id = %s"
-            params = (id,)
-            result = DB.fetchOne(sql, params)
-            if result and result[0] == 1:
-                print("Sala Ativa!")
-                return True
-            else: 
-                print("Sala Inativa!")
-                return False
-            
-        except Exception as e:
-            print(f"Erro em obter informações do {e}")
-            return False      
+        return [cls(*user.values()) for user in lista]    
 
     @classmethod
     def showClass(cls, id):
@@ -51,12 +33,31 @@ class Room:
             print(f"Erro ao acessar as turmas {e} !")
 
     @classmethod
+    def status(cls, id):
+        try:
+            DB = Database()
+            sql = "SELECT ativo FROM salas WHERE id = %s"
+            result = DB.fetchOne(sql, (id,))
+            
+            if result and result['ativo'] == 1:  
+                return True
+            return False
+            
+        except Exception as e:
+            print(f"Erro ao obter status da sala: {e}")
+            return False     
+
+    @classmethod
     def deactivateRoom(cls, roomId):
         try:
             DB = Database()
             sql = "UPDATE salas SET ativo = 0 WHERE id = %s" 
             params = (roomId,)
             result = DB.execute(sql, params)
+            if result == 1:
+                print("Sala desativada!")
+            else:
+                print("Sala ja está ativada ou não existe!")
             return result
         except Exception as e:
             raise Exception(f"Erro ao desativar sala: {e}")
@@ -97,6 +98,10 @@ class Room:
             sql = "UPDATE salas SET ativo = 1 WHERE id = %s"
             params = (roomId,)
             result = DB.execute(sql, params)
+            if result == 1:
+                print("Sala ativada!")
+            else: 
+                print("Sala ja está ativada ou não Existe!")
             return result
         except Exception as e:
             raise Exception(f"Erro ativar a sala{e}")
@@ -122,6 +127,7 @@ class Room:
             DB = Database()
             sql = "SELECT `id`, `turmas`, `ativo` FROM salas"
             result = DB.fetchAll(sql)
+            result = cls._getObjectList(result)
             return result
         except Exception as e:
             print(f"Erro ao acessar as salas {e} !")
@@ -133,7 +139,12 @@ class Room:
             sql = "DELETE FROM `salas` WHERE id = %s"
             params = (id,)
             result = DB.execute(sql, params)
+            if result == 1:
+                print("Removido com sucesso!")
+            else:
+                print("Não foi possivel remover!")
             return result
+        
         except Exception as e:
             print(f"Erro em deletar turma {e} ")
             
@@ -154,12 +165,16 @@ class Room:
 
 if __name__ == "__main__":
     print("iniciando o teste...")
-    #Room.updateRoom("", )
-    #print(Room.showClass(1))
-    # print(Room.createRoom("3º Ano A - Portugues", "2027-02-05"))
-    # print(Room.createRoom("3º Ano A - Portugues", "01/01/2000"))
-    # print(Room.getByYear())
-    # print(Room.deleteRoom(7))
+    # print(Room.createRoom("2º Ano A", "2027-02-05"))
+    # Room.updateRoom("2º Ano B", 2)
+    # print(Room.showClass(8))
+    # print(Room.status(1))
+    # print(Room.getById(1))
+    # print(Room.getByYear("2026"))
+    # print(Room.getAll())
+    # print(Room.deleteRoom(10))
+    # print(Room.deactivateRoom(0))
+    # print(Room.setAlwaysActive(2))
 
     
 
