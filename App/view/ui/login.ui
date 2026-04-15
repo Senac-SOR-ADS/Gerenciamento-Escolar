@@ -25,9 +25,13 @@
   <property name="windowTitle">
    <string>Login</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../iconsGerenciamentoSalas/login-avatar.png</normaloff>../../../iconsGerenciamentoSalas/login-avatar.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">QDialog {
-    background-color: #F0F4FF;
+    background-color: 
 }
 
 QLineEdit {
@@ -89,6 +93,9 @@ QLabel {
     <widget class="QLabel" name="label">
      <property name="enabled">
       <bool>true</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
      </property>
      <property name="text">
       <string/>

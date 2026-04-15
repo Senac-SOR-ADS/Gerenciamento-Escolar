@@ -122,10 +122,20 @@ class StudentController:
             return lista
         except Exception as e:
             raise e
+    
+    @classmethod
+    def linkStudentToClassroom(cls, student_id, room_id):
+        try:
+            if not student_id or not room_id:
+                return {" PREENCHA TODOS CAMPOS OBRIGATÓRIOS "}
+            Student.linkStudentInClassroom(student_id, room_id)
+
+        except Exception as e:
+            print(f"Erro ao inserir aluno: {e}")
+            return []
  
 if __name__ == "__main__":
- 
-    # s = StudentController.linkStudentToClassroom(13, 3)
+    s = StudentController.linkStudentToClassroom(13, 3)
     # lista = StudentController.getByRoomID(1)
     # print(lista)
     # StudentController.create(aluno_teste)
