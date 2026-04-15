@@ -21,7 +21,6 @@ class RoomController:
         else:
             raise ValueError("Não foi possível desativar. A sala não foi encontrada!")
 
-    
     @classmethod       
     def updateRoomClass(cls, id, newRoom):
         if not newRoom:
@@ -32,13 +31,16 @@ class RoomController:
         raise TypeError("Erro em Atualizar!")
     
     @classmethod
-    def createRoom(cls, turma, data):
-        if not turma: 
-            return "Erro: Não é possivel criar sem a turma!"
-        sucess = Room.createRoom(turma, data)
-        if sucess:
-            return f"Nova turma adicionada com sucesso: '{turma}' na data de '{data}'."
-        return False
+    def createRoom(cls, turma: str, data: str):
+        if not turma or not data: 
+            raise ValueError("Turma e data não podem estar vazias.")
+        
+        success = Room.createRoom(turma, data) 
+        
+        if success:
+            return f"Turma '{turma}' adicionada com sucesso na data '{data}'."
+        
+        return "Erro: Não foi possível adicionar a turma."
     
     @classmethod
     def deleteRoom(cls, id):
@@ -70,8 +72,9 @@ class RoomController:
     def getRoomByYear(cls, year):
         if not year:
             print("Erro de busca!")
-        activate = Room.getByYear(year)
-        return activate
+            return None
+         
+        return Room.getByYear(year)
     
     @classmethod
     def getAllRooms(cls):
@@ -90,14 +93,14 @@ if __name__ == "__main__":
         "2026-02-15"
     ]
 
-    # print(controller.createRoom(sala[0], sala[1]))
-    # print(controller.disabledRoom(7))
-    # print(controller.activatedRoom(7))
+    # print(controller.createRoom(sala[0], sala[1] ))
+    # print(controller.getRoomById(1))
+    # print(controller.updateRoomClass(1, "1º Ano A"))
+    # print(controller.getAllRooms())
     print(RoomController.getRoomByYear("2026"))
-    # Room.createRoom("1º Ano B", "2029-01-20")
-    # print(Room.getById(7))
-    # print(Room.getAll())
-    # print(Room.deleteRoom(6))
+    # print(controller.disabledRoom(1))
+    # print(controller.activatedRoom(1))
+    # print(controller.deleteRoom(29))
 
 
 
