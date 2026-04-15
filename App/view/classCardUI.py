@@ -6,7 +6,7 @@ from App.model.roomModel import Room
 
 class ClassCardUI(QDialog):
 
-    finalizado = pyqtSignal(object)
+    signal_idDaTurma = pyqtSignal(object)
 
     def __init__(self, turma, **kwargs):
         super().__init__(**kwargs)
@@ -17,7 +17,7 @@ class ClassCardUI(QDialog):
 
     def mostrar_id(self):
         print(self.turm.id)
-        self.finalizado.emit(self.turm.id)
+        self.signal_idDaTurma.emit(self.turm.id)
 
 if __name__ == "__main__":
     turmas = Room.getByYear("2026")
