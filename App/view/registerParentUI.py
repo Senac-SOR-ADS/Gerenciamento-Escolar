@@ -15,7 +15,7 @@ class RegisterParentUI(QDialog):
     def buscarCEP(self):
         cep = self.cep.text()
         self.validarCEP =Trabalhador(AddressController.requestCep, cep=cep)
-        self.validarCEP.finalizado.connect(self.popularCEP)
+        self.validarCEP.signal_CEP.connect(self.popularCEP)
         self.validarCEP.finished.connect(self.validarCEP.deleteLater)
         self.validarCEP.start()
 
