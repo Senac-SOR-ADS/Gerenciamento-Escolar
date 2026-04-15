@@ -6,16 +6,24 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>852</width>
-    <height>483</height>
+    <width>620</width>
+    <height>80</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>500</width>
+    <height>70</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>90</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
-  </property>
-  <property name="windowIcon">
-   <iconset>
-    <normaloff>imagens/68045.png</normaloff>imagens/68045.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">
@@ -70,7 +78,22 @@ QPushButton#parentInfo:hover {
 }
    </string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,1,1">
+  <layout class="QHBoxLayout" name="horizontalLayout" stretch="3,1,1">
+   <property name="spacing">
+    <number>12</number>
+   </property>
+   <property name="leftMargin">
+    <number>16</number>
+   </property>
+   <property name="topMargin">
+    <number>12</number>
+   </property>
+   <property name="rightMargin">
+    <number>16</number>
+   </property>
+   <property name="bottomMargin">
+    <number>12</number>
+   </property>
    <item>
     <widget class="QPushButton" name="studentName">
      <property name="text">

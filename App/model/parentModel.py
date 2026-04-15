@@ -7,11 +7,11 @@ class Parent:
     cpf = ""
     legal_guardian = True
 
-    def __init__(self, id=None, name="", cpf="", legal_guardian=True):
+    def __init__(self, id=None, nome="", cpf="", responsavel_legal=True):
         self.id = id
-        self.name = name
+        self.name = nome
         self.cpf = cpf
-        self.legal_guardian = bool(legal_guardian)
+        self.legal_guardian = bool(responsavel_legal)
 
     @classmethod
     def create(cls, name, cpf):
@@ -41,7 +41,7 @@ class Parent:
 
     @classmethod
     def _getObjectList(cls, lista):
-        return [cls(*user) for user in lista]
+        return [cls(*user.values()) for user in lista]
 
     @classmethod
     def getAll(cls):
@@ -95,14 +95,24 @@ class Parent:
         except Exception as e:
             print(f'Erro ao buscar os dados{e}')
             raise RuntimeError
+    
+    @classmethod
+    def findParentForStudent(cls , id):
+        try:
+            DB = Database()
+            sql = "SELECT r.id, r.nome as name, r.CPF as cpf, r.responsavel_legal as legal_guardian FROM responsaveis r JOIN responsavel_aluno ra ON r.id = ra.responsavel_id WHERE ra.aluno_id = %s"
+            params = (id , )
+            result = DB.fetchAll(sql , params)
+            parent = [cls(**row) for row in result]
+            return parent
+        except ValueError as e:
+            raise ValueError(f"Erro ao buscar responsavel por aluno {e}")
          
      
 
 if __name__ == "__main__":
-    detalhes = Parent.findParentDetails(1)
-    if detalhes:
-        print(f"Nome:     {detalhes['nome']}")
-        print(f"CPF:      {detalhes['CPF']}")
-        print(f"Cidade:   {detalhes['cidade']}")
-        print(f"Telefone: {detalhes['telefone']}")
+    detalhes = Parent.getAll()
+    for detalhe in detalhes:
+        print(detalhe.name)
+        
 
