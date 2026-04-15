@@ -93,7 +93,7 @@ if __name__ == "__main__":
     # print(controller.createRoom(sala[0], sala[1]))
     # print(controller.disabledRoom(7))
     # print(controller.activatedRoom(7))
-    # print(Room.getRoomByYear())
+    print(RoomController.getRoomByYear("2026"))
     # Room.createRoom("1º Ano B", "2029-01-20")
     # print(Room.getById(7))
     # print(Room.getAll())

@@ -13,6 +13,8 @@ from App.view.parentInfoUI import ParentInfoUI
 from App.view.studentInfoUI import StudentInfoUI
 from App.view.registerEmployeeUI import RegisterEmployeeUI
 from App.view.studentCardUI import StudentCardUI
+from App.view.classCardUI import ClassCardUI
+from App.controller.roomController import RoomController
 from PyQt5.QtCore import QProcess
 
 class ScreenForTesting(QMainWindow):
@@ -48,8 +50,17 @@ class ScreenForTesting(QMainWindow):
         self.ParentInfo.clicked.connect(self.openScreens)
         self.StudentInfo.clicked.connect(self.openScreens)
         self.btnAddCard.clicked.connect(lambda: self.addCardInStack(StudentCardUI()))
+        self.btnCardClass.clicked.connect(lambda: self.addCardInStackTurmas(ClassCardUI()))
+
+        self.consultarTurmas()
         
-          
+    def consultarTurmas(self):
+        todas_turmas = RoomController.getRoomByYear(2026)
+        for i in todas_turmas:
+            self.addCardInStackTurmas(ClassCardUI(i))
+
+
+
     def openScreens(self):
         sender = self.sender()
         if sender == self.NewReport:
@@ -86,6 +97,9 @@ class ScreenForTesting(QMainWindow):
     def addCardInStack(self, interface):
         self.cardsLayout.insertWidget(self.cardsLayout.count() - 1, interface)
         self.stackAlunos.setCurrentWidget(self.page_7)
+    
+    def addCardInStackTurmas(self, interface):
+        self.scrollAreaWidgetContents.layout().addWidget(interface)
         
         
         

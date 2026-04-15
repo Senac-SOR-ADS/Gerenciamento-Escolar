@@ -109,32 +109,39 @@ class StudentController:
             return []
         
     @classmethod
-    def linkStudentToClassroom(cls, student_id, room_id):
-            
+    def validateID(cls, value):
+        if not isinstance(value, int): raise TypeError(f"ID incorreto")
+        if value <= 0: raise ValueError("Id invalido")
+        return value
+        
+    @classmethod
+    def getByRoomID(cls, roomID):
         try:
-
-            if not student_id:
+            roomID = StudentController.validateID(roomID)
+            lista = Student.findByRoomID(roomID)
+            return lista
+        except Exception as e:
+            raise e
+    
+    @classmethod
+    def linkStudentToClassroom(cls, student_id, room_id):
+        try:
+            if not student_id or not room_id:
                 return {" PREENCHA TODOS CAMPOS OBRIGATÓRIOS "}
-            
-            if not room_id:
-                return {" PREENCHA TODOS CAMPOS OBRIGATÓRIOS "}
-
             Student.linkStudentInClassroom(student_id, room_id)
-            
 
         except Exception as e:
             print(f"Erro ao inserir aluno: {e}")
             return []
-
  
 if __name__ == "__main__":
+    s = StudentController.linkStudentToClassroom(13, 3)
+    # lista = StudentController.getByRoomID(1)
+    # print(lista)
+    # StudentController.create(aluno_teste)
+    #StudentController.update(7,aluno_teste)
+    pass
+
+    
+    
  
-    s = StudentController.linkStudentToClassroom(7, 3)
-
-    print(s)
-   
-
-              
-            
-           
-                
