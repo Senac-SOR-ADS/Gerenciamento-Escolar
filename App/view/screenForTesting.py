@@ -66,12 +66,15 @@ class ScreenForTesting(QMainWindow):
         if sender == self.NewReport:
             self.newReport = NewReportUI()
             self.newReport.show()
+            
         elif sender == self.StudentCard:
             self.studentCard = StudentCardUI()
             self.studentCard.show()
+            
         elif sender == self.RegisterEmployee:
             self.registerEmployee = RegisterEmployeeUI()
             self.registerEmployee.show()
+            
         elif sender == self.Login:
             self.login = LoginUI()
             self.login.show()
@@ -81,6 +84,7 @@ class ScreenForTesting(QMainWindow):
         elif sender == self.RegisterClass:
             self.registerClass = RegisterClassUI()
             self.registerClass.show()
+            
         elif sender == self.ParentEdit:
             self.parentEdit = ParentEditUI()
             self.parentEdit.show()
