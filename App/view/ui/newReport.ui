@@ -114,11 +114,6 @@ QPushButton:pressed {
          <height>42</height>
         </size>
        </property>
-       <item>
-        <property name="text">
-         <string>Responsável</string>
-        </property>
-       </item>
       </widget>
      </item>
      <item>

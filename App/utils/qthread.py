@@ -1,7 +1,7 @@
 from PyQt5.QtCore import pyqtSignal, QThread
 
 class Trabalhador(QThread):
-    finalizado = pyqtSignal(object)
+    signal_CEP = pyqtSignal(object)
 
     def __init__(self, callback, *args, **kwargs):
         super().__init__()
@@ -11,4 +11,4 @@ class Trabalhador(QThread):
 
     def run(self):
         resultado = self.callback(*self.args, **self.kwargs)
-        self.finalizado.emit(resultado)
+        self.signal_CEP.emit(resultado)
