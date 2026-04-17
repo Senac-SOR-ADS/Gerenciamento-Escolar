@@ -55,11 +55,21 @@ class HomeUI(QMainWindow):
             self.addCardInStackTurmas(card)
     
     def consultarAlunos(self, idTurma):
+        self.clearStackAlunos()
         alunos = StudentController.getByRoomID(idTurma)
-        for i in alunos:
-            card = StudentCardUI()
-            self.addCardInStackStudents(card)
-            
+        # for i in alunos:
+        #     if(len(alunos) > 0):
+        #         card = StudentCardUI(i)
+        #         self.addCardInStackStudents(card)
+        #     else:
+        #         self.scrollAreaWidgetContentAlunos.layout().addWidget(QLabel("Nenhum aluno encontrado nessa turma."))
+        
+        try:
+            for i in alunos:
+                card = StudentCardUI(i)
+                self.addCardInStackStudents(card)
+        except Exception as e:
+            self.scrollAreaWidgetContentAlunos.layout().addWidget(QLabel("Nenhum aluno encontrado nessa turma."))
                     
     def addCardInStackTurmas(self, interface):
         self.scrollAreaWidgetContents_2.layout().addWidget(interface)
@@ -67,10 +77,14 @@ class HomeUI(QMainWindow):
     def addCardInStackStudents(self, interface):
         self.scrollAreaWidgetContentAlunos.layout().addWidget(interface)
     
-    def clearStackTurmas(self):
-        layout = self.scrollAreaWidgetContents_2.layout()
+    def clearStackAlunos(self):
+        layout = self.scrollAreaWidgetContentAlunos.layout()
         for i in range(layout.count()):
+            # card = layout.itemAt(i).widget()
+            # print("stack aluno")
+            # card.deleteLater()
             layout.itemAt(i).widget().deleteLater()
+            print("Estou no stack aluno")
     
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
