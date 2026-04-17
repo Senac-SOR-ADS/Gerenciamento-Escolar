@@ -179,8 +179,7 @@ class Student:
             raise RuntimeError
         
 if __name__ == "__main__":
-    # Student.Update(2)
-    # s = Student.findByRoomID(2)
-    # print(s)
+     #Student.Update(2)
+     #s = Student.findByRoomID(2)
+     #print(s)
     pass
-

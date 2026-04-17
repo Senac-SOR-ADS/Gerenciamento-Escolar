@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>478</width>
-    <height>498</height>
+    <width>418</width>
+    <height>524</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,6 +16,9 @@
   <property name="windowIcon">
    <iconset>
     <normaloff>imagens/68045.png</normaloff>imagens/68045.png</iconset>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::LeftToRight</enum>
   </property>
   <property name="styleSheet">
    <string notr="true">QLineEdit {
@@ -47,13 +50,45 @@ QPushButton:hover {
 QPushButton:pressed {
     background-color: #3d8b40;
 }
+
+#btnExcluir {
+background-color: #ff0000;
+}
 </string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="rightMargin">
     <number>9</number>
    </property>
-   <item row="0" column="0">
+   <item row="0" column="0" alignment="Qt::AlignRight">
+    <widget class="QComboBox" name="comboBox">
+     <property name="minimumSize">
+      <size>
+       <width>160</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>200</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
+     <property name="currentText">
+      <string/>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QWidget" name="widget" native="true">
@@ -65,7 +100,7 @@ QPushButton:pressed {
          <number>50</number>
         </property>
         <item>
-         <widget class="QLineEdit" name="lineEdit">
+         <widget class="QLineEdit" name="nome">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
@@ -75,7 +110,7 @@ QPushButton:pressed {
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_2">
+         <widget class="QLineEdit" name="telefone">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
@@ -85,7 +120,7 @@ QPushButton:pressed {
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_3">
+         <widget class="QLineEdit" name="endereco">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
@@ -95,7 +130,7 @@ QPushButton:pressed {
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_4">
+         <widget class="QLineEdit" name="cpf">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
@@ -124,7 +159,7 @@ Legal</string>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <widget class="QPushButton" name="pushButton_2">
+           <widget class="QPushButton" name="btnEditar">
             <property name="minimumSize">
              <size>
               <width>70</width>
@@ -143,7 +178,26 @@ Legal</string>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton">
+           <widget class="QPushButton" name="btnExcluir">
+            <property name="minimumSize">
+             <size>
+              <width>70</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>70</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Excluir</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnFechar">
             <property name="minimumSize">
              <size>
               <width>70</width>
