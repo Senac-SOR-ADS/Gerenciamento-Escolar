@@ -5,12 +5,11 @@ from App.controller.roomController import RoomController
 
 class RegisterClassUI(QDialog):
 
-    signalIdRoom = pyqtSignal(object)
+    signal_IdRoom = pyqtSignal(object)
 
     def __init__(self, parent=None):
         super().__init__(parent)
         loadUi("App/view/ui/registerClass.ui", self)
-        self.signalIdRoom.connect(self.idRoom)
         self.clearText()
         self.show()
 
@@ -40,14 +39,10 @@ class RegisterClassUI(QDialog):
         if classe:
             try:
                 resultado = RoomController.createRoom(*classe.values())
-                self.signalIdRoom.emit(resultado) 
+                self.signal_IdRoom.emit(True) 
                 self.clearText()
             except Exception as e:
                 print(f"Erro: \n{e}")
-
-    def idRoom (self, resultado):
-        print(f"Sinal capturado com sucesso! O resultado recebido foi: {resultado}")
-
 
 if __name__ == "__main__":
     app = QApplication([])
