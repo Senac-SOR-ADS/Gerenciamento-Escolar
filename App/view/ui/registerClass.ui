@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Registro de Salas</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>imagens/classe.png</normaloff>imagens/classe.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
