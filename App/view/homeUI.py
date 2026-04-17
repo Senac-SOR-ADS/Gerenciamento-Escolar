@@ -27,10 +27,11 @@ class HomeUI(QMainWindow):
         self.show()
     
     def createMenu(self):
+        # can't click on other screens when menu is open, being necessary to click on the menu to close it before clicking on the screen
         action = [
-            ("Nova turma", lambda : self.callEvent(RegisterClassUI)),
-            ("Cadatrar aluno", lambda : self.callEvent(RegisterStudentUI)),
-            ("Cadastrar funcionário", lambda : self.callEvent(RegisterEmployeeUI)),
+            ("Nova turma", lambda : self.callEvent(RegisterClassUI, parent=self)),
+            ("Cadatrar aluno", lambda : self.callEvent(RegisterStudentUI, parent=self)),
+            ("Cadastrar funcionário", lambda : self.callEvent(RegisterEmployeeUI, parent=self)),
         ]
         
         for texto, funcao in action:
@@ -38,10 +39,10 @@ class HomeUI(QMainWindow):
             event.triggered.connect(funcao)
             self.menuOpt.addAction(event)
             
-    def callEvent(self, event):
-        self.evento = event()
-        self.evento.signal_idDaTurma.connect(self.consultarTurmas)
-        self.evento.show()
+    def callEvent(self, event, **kwargs):
+        self.evento = event(**kwargs)
+        self.evento.signal_IdRoom.connect(self.consultarTurmas)
+        self.evento.exec_()
             
     def showMenu(self):
         self.menuOpt.exec_(self.btnOptions.mapToGlobal(QPoint(0, self.btnOptions.height())))
