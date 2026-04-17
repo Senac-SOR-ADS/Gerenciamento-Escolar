@@ -31,6 +31,7 @@ class RegisterClassUI(QDialog):
     @pyqtSlot()
     def on_btn_confirmar_clicked(self):
         classe = self.validarCampos()
+        self.turma.setChecked(True)
 
         if classe:
             try:
