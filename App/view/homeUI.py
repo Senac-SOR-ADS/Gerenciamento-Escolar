@@ -40,6 +40,7 @@ class HomeUI(QMainWindow):
             
     def callEvent(self, event):
         self.evento = event()
+        self.evento.signal_idDaTurma.connect(self.consultarTurmas)
         self.evento.show()
             
     def showMenu(self):
@@ -48,6 +49,7 @@ class HomeUI(QMainWindow):
 
         
     def consultarTurmas(self):
+        self.clearStackCards(self.scrollAreaWidgetContents_2)
         todas_turmas = RoomController.getRoomByYear(2026)
         for i in todas_turmas:
             card = ClassCardUI(i)
@@ -55,15 +57,9 @@ class HomeUI(QMainWindow):
             self.addCardInStackTurmas(card)
     
     def consultarAlunos(self, idTurma):
-        self.clearStackAlunos()
+        self.clearStackCards(self.scrollAreaWidgetContentAlunos)
         alunos = StudentController.getByRoomID(idTurma)
-        # for i in alunos:
-        #     if(len(alunos) > 0):
-        #         card = StudentCardUI(i)
-        #         self.addCardInStackStudents(card)
-        #     else:
-        #         self.scrollAreaWidgetContentAlunos.layout().addWidget(QLabel("Nenhum aluno encontrado nessa turma."))
-        
+
         try:
             for i in alunos:
                 card = StudentCardUI(i)
@@ -77,14 +73,10 @@ class HomeUI(QMainWindow):
     def addCardInStackStudents(self, interface):
         self.scrollAreaWidgetContentAlunos.layout().addWidget(interface)
     
-    def clearStackAlunos(self):
-        layout = self.scrollAreaWidgetContentAlunos.layout()
+    def clearStackCards(self, scrollArea):
+        layout = scrollArea.layout()
         for i in range(layout.count()):
-            # card = layout.itemAt(i).widget()
-            # print("stack aluno")
-            # card.deleteLater()
             layout.itemAt(i).widget().deleteLater()
-            print("Estou no stack aluno")
     
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
