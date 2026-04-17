@@ -46,9 +46,6 @@ class StudentController:
 
             data_nasc=data.get("data_nasc")
             data_nasc= datetime.strptime(data_nasc, "%d/%m/%Y")
-            
-
-        
             student = Student(
                 id=id,
                 nome=data.get("nome"),
@@ -133,7 +130,7 @@ class StudentController:
         except Exception as e:
             print(f"Erro ao inserir aluno: {e}")
             return []
- 
+        
 if __name__ == "__main__":
     aluno = StudentController.getById(5)
     print(aluno.nome)

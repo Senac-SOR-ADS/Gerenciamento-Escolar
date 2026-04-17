@@ -178,6 +178,23 @@ class Student:
             print(f'Erro ao buscar alunos')
             raise RuntimeError
         
+
+        @classmethod
+    def searchStudentByBy(cls, By):
+        try:
+            DB = Database()
+        # O SQL usa o CONCAT para grudar as porcentagens antes e depois do %s
+        sql = """
+            SELECT `nome`, `nome_social`, `data_nasc`, `RA` 
+            FROM alunos 
+            WHERE RA = %s 
+            OR nome LIKE CONCAT('%', %s, '%') 
+            OR nome_social LIKE CONCAT('%', %s, '%')
+        """
+        termo_busca = "Ana"
+        # Na hora de executar, basta passar o mesmo termo três vezes
+        cursor.execute(sql, (termo_busca, termo_busca, termo_busca))
+        
 if __name__ == "__main__":
     # Student.Update(2)
     # s = Student.findByRoomID(2)
