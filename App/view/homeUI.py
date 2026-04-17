@@ -67,6 +67,11 @@ class HomeUI(QMainWindow):
     def addCardInStackStudents(self, interface):
         self.scrollAreaWidgetContentAlunos.layout().addWidget(interface)
     
+    def clearStackTurmas(self):
+        layout = self.scrollAreaWidgetContents_2.layout()
+        for i in range(layout.count()):
+            layout.itemAt(i).widget().deleteLater()
+    
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
     app = QApplication([])
