@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>804</width>
-    <height>713</height>
+    <width>865</width>
+    <height>693</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -61,7 +61,7 @@ QPushButton:pressed {
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QWidget" name="widget" native="true">
-       <layout class="QGridLayout" name="gridLayout_2">
+       <layout class="QFormLayout" name="formLayout">
         <item row="0" column="0">
          <widget class="QPushButton" name="btn_voltar">
           <property name="sizePolicy">
@@ -91,14 +91,257 @@ QPushButton:pressed {
          </widget>
         </item>
         <item row="1" column="1">
-         <layout class="QGridLayout" name="gridLayout_3">
+         <layout class="QGridLayout" name="gridLayout_3" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
           <property name="rightMargin">
-           <number>8</number>
+           <number>15</number>
           </property>
           <property name="bottomMargin">
            <number>0</number>
           </property>
+          <property name="verticalSpacing">
+           <number>9</number>
+          </property>
+          <item row="3" column="0">
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>2</width>
+              <height>2</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="7" column="0">
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>2</width>
+              <height>2</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="10" column="0">
+           <spacer name="verticalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>2</width>
+              <height>2</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLineEdit" name="telefone">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>Telefone</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLineEdit" name="cpf">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>CPF</string>
+            </property>
+           </widget>
+          </item>
+          <item row="15" column="0">
+           <widget class="QLineEdit" name="numero">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>N°</string>
+            </property>
+           </widget>
+          </item>
+          <item row="17" column="0">
+           <widget class="QLineEdit" name="rua">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>Rua</string>
+            </property>
+           </widget>
+          </item>
           <item row="20" column="0">
+           <spacer name="verticalSpacer_8">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>2</width>
+              <height>2</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="16" column="0">
+           <spacer name="verticalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>2</width>
+              <height>2</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="19" column="0">
+           <widget class="QLineEdit" name="complemento">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>Complemento</string>
+            </property>
+           </widget>
+          </item>
+          <item row="21" column="0">
+           <widget class="QLineEdit" name="bairro">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>Bairro</string>
+            </property>
+           </widget>
+          </item>
+          <item row="18" column="0">
+           <spacer name="verticalSpacer_7">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>2</width>
+              <height>2</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="13" column="0">
+           <spacer name="verticalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>2</width>
+              <height>2</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="1" column="0" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+           <widget class="QLabel" name="label">
+            <property name="lineWidth">
+             <number>1</number>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:400;&quot;&gt;Registrar Parentesco&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="0">
+           <widget class="QLineEdit" name="cep">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>CEP</string>
+            </property>
+           </widget>
+          </item>
+          <item row="23" column="0">
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
              <widget class="QPushButton" name="novo_responsavel">
@@ -146,104 +389,6 @@ QPushButton:pressed {
             </item>
            </layout>
           </item>
-          <item row="2" column="0">
-           <widget class="QLineEdit" name="telefone">
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="placeholderText">
-             <string>Telefone</string>
-            </property>
-           </widget>
-          </item>
-          <item row="7" column="0">
-           <spacer name="verticalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>2</width>
-              <height>2</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="8" column="0">
-           <widget class="QLineEdit" name="cidade">
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="placeholderText">
-             <string>Cidade</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <spacer name="verticalSpacer">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>2</width>
-              <height>2</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="9" column="0">
-           <spacer name="verticalSpacer_4">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>2</width>
-              <height>2</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="6" column="0">
-           <widget class="QLineEdit" name="cpf">
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="placeholderText">
-             <string>CPF</string>
-            </property>
-           </widget>
-          </item>
-          <item row="10" column="0">
-           <widget class="QLineEdit" name="cep">
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="placeholderText">
-             <string>CEP</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLineEdit" name="nome">
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="placeholderText">
-             <string>Nome</string>
-            </property>
-           </widget>
-          </item>
           <item row="5" column="0">
            <spacer name="verticalSpacer_2">
             <property name="orientation">
@@ -260,7 +405,23 @@ QPushButton:pressed {
             </property>
            </spacer>
           </item>
-          <item row="19" column="0">
+          <item row="4" column="0">
+           <widget class="QLineEdit" name="nome">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>Nome</string>
+            </property>
+           </widget>
+          </item>
+          <item row="22" column="0">
            <widget class="QCheckBox" name="resp_legal">
             <property name="maximumSize">
              <size>
@@ -283,114 +444,19 @@ Legal</string>
             </property>
            </widget>
           </item>
-          <item row="18" column="0">
-           <widget class="QLineEdit" name="bairro">
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="placeholderText">
-             <string>Bairro</string>
-            </property>
-           </widget>
-          </item>
-          <item row="15" column="0">
-           <spacer name="verticalSpacer_7">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>2</width>
-              <height>2</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="16" column="0">
-           <widget class="QLineEdit" name="complemento">
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="placeholderText">
-             <string>Complemento</string>
-            </property>
-           </widget>
-          </item>
-          <item row="14" column="0">
-           <widget class="QLineEdit" name="rua">
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="placeholderText">
-             <string>Rua</string>
-            </property>
-           </widget>
-          </item>
-          <item row="12" column="0">
-           <widget class="QLineEdit" name="numero">
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="placeholderText">
-             <string>N°</string>
-            </property>
-           </widget>
-          </item>
-          <item row="17" column="0">
-           <spacer name="verticalSpacer_8">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>2</width>
-              <height>2</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="13" column="0">
-           <spacer name="verticalSpacer_6">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>2</width>
-              <height>2</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
           <item row="11" column="0">
-           <spacer name="verticalSpacer_5">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
+           <widget class="QLineEdit" name="cidade">
+            <property name="minimumSize">
              <size>
-              <width>2</width>
-              <height>2</height>
+              <width>0</width>
+              <height>35</height>
              </size>
             </property>
-           </spacer>
-          </item>
-          <item row="1" column="0" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-           <widget class="QLabel" name="label">
-            <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:400;&quot;&gt;Registrar Parentesco&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>Cidade</string>
             </property>
            </widget>
           </item>
