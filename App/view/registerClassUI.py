@@ -1,12 +1,14 @@
-from PyQt5.QtWidgets import QDialog, QDateEdit
-from PyQt5.QtCore import QDate
-from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtWidgets import QDialog, QApplication
+from PyQt5.QtCore import QDate, pyqtSlot, pyqtSignal
 from PyQt5.uic import loadUi
 from App.controller.roomController import RoomController
 
 class RegisterClassUI(QDialog):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+
+    signal_IdRoom = pyqtSignal(object)
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
         loadUi("App/view/ui/registerClass.ui", self)
         self.clearText()
         self.show()
@@ -14,37 +16,35 @@ class RegisterClassUI(QDialog):
     def clearText(self):
         self.turma.clear()
         self.data.setDate(QDate.currentDate())
-        
+
     def validarCampos(self):
         turma = self.turma.text()
         data = self.data.date() #retorna um QDate
         data = data.toString("yyyy/MM/dd") #transforma em padrão EUA
 
-        if not turma and not data:
-            print(f'Preencha os campos!')
+        if not turma or not data:
+            print("Preencha todos os campos!")
+            return None
 
         return {
             "room": turma,
             "date": data
         }
-    
+        
+
     @pyqtSlot()
     def on_btn_confirmar_clicked(self):
         classe = self.validarCampos()
 
         if classe:
             try:
-                RoomController.createRoom(*classe.values())
+                resultado = RoomController.createRoom(*classe.values())
+                self.signal_IdRoom.emit(True) 
                 self.clearText()
             except Exception as e:
                 print(f"Erro: \n{e}")
 
 if __name__ == "__main__":
-    from PyQt5.QtWidgets import QApplication
     app = QApplication([])
-    login = RegisterClassUI()
+    register = RegisterClassUI()
     app.exec_()
-
-
-
-

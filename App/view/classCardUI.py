@@ -8,11 +8,11 @@ class ClassCardUI(QDialog):
 
     signal_idDaTurma = pyqtSignal(object)
 
-    def __init__(self, turma, **kwargs):
+    def __init__(self, turmas, **kwargs):
         super().__init__(**kwargs)
         loadUi("App/view/ui/classCard.ui", self)
-        self.turm = turma
-        self.turma.setText(self.turm.turmas)
+        self.turm = turmas
+        self.turmas.setText(self.turm.turmas)
         self.turma.clicked.connect(self.mostrar_id)
 
     def mostrar_id(self):
