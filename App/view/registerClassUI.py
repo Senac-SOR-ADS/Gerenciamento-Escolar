@@ -8,18 +8,19 @@ class RegisterClassUI(QDialog):
 
     signalIdRoom = pyqtSignal(object)
 
-    def __init__(self, turmas, **kwargs):
+    def __init__(self, turmas, **args, **kwargs):
         super().__init__(**kwargs)
         loadUi("App/view/ui/registerClass.ui", self)
         self.room = turmas
-        self.turma.setText(self.room.turmas)
+        self.args = args
+        self.kwargs = kwargs
         self.btn_confirmar.clicked.connect(self.mostrar_id)
         self.clearText()
         self.show()
 
     def mostrar_id(self):
-        print(self.room.id)
-        self.signalIdRoom.emit(self.room.id)
+        resultado = self.room(*self.args, **self.kwargs)
+        self.signal_CEP.emit(resultado)
 
 
     def clearText(self):
@@ -55,9 +56,8 @@ class RegisterClassUI(QDialog):
    
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
-
     app = QApplication([])
-    login = RegisterClassUI(turmas=[1])
+    register = RegisterClassUI()
     app.exec_()
 
 
