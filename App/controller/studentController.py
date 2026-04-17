@@ -13,7 +13,7 @@ class StudentController:
         return True
  
     @classmethod
-    def  create(cls, data: dict):
+    def create(cls, data: dict):
         try:
             data_nasc=data.get("data_nasc")
             data_nasc= datetime.strptime(data_nasc, "%d/%m/%Y")
@@ -135,13 +135,18 @@ class StudentController:
             return []
  
 if __name__ == "__main__":
-    s = StudentController.linkStudentToClassroom(13, 3)
-    # lista = StudentController.getByRoomID(1)
-    # print(lista)
-    # StudentController.create(aluno_teste)
-    #StudentController.update(7,aluno_teste)
-    pass
+    aluno = StudentController.getById(5)
+    print(aluno.nome)
+    print('-'*50)
 
+    alunos = StudentController.getAll()
+    print(alunos[4].nome)
+
+    print('-'*50)
+    alunos_sala = StudentController.getByRoomID(5)
+    print(alunos_sala[0].nome)
+
+    print('-'*50)
+    alunos_ativos = StudentController.getActive()
+    print(alunos_ativos[5].nome)
     
-    
- 
