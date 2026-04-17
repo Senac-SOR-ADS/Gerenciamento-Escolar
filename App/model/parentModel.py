@@ -100,7 +100,7 @@ class Parent:
     def findParentForStudent(cls , id):
         try:
             DB = Database()
-            sql = "SELECT r.id, r.nome as name, r.CPF as cpf, r.responsavel_legal as legal_guardian FROM responsaveis r JOIN responsavel_aluno ra ON r.id = ra.responsavel_id WHERE ra.aluno_id = %s"
+            sql = "SELECT r.id, r.nome as nome, r.CPF as cpf, r.responsavel_legal as responsavel_legal FROM responsaveis r JOIN responsavel_aluno ra ON r.id = ra.responsavel_id WHERE ra.aluno_id = %s"
             params = (id , )
             result = DB.fetchAll(sql , params)
             parent = [cls(**row) for row in result]
@@ -109,6 +109,7 @@ class Parent:
             raise ValueError(f"Erro ao buscar responsavel por aluno {e}")
          
      
+
 
 if __name__ == "__main__":
     detalhes = Parent.getAll()
