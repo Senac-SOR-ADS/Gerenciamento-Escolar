@@ -76,6 +76,7 @@ class Student:
         except Exception as erro:
             print(f'Erro ao tentar desativar o aluno {erro}')
             raise RuntimeError
+        
     @classmethod
     def activate(cls, id):
         try:
@@ -177,6 +178,25 @@ class Student:
         except Exception as e:
             print(f'Erro ao buscar alunos')
             raise RuntimeError
+        
+    @classmethod
+    def findByRoomID(cls, nome):
+        try:
+            DB = Database()
+            sql = """
+            SELECT 'id', 'nome', 'nome_social', 'CPF', 'data_nasc', 'RA', 'RM', 'Observacao', 'data_registro'
+            FROM alunos
+            ON nome LIKE = %s
+            """
+            params = (nome,)
+            result = DB.fetchAll(sql, params)
+            if result: 
+                return cls._getObjectList(result)
+            return cls()
+        except Exception as e:
+            print(f'Erro ao buscar alunos')
+            raise RuntimeError
+        
         
 if __name__ == "__main__":
     # Student.Update(2)
