@@ -13,7 +13,7 @@ class StudentController:
         return True
  
     @classmethod
-    def  create(cls, data: dict):
+    def create(cls, data: dict):
         try:
             data_nasc=data.get("data_nasc")
             data_nasc= datetime.strptime(data_nasc, "%d/%m/%Y")
@@ -109,28 +109,44 @@ class StudentController:
             return []
         
     @classmethod
-    def linkStudentToClassroom(cls, student_id, room_id):
-            
+    def validateID(cls, value):
+        if not isinstance(value, int): raise TypeError(f"ID incorreto")
+        if value <= 0: raise ValueError("Id invalido")
+        return value
+        
+    @classmethod
+    def getByRoomID(cls, roomID):
         try:
-
-            if not student_id:
+            roomID = StudentController.validateID(roomID)
+            lista = Student.findByRoomID(roomID)
+            return lista
+        except Exception as e:
+            raise e
+    
+    @classmethod
+    def linkStudentToClassroom(cls, student_id, room_id):
+        try:
+            if not student_id or not room_id:
                 return {" PREENCHA TODOS CAMPOS OBRIGATÓRIOS "}
-            
-            if not room_id:
-                return {" PREENCHA TODOS CAMPOS OBRIGATÓRIOS "}
-
             Student.linkStudentInClassroom(student_id, room_id)
-            
 
         except Exception as e:
             print(f"Erro ao inserir aluno: {e}")
             return []
-
  
 if __name__ == "__main__":
- 
-    s = StudentController.linkStudentToClassroom(13, 3)
+    aluno = StudentController.getById(5)
+    print(aluno.nome)
+    print('-'*50)
 
-    print(s)
+    alunos = StudentController.getAll()
+    print(alunos[4].nome)
+
+    print('-'*50)
+    alunos_sala = StudentController.getByRoomID(5)
+    print(alunos_sala[0].nome)
+
+    print('-'*50)
+    alunos_ativos = StudentController.getActive()
+    print(alunos_ativos[5].nome)
     
- 
