@@ -8,6 +8,8 @@ from App.view.registerClassUI import RegisterClassUI
 from App.controller.loginController import logout
 from App.view.registerStudentUI import RegisterStudentUI
 from App.view.registerEmployeeUI import RegisterEmployeeUI
+from App.controller.studentController import StudentController
+from App.view.studentCardUI import StudentCardUI
 
 class HomeUI(QMainWindow):
     def __init__(self, **kwargs):
@@ -25,10 +27,11 @@ class HomeUI(QMainWindow):
         self.show()
     
     def createMenu(self):
+        # can't click on other screens when menu is open, being necessary to click on the menu to close it before clicking on the screen
         action = [
-            ("Nova turma", lambda : self.callEvent(RegisterClassUI)),
-            ("Cadatrar aluno", lambda : self.callEvent(RegisterStudentUI)),
-            ("Cadastrar funcionário", lambda : self.callEvent(RegisterEmployeeUI)),
+            ("Nova turma", lambda : self.callEvent(RegisterClassUI, parent=self)),
+            ("Cadatrar aluno", lambda : self.callEvent(RegisterStudentUI, parent=self)),
+            ("Cadastrar funcionário", lambda : self.callEvent(RegisterEmployeeUI, parent=self)),
         ]
         
         for texto, funcao in action:
@@ -36,9 +39,10 @@ class HomeUI(QMainWindow):
             event.triggered.connect(funcao)
             self.menuOpt.addAction(event)
             
-    def callEvent(self, event):
-        self.evento = event()
-        self.evento.show()
+    def callEvent(self, event, **kwargs):
+        self.evento = event(**kwargs)
+        self.evento.signal_IdRoom.connect(self.consultarTurmas)
+        self.evento.exec_()
             
     def showMenu(self):
         self.menuOpt.exec_(self.btnOptions.mapToGlobal(QPoint(0, self.btnOptions.height())))
@@ -46,12 +50,34 @@ class HomeUI(QMainWindow):
 
         
     def consultarTurmas(self):
+        self.clearStackCards(self.scrollAreaWidgetContents_2)
         todas_turmas = RoomController.getRoomByYear(2026)
         for i in todas_turmas:
-            self.addCardInStackTurmas(ClassCardUI(i))
-            
+            card = ClassCardUI(i)
+            card.signal_idDaTurma.connect(self.consultarAlunos)
+            self.addCardInStackTurmas(card)
+    
+    def consultarAlunos(self, idTurma):
+        self.clearStackCards(self.scrollAreaWidgetContentAlunos)
+        alunos = StudentController.getByRoomID(idTurma)
+
+        try:
+            for i in alunos:
+                card = StudentCardUI(i)
+                self.addCardInStackStudents(card)
+        except Exception as e:
+            self.scrollAreaWidgetContentAlunos.layout().addWidget(QLabel("Nenhum aluno encontrado nessa turma."))
+                    
     def addCardInStackTurmas(self, interface):
         self.scrollAreaWidgetContents_2.layout().addWidget(interface)
+    
+    def addCardInStackStudents(self, interface):
+        self.scrollAreaWidgetContentAlunos.layout().addWidget(interface)
+    
+    def clearStackCards(self, scrollArea):
+        layout = scrollArea.layout()
+        for i in range(layout.count()):
+            layout.itemAt(i).widget().deleteLater()
     
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication

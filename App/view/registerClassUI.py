@@ -11,7 +11,7 @@ class RegisterClassUI(QDialog):
         super().__init__(parent)
         loadUi("App/view/ui/registerClass.ui", self)
         self.clearText()
-        self.show()
+        # self.exec_()
 
     def clearText(self):
         self.turma.clear()
