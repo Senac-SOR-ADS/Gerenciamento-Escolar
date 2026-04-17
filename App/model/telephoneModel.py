@@ -13,7 +13,7 @@ class Telephone:
 
     @classmethod
     def _getObjectList(cls, lista):
-        return [cls(*user) for user in lista]
+        return [cls(*user.values()) for user in lista]
 
     @classmethod
     def create(cls, telephone, responsavel_id):
