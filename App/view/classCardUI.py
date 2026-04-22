@@ -12,7 +12,7 @@ class ClassCardUI(QDialog):
         super().__init__(**kwargs)
         loadUi("App/view/ui/classCard.ui", self)
         self.turm = turmas
-        self.turmas.setText(self.turm.turmas)
+        self.turma.setText(self.turm.turmas)
         self.turma.clicked.connect(self.mostrar_id)
 
     def mostrar_id(self):
