@@ -120,7 +120,7 @@ class Student:
 
     @classmethod
     def _getObjectList(cls, lista):
-        return [cls(*user)for user in lista]
+        return [cls(*user.values())for user in lista]
 
     @classmethod
     def findAll(cls):
@@ -183,3 +183,4 @@ if __name__ == "__main__":
     # s = Student.findByRoomID(2)
     # print(s)
     pass
+

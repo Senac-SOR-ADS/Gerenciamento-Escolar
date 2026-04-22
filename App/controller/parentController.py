@@ -51,15 +51,32 @@ class ParentController:
         except Exception as e:
             print(f'Erro ao tentar a atualização de usuario {e}')
             raise RuntimeError
-        
+    
+    @classmethod
+    def findParentForStudent(cls, studentID):
+        try:
+            studentID = ParentController.validateID(studentID)
+            lista = Parent.findParentForStudent(studentID)
+            return lista
+        except Exception as e:
+            raise e
+
+    
+    @classmethod
+    def validateID(cls, value):
+        if not isinstance(value, int): raise TypeError(f"ID incorreto")
+        if value <= 0: raise ValueError("Id invalido")
+        return value
     
 
 if __name__ == "__main__":
-    testParent = {
-        "id": 52,
-        "nome": "Gustavo Tubarão",
-        "cpf": "50532394382",
-        "address": {"responsible_id": 52, "city": "Cajuru", "neighborhood": "Palmeiras", "street": "João Melão", "complement": "Casa", "cep": "17704293"},
-        "telephone": {"id": 52, "telephone": "20981392892"}
-    }
-    ParentController.update(testParent)
+    # testParent = {
+    #     "name" : "cavalo",
+    #     "cpf" : "1234567233",
+    #     "address" : {"city" : "Sorocaba" , "neighborhood" : "Paineras" , "street" : "Vitor Gomes", "complement" : "Scrum-Master", "cep" : "1909192"}
+    # }
+    # ParentController.create(testParent)
+
+    a= ParentController.findParentForStudent(10)
+
+    print(a)
