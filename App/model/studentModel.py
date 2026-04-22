@@ -179,25 +179,37 @@ class Student:
             raise RuntimeError
         
 
-        @classmethod
-    def searchStudentByBy(cls, By):
+    @classmethod
+    def searchStudent(cls, search):
         try:
             DB = Database()
-        # O SQL usa o CONCAT para grudar as porcentagens antes e depois do %s
-        sql = """
-            SELECT `nome`, `nome_social`, `data_nasc`, `RA` 
-            FROM alunos 
-            WHERE RA = %s 
-            OR nome LIKE CONCAT('%', %s, '%') 
-            OR nome_social LIKE CONCAT('%', %s, '%')
-        """
-        termo_busca = "Ana"
-        # Na hora de executar, basta passar o mesmo termo três vezes
-        cursor.execute(sql, (termo_busca, termo_busca, termo_busca))
+            sql = """
+                SELECT 
+                    nome, 
+                    nome_social, 
+                    data_nasc, 
+                    RA 
+                FROM 
+                    alunos 
+                WHERE 
+                    RA = %s 
+                    OR nome LIKE CONCAT('%', %s, '%') 
+                    OR nome_social LIKE CONCAT('%', %s, '%')
+            """
+            params = (search, search, search)
+            result = DB.fetchAll(sql, params)
+            return cls._getObjectList(result)
+        except Exception as e:
+            print(f'Erro ao buscar alunos {e}')
+            raise RuntimeError
+
         
 if __name__ == "__main__":
     # Student.Update(2)
     # s = Student.findByRoomID(2)
     # print(s)
+    # a = Student.searchStudent("Lucas Crispim")
+    # print(a)
     pass
+    
 

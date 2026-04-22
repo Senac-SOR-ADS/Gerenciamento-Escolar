@@ -131,19 +131,33 @@ class StudentController:
             print(f"Erro ao inserir aluno: {e}")
             return []
         
+    @classmethod
+    def searchStudent(cls, search):
+        try:
+            if not search:
+                return ("Insira uma informação valida!")
+            lista = Student.searchStudent(search)
+            return lista
+        except Exception as e:
+            print(f"Erro ao buscar Aluno: ")
+            raise e
+
+        
 if __name__ == "__main__":
-    aluno = StudentController.getById(5)
-    print(aluno.nome)
-    print('-'*50)
+    # aluno = StudentController.getById(5)
+    # print(aluno.nome)
+    # print('-'*50)
 
-    alunos = StudentController.getAll()
-    print(alunos[4].nome)
+    # alunos = StudentController.getAll()
+    # print(alunos[4].nome)
 
-    print('-'*50)
-    alunos_sala = StudentController.getByRoomID(5)
-    print(alunos_sala[0].nome)
+    # print('-'*50)
+    # alunos_sala = StudentController.getByRoomID(5)
+    # print(alunos_sala[0].nome)
 
-    print('-'*50)
-    alunos_ativos = StudentController.getActive()
-    print(alunos_ativos[5].nome)
-    
+    # print('-'*50)
+    # alunos_ativos = StudentController.getActive()
+    # print(alunos_ativos[5].nome)
+
+    u = StudentController.searchStudent("ana")
+    print(u)
