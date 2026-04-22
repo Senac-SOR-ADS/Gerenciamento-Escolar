@@ -22,6 +22,10 @@ class StudentInfoUI(QDialog):
         self.ra.setText(student.RA)
         self.rm.setText(student.RM)
         self.obs.setText(student.obs)
+        
+        self.cpf_3.setReadOnly(True)
+        self.ra.setReadOnly(True)
+        self.rm.setReadOnly(True)
 
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
