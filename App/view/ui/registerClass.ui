@@ -17,6 +17,9 @@
    <item>
     <widget class="QLineEdit" name="turma">
      <property name="text">
+      <string/>
+     </property>
+     <property name="placeholderText">
       <string>Turma</string>
      </property>
     </widget>
