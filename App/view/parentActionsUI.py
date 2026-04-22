@@ -1,14 +1,14 @@
 from PyQt5.QtWidgets import QMainWindow, QVBoxLayout, QTableWidget, QTableWidgetItem, QPushButton , QApplication
 from PyQt5.QtCore import pyqtSlot, QTimer
 from PyQt5.uic import loadUi
-from App.model.parentModel import Parent
+from App.controller.parentController import ParentController
  
 class ParentActionsUI(QMainWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         loadUi("App/view/ui/parentActions.ui", self)
  
-        dados = Parent.getAll()
+        dados = ParentController.findParentForStudent(7);
         self.setValuesOnTable(dados)
    
     def setValuesOnTable(self, values):

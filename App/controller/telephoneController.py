@@ -74,7 +74,10 @@ class TelephoneController:
 
 if __name__ == "__main__":
 
-    TelephoneController.delete(54)
+    telefone = TelephoneController.findTelephoneByParentId(1)
+    print(telefone[0].responsavel_id)
+    
+
 
 
 
