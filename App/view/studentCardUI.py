@@ -4,6 +4,7 @@ from PyQt5.uic import loadUi
 
 from App.view.newReportUI import NewReportUI
 from App.view.parentInfoUI import ParentInfoUI
+from App.view.studentInfoUI import StudentInfoUI
 
 class StudentCardUI(QWidget):
     def __init__(self, student, **kwargs):
@@ -22,11 +23,13 @@ class StudentCardUI(QWidget):
     def openScreen(self):
         sender = self.sender()
         if sender == self.studentName:
-            self.studentCard = StudentCardUI()
-            self.studentCard.show()
+            self.studentInfo = StudentInfoUI()
+            self.studentInfo.show()
+
         elif sender == self.newReport:
-            self.freshReport = NewReportUI(studentID = self.student.id)
+            self.freshReport = NewReportUI(self.student.id)
             self.freshReport.show()
+
         elif sender == self.parentInfo:
             self.parentData = ParentInfoUI()
             self.parentData.show()
