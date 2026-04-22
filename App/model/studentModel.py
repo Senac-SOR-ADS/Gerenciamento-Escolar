@@ -184,13 +184,7 @@ class Student:
         try:
             DB = Database()
             sql = """
-                SELECT 
-                    nome, 
-                    nome_social, 
-                    data_nasc, 
-                    RA 
-                FROM 
-                    alunos 
+                SELECT * FROM alunos 
                 WHERE 
                     RA = %s 
                     OR nome LIKE CONCAT('%', %s, '%') 
