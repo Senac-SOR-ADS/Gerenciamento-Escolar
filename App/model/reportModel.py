@@ -1,3 +1,4 @@
+from __future__ import annotations
 from dataclasses import dataclass
 from App.config.database import Database
 from datetime import datetime
