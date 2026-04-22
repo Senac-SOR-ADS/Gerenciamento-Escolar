@@ -58,16 +58,24 @@ class HomeUI(QMainWindow):
             self.addCardInStackTurmas(card)
     
     def consultarAlunos(self, idTurma):
-        self.clearStackCards(self.scrollAreaWidgetContentAlunos)
         alunos = StudentController.getByRoomID(idTurma)
+        
+        self.populaStackAlunos(alunos)        
 
+
+    
+    def populaStackAlunos(self, alunos):
+        self.clearStackCards(self.scrollAreaWidgetContentAlunos)
+        
         try:
-            for i in alunos:
-                card = StudentCardUI(i)
+            for aluno in alunos:
+                card = StudentCardUI(aluno)
                 self.addCardInStackStudents(card)
         except Exception as e:
             self.scrollAreaWidgetContentAlunos.layout().addWidget(QLabel("Nenhum aluno encontrado nessa turma."))
-                    
+        
+        return alunos
+        
     def addCardInStackTurmas(self, interface):
         self.scrollAreaWidgetContents_2.layout().addWidget(interface)
     
