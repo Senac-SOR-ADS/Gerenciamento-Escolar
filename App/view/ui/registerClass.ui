@@ -6,15 +6,90 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>252</width>
-    <height>222</height>
+    <width>646</width>
+    <height>454</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Registrar Classe</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>imagens/68045.png</normaloff>imagens/68045.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QLabel{
+ font-family: &quot;Segoe UI&quot;, &quot;Arial&quot;, sans-serif;
+    font-size: 16px;
+    font-weight: 500;   
+    color: #2c3e50;
+}
+
+QLineEdit, QDateEdit {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 6px;
+    background: white;
+}
+
+QLineEdit:focus, QDateEdit:focus {
+    border: 2px solid #4CAF50;
+}
+
+QPushButton {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    padding: 6px 12px;
+}
+
+QPushButton:hover {
+    background-color: #45a049;
+}
+
+QPushButton:pressed {
+    background-color: #3d8b40;
+}
+</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="2" column="0">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="8" column="0">
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="0" alignment="Qt::AlignHCenter">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:400;&quot;&gt;Registrar Classe&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QDateEdit" name="data"/>
+   </item>
+   <item row="3" column="0">
     <widget class="QLineEdit" name="turma">
      <property name="text">
       <string/>
@@ -24,15 +99,63 @@
      </property>
     </widget>
    </item>
-   <item>
-    <widget class="QDateEdit" name="data"/>
-   </item>
-   <item>
+   <item row="7" column="0" alignment="Qt::AlignHCenter">
     <widget class="QPushButton" name="btn_confirmar">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>45</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>16777215</height>
+      </size>
+     </property>
      <property name="text">
       <string>Confirmar</string>
      </property>
     </widget>
+   </item>
+   <item row="4" column="0">
+    <spacer name="verticalSpacer_4">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="0">
+    <spacer name="verticalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="6" column="0">
+    <spacer name="verticalSpacer_5">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>

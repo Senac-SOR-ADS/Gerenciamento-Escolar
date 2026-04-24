@@ -1,7 +1,6 @@
 from PyQt5.QtWidgets import QWidget
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.uic import loadUi
-
 from App.view.newReportUI import NewReportUI
 from App.view.parentInfoUI import ParentInfoUI
 from App.view.studentInfoUI import StudentInfoUI

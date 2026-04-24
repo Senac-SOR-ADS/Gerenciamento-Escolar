@@ -24,7 +24,14 @@
     <normaloff>imagens/68045.png</normaloff>imagens/68045.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QLineEdit, QDateTimeEdit, QComboBox, QTextEdit {
+   <string notr="true">QLabel{
+ font-family: &quot;Segoe UI&quot;, &quot;Arial&quot;, sans-serif;
+    font-size: 16px;
+    font-weight: 500;   
+    color: #2c3e50;
+}
+
+QLineEdit, QDateTimeEdit, QComboBox, QTextEdit {
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 6px;
@@ -40,7 +47,6 @@ QPushButton {
     border-radius: 8px;
 	font-size: 13px;
 	font: bold
-    
 }
 
 QPushButton:hover {
@@ -59,6 +65,19 @@ QPushButton:pressed {
      <property name="bottomMargin">
       <number>0</number>
      </property>
+     <item alignment="Qt::AlignHCenter">
+      <widget class="QLabel" name="label">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>80</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:400;&quot;&gt;Nova Ocorrência&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
      <item>
       <widget class="QDateTimeEdit" name="dataOcorrencia">
        <property name="maximumSize">
@@ -99,7 +118,7 @@ QPushButton:pressed {
        <property name="maximumSize">
         <size>
          <width>16777215</width>
-         <height>40</height>
+         <height>42</height>
         </size>
        </property>
        <property name="styleSheet">

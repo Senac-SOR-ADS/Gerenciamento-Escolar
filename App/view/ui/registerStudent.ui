@@ -6,17 +6,103 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>550</width>
-    <height>270</height>
+    <width>578</width>
+    <height>503</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Registrar Estudante</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>imagens/68045.png</normaloff>imagens/68045.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QLabel{
+ font-family: &quot;Segoe UI&quot;, &quot;Arial&quot;, sans-serif;
+    font-size: 16px;
+    font-weight: 500;   
+    color: #2c3e50;
+}
+QLineEdit, QTextEdit {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 6px;
+    background: white;
+}
+QDateEdit {
+	border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 6px;
+    background: white;
+}
+
+QLineEdit:focus, QDateTimeEdit:focus {
+    border: 2px solid #4CAF50;
+}
+QPushButton {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    padding: 6px 12px;
+}
+
+QPushButton:hover {
+    background-color: #45a049;
+}
+
+QPushButton:pressed {
+    background-color: #3d8b40;
+}
+</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
     <widget class="QWidget" name="widget_2" native="true">
      <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="spacing">
+       <number>12</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <property name="spacing">
+         <number>6</number>
+        </property>
+        <item alignment="Qt::AlignHCenter">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:400;&quot;&gt;Registrar Estudante&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
       <item>
        <widget class="QLineEdit" name="nome">
         <property name="text">
@@ -95,22 +181,19 @@
         </property>
        </widget>
       </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="QWidget" name="widget_4" native="true">
-     <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
-       <widget class="QLineEdit" name="observacao">
+       <widget class="QTextEdit" name="textEdit">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>60</height>
+         </size>
+        </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>80</height>
+          <height>16777215</height>
          </size>
-        </property>
-        <property name="text">
-         <string/>
         </property>
         <property name="placeholderText">
          <string>Observações...</string>
