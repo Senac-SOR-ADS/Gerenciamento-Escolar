@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>901</width>
-    <height>466</height>
+    <width>900</width>
+    <height>504</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -70,7 +70,7 @@ QLineEdit:focus {
     background: #fff;
 }
 QTextEdit#obs {
-	border: 1px solid #ccc;
+	border: 1.8px solid #C5CDF0;
     border-radius: 8px;
     padding: 6px;
     background: white;
@@ -224,7 +224,7 @@ QTextEdit#obs {
 }
 
 QLineEdit:focus, QDateTimeEdit:focus {
-    border: 2px solid #5B6EE9;
+    border: 1.8px solid #C5CDF0
 }
 
 

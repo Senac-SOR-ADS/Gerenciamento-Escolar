@@ -46,7 +46,7 @@ QLineEdit, QDateTimeEdit {
 }
 
 QLineEdit:focus, QDateTimeEdit:focus {
-    border: 2px solid #5B6EE9;
+    border: 1.8px solid #C5CDF0
 }
 
 QPushButton {
