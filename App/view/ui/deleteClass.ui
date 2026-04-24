@@ -25,18 +25,20 @@
     color: #2c3e50;     
 }
 QPushButton {
-    background-color: #4CAF50;
+	font: bold;
+    background-color: #5B6EE9;
     color: white;
     border-radius: 8px;
     padding: 6px 12px;
+    border: none;
 }
 
 QPushButton:hover {
-    background-color: #45a049;
+    background-color: #4a5ed8; 
 }
 
 QPushButton:pressed {
-    background-color: #3d8b40;
+    background-color: #3f50c7; 
 }
 QPushButton#cancelarExTurma {
     background-color: #e74c3c;  

@@ -38,21 +38,28 @@ QDateEdit {
 }
 
 QLineEdit:focus, QDateTimeEdit:focus {
-    border: 2px solid #4CAF50;
+    border: 2px solid #5B6EE9;
 }
 QPushButton {
+	font: bold;
     background-color: #4CAF50;
     color: white;
     border-radius: 8px;
     padding: 6px 12px;
 }
 
+QPushButton {
+    background-color: #5B6EE9;
+    color: white;
+    border-radius: 8px;
+    padding: 6px 12px;
+}
 QPushButton:hover {
-    background-color: #45a049;
+    background-color: #4a5ed8; 
 }
 
 QPushButton:pressed {
-    background-color: #3d8b40;
+    background-color: #3f50c7;  
 }
 </string>
   </property>
