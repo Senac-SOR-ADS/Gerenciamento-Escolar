@@ -165,7 +165,7 @@ class Student:
         try:
             DB = Database()
             sql = """
-            SELECT a.id, a.nome, a.nome_social 
+            SELECT a.id, a.nome, a.nome_social, a.CPF, a.data_nasc, a.observacao, a.RA, a.RM, a.status, a.data_registro
             FROM alunos AS a
             JOIN sala_alunos AS sa ON a.id = sa.id_aluno 
             WHERE sa.id_sala = %s
@@ -202,5 +202,8 @@ if __name__ == "__main__":
     # Student.Update(2)
     # s = Student.findByRoomID(2)
     # print(s)
+    # a = Student.searchStudent("Lucas Crispim")
+    # print(a)
     pass
+    
 
