@@ -25,6 +25,7 @@ class LoginUI(QDialog):
         resp = UserController.login(nome , senha)
         if resp:
             self.clearText()
+            self.nome.clear()
             self.accept()
         else:
             self.clearText()

@@ -6,12 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>779</width>
-    <height>620</height>
+    <width>813</width>
+    <height>791</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>Nova Ocorrência</string>
+   <string>Nova Ocorrencia</string>
   </property>
   <property name="windowIcon">
    <iconset>
@@ -49,18 +55,13 @@ QPushButton:hover {
 
 QPushButton:pressed {
     background-color: #3d8b40;
-}
-
-	
+}	
 	
 </string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0">
-     <property name="spacing">
-      <number>50</number>
-     </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0">
      <property name="bottomMargin">
       <number>0</number>
      </property>
@@ -108,41 +109,54 @@ QPushButton:pressed {
      </item>
      <item>
       <widget class="QComboBox" name="responsavelCombo">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="maximumSize">
         <size>
          <width>16777215</width>
          <height>42</height>
         </size>
        </property>
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <property name="styleSheet">
+        <string notr="true">.QComboBox {
+		margin-bottom: 0px;
+}</string>
        </property>
-       <property name="editable">
-        <bool>true</bool>
-       </property>
-       <property name="currentText">
-        <string>Responsável</string>
-       </property>
+       <item>
+        <property name="text">
+         <string>Responsável</string>
+        </property>
+       </item>
       </widget>
      </item>
      <item>
       <widget class="QTextEdit" name="descricaoOcorrencia">
-       <property name="maximumSize">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
         <size>
-         <width>16777215</width>
-         <height>90</height>
+         <width>0</width>
+         <height>100</height>
         </size>
        </property>
        <property name="placeholderText">
-        <string>Descrição...</string>
+        <string>Descrição</string>
        </property>
       </widget>
      </item>
-     <item alignment="Qt::AlignHCenter">
+     <item>
       <widget class="QPushButton" name="btnSaveReport">
        <property name="minimumSize">
         <size>
-         <width>90</width>
+         <width>0</width>
          <height>0</height>
         </size>
        </property>
@@ -151,6 +165,11 @@ QPushButton:pressed {
          <width>90</width>
          <height>50</height>
         </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">.QPushButton {
+		
+}</string>
        </property>
        <property name="text">
         <string>Salvar</string>
