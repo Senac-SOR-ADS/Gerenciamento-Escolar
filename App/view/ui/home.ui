@@ -25,6 +25,80 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QLineEdit {
+    background-color: #FFFFFF;
+    color: #1E1E3A;
+    border: 1.8px solid #D6DCF5;
+    border-radius: 15px;
+    padding: 11px 16px;
+    font-size: 14px;
+    font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
+    selection-background-color: #A8B8FF;
+    selection-color: #1E1E3A;
+}
+
+QLineEdit:hover {
+    border: 1.5px solid #A8B5E8;
+    background-color: #FAFBFF;
+}
+
+QPushButton {
+    background-color: #5B6EE9;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 12px;
+    font-size: 13px;
+    font-weight: 750;
+    font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
+
+}
+
+QPushButton:hover {
+    background-color: #4A5DD6;
+}
+
+QToolButton {
+	background-color: #5B6EE9;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 10px;
+    font-size: 13px;
+    font-weight: 750;
+    font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
+}
+
+QToolButton:hover {
+    background-color: #4A5DD6;
+}
+
+QSrollArea {
+	border: 10px;
+}
+
+QLabel {
+	font-size: 14px;
+    font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
+	font-weight: 600;
+    letter-spacing: 1px;
+    padding-left: 4px;
+	color: #5B6EE9;
+}
+
+/*teste*/
+QScrollBar::handle:vertical {
+    background: white;
+    min-height: 20px;
+}
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+    border: 2px solid #4A5DD6;
+    width: 3px;
+    height: 3px;
+    background: white;
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
@@ -56,7 +130,7 @@
             <x>0</x>
             <y>0</y>
             <width>189</width>
-            <height>466</height>
+            <height>460</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_6"/>
@@ -85,7 +159,7 @@
             <x>0</x>
             <y>0</y>
             <width>576</width>
-            <height>466</height>
+            <height>460</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_7"/>
@@ -99,8 +173,8 @@
    <widget class="QWidget" name="layoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>30</y>
+      <x>250</x>
+      <y>20</y>
       <width>491</width>
       <height>51</height>
      </rect>
@@ -114,12 +188,35 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="barPesquisa"/>
+      <widget class="QLineEdit" name="barPesquisa">
+       <property name="placeholderText">
+        <string>Pesquisar...</string>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QPushButton" name="btnPesquisa">
-       <property name="text">
-        <string>Pesquisar</string>
+       <property name="minimumSize">
+        <size>
+         <width>44</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>44</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>imagens/lupa.png</normaloff>imagens/lupa.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
        </property>
       </widget>
      </item>
