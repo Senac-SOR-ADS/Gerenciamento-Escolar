@@ -178,6 +178,26 @@ class Student:
             print(f'Erro ao buscar alunos')
             raise RuntimeError
         
+
+    @classmethod
+    def searchStudent(cls, search):
+        try:
+            DB = Database()
+            sql = """
+                SELECT * FROM alunos 
+                WHERE 
+                    RA = %s 
+                    OR nome LIKE CONCAT('%', %s, '%') 
+                    OR nome_social LIKE CONCAT('%', %s, '%')
+            """
+            params = (search, search, search)
+            result = DB.fetchAll(sql, params)
+            return cls._getObjectList(result)
+        except Exception as e:
+            print(f'Erro ao buscar alunos {e}')
+            raise RuntimeError
+
+        
 if __name__ == "__main__":
      #Student.Update(2)
      #s = Student.findByRoomID(2)
