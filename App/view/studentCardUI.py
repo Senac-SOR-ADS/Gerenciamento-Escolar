@@ -22,7 +22,7 @@ class StudentCardUI(QWidget):
     def openScreen(self):
         sender = self.sender()
         if sender == self.studentName:
-            self.studentInfo = StudentInfoUI()
+            self.studentInfo = StudentInfoUI(self.student)
             self.studentInfo.show()
 
         elif sender == self.newReport:
