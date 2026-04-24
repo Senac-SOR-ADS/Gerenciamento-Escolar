@@ -40,6 +40,6 @@ if __name__ == "__main__":
     from App.controller.studentController import Student
     student = Student.findById(13)
     app = QApplication([])
-    login = StudentCardUI(student)
+    login = StudentCardUI(student.id)
     login.show()
     app.exec_()
