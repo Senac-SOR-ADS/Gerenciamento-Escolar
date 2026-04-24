@@ -18,6 +18,10 @@ class Address:
         self.complement = complement
         self.cep = cep 
         self.responsible_id = responsible_id
+    
+    @classmethod
+    def _getObjectList(cls, lista):
+        return [cls(*user.values()) for user in lista]
 
     @classmethod
     def createAddress(cls, address):
@@ -92,10 +96,8 @@ class Address:
                 """
             params = (responsible_id,)
             result = DB.fetchAll(sql, params)
+            return cls._getObjectList(result)
             
-            print("Seleção feita!")
-            print(result)
-
         except Exception as e:
             print("Não foi possível selecionar:", e)
             print("Causa:", e.__cause__)  # <-- adiciona isso

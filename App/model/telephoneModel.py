@@ -59,10 +59,9 @@ class Telephone:
     def parentTelephone(cls, responsavel_id):
         try:
             DB = Database()
-            sql = "SELECT telefone FROM telefones WHERE responsavel_id = %s"
+            sql = "SELECT * FROM telefones WHERE responsavel_id = %s"
             values = (responsavel_id, )
             telephone = DB.fetchAll(sql, values)
-            print(telephone)
             return cls._getObjectList(telephone)
         except Exception as e:
             print(f'Erro ao buscar os telefones do responsável!{e}')
