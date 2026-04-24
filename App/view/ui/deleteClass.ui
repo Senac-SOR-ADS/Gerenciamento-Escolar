@@ -6,21 +6,61 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>280</width>
-    <height>155</height>
+    <width>536</width>
+    <height>330</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Deletar Classe</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2">
-   <item>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>imagens/68045.png</normaloff>imagens/68045.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QLabel {
+    font-family: &quot;Segoe UI&quot;, &quot;Arial&quot;, sans-serif;
+    font-size: 16px;
+    font-weight: 500;   
+    color: #2c3e50;     
+}
+QPushButton {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    padding: 6px 12px;
+}
+
+QPushButton:hover {
+    background-color: #45a049;
+}
+
+QPushButton:pressed {
+    background-color: #3d8b40;
+}
+QPushButton#cancelarExTurma {
+    background-color: #e74c3c;  
+    color: white;
+    border-radius: 8px;
+    padding: 6px 12px;
+}
+
+QPushButton#cancelarExTurma:hover {
+    background-color: #d62c1a;  
+}
+
+QPushButton#cancelarExTurma:pressed {
+    background-color: #b82414;  
+}</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
     <widget class="QWidget" name="widget" native="true">
      <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
+      <item alignment="Qt::AlignHCenter">
        <widget class="QLabel" name="excluirTurmaLabel">
         <property name="text">
-         <string>TEM CERTEZA QUE QUER EXCLUIR A TURMA:</string>
+         <string>TEM CERTEZA QUE QUER EXCLUIR A TURMA?</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -29,9 +69,30 @@
       </item>
       <item>
        <widget class="QWidget" name="widget_2" native="true">
-        <layout class="QHBoxLayout" name="horizontalLayout">
+        <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>9</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
          <item>
           <widget class="QPushButton" name="confirmarExTurma">
+           <property name="maximumSize">
+            <size>
+             <width>90</width>
+             <height>50</height>
+            </size>
+           </property>
            <property name="text">
             <string>CONFIRMAR</string>
            </property>
@@ -39,6 +100,12 @@
          </item>
          <item>
           <widget class="QPushButton" name="cancelarExTurma">
+           <property name="maximumSize">
+            <size>
+             <width>90</width>
+             <height>50</height>
+            </size>
+           </property>
            <property name="text">
             <string>CANCELAR</string>
            </property>

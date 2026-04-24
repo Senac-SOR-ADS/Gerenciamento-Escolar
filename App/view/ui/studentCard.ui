@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>620</width>
-    <height>80</height>
+    <width>500</width>
+    <height>90</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -23,15 +23,63 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Card de Estudante</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>imagens/68045.png</normaloff>imagens/68045.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">
-    QWidget#Form {
-        background-color: #ffffff;
-        border: 1px solid #e0e0e0;
-        border-radius: 12px;
-    }
+QFrame {
+    background-color: #f0f4f8;
+    border-radius: 10px;
+    border: 1px solid #c1c7d0;
+    padding: 15px;
+}
+
+QPushButton {
+    background-color: #2980b9;
+    color: white;
+    border-radius: 8px;
+    padding: 10px;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    min-height: 42px;
+}
+
+QPushButton:hover {
+    background-color: #1f6391;
+}
+
+QPushButton:pressed {
+    background-color: #154360;
+}
+
+QPushButton#studentName {
+    background-color: #00796B;
+}
+
+QPushButton#studentName:hover {
+    background-color: #00897B;
+}
+
+QPushButton#newReport {
+    background-color: #E67E22;
+}
+
+QPushButton#newReport:hover {
+    background-color: #D35400;
+}
+
+QPushButton#parentInfo {
+    background-color: #1976D2;
+}
+
+QPushButton#parentInfo:hover {
+    background-color: #1565C0;
+}
    </string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout" stretch="3,1,1">
@@ -52,41 +100,6 @@
    </property>
    <item>
     <widget class="QPushButton" name="studentName">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>44</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>11</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="cursor">
-      <cursorShape>PointingHandCursor</cursorShape>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">
-       QPushButton {
-           background-color: transparent;
-           color: #2c3e50;
-           border: none;
-           border-radius: 8px;
-           padding: 8px 16px;
-           text-align: left;
-       }
-       QPushButton:hover {
-           background-color: #f0f4f8;
-           color: #1a73e8;
-       }
-       QPushButton:pressed {
-           background-color: #e1e8f0;
-       }
-      </string>
-     </property>
      <property name="text">
       <string>Nome do aluno</string>
      </property>
@@ -104,39 +117,6 @@
    </item>
    <item>
     <widget class="QPushButton" name="newReport">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>44</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>10</pointsize>
-       <weight>50</weight>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="cursor">
-      <cursorShape>PointingHandCursor</cursorShape>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">
-       QPushButton {
-           background-color: #1a73e8;
-           color: #ffffff;
-           border: none;
-           border-radius: 8px;
-           padding: 8px 16px;
-       }
-       QPushButton:hover {
-           background-color: #1557b0;
-       }
-       QPushButton:pressed {
-           background-color: #0d47a1;
-       }
-      </string>
-     </property>
      <property name="text">
       <string>Nova Ocorrência</string>
      </property>
@@ -154,42 +134,6 @@
    </item>
    <item>
     <widget class="QPushButton" name="parentInfo">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>44</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>10</pointsize>
-       <weight>50</weight>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="cursor">
-      <cursorShape>PointingHandCursor</cursorShape>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">
-       QPushButton {
-           background-color: transparent;
-           color: #1a73e8;
-           border: 2px solid #1a73e8;
-           border-radius: 8px;
-           padding: 8px 16px;
-       }
-       QPushButton:hover {
-           background-color: #e8f0fe;
-           border-color: #1557b0;
-           color: #1557b0;
-       }
-       QPushButton:pressed {
-           background-color: #d2e3fc;
-           border-color: #0d47a1;
-       }
-      </string>
-     </property>
      <property name="text">
       <string>Responsável</string>
      </property>
