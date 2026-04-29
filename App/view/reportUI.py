@@ -3,9 +3,10 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.uic import loadUi
 
 class ReportUI(QDialog):
-    def __init__(self, **kwargs):
+    def __init__(self, studentId, **kwargs):
         super().__init__(**kwargs)
         loadUi("App/view/ui/report.ui", self)
+        self.studentId = studentId
         self.show()
 
 if __name__ == "__main__":

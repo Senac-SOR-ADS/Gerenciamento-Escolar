@@ -2,6 +2,8 @@ from PyQt5.QtWidgets import QDialog
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.uic import loadUi
 from App.controller.studentController import StudentController
+from App.view.reportUI import ReportUI
+
 class StudentInfoUI(QDialog):
     def __init__(self, student, **kwargs):
         super().__init__(**kwargs)
@@ -9,6 +11,8 @@ class StudentInfoUI(QDialog):
         self.student = student
         self.getInfo()
         self.show()
+    
+        self.btnOcorrencias.clicked.connect(self.openOcorrencias)
 
 
     def getInfo(self):
@@ -23,6 +27,11 @@ class StudentInfoUI(QDialog):
         self.cpf_3.setReadOnly(True)
         self.ra.setReadOnly(True)
         self.rm.setReadOnly(True)
+
+    def openOcorrencias(self):
+            self.report = ReportUI(self.student.id)
+            self.report.show()
+    
 
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
