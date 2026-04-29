@@ -53,6 +53,7 @@ class AddressController:
                 neighborhood=form_data.get("neighborhood"),
                 street=form_data.get("street"),
                 complement=form_data.get("complement"),
+                number=form_data.get("number"),
                 responsible_id=responsible_id
             )
 
@@ -65,7 +66,8 @@ class AddressController:
                 "city": address.city,
                 "neighborhood": address.neighborhood,
                 "street": address.street,
-                "complement": address.complement
+                "complement": address.complement,
+                "number": address.number
             }
 
         except Exception as e:
@@ -81,6 +83,7 @@ class AddressController:
                 neighborhood=form_data.get("neighborhood"),
                 street=form_data.get("street"),
                 complement=form_data.get("complement"),
+                number=form_data.get("number"),
                 responsible_id=form_data.get("responsible_id")
             )
 
@@ -93,7 +96,8 @@ class AddressController:
                 "city": address.city,
                 "neighborhood": address.neighborhood,
                 "street": address.street,
-                "complement": address.complement
+                "complement": address.complement,
+                "number": address.number
             }
 
         except Exception as e:
@@ -119,10 +123,17 @@ class AddressController:
 
 if __name__ == "__main__":
 
-
-    #AddressController.findAddressByParentId(1)
+    form_data = {
+        "id": 1,
+        "cep": "18071-360",
+        "city": "Yakutski",
+        "neighborhood": "bairro santa casa",
+        "street": "rua dos ventos",
+        "complement": "",
+        "number": "123",
+        "responsible_id": 1,
+    }
        
-    cep = AddressController.requestCep("18071-360")
-    dados = AddressController.create(10, cep)
+    dados = AddressController.update(form_data)
     print(dados)
 

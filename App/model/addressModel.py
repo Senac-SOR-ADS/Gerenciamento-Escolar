@@ -9,8 +9,9 @@ class Address:
     complement = ""
     cep = None
     responsible_id = None
+    number = None
 
-    def __init__(self, id=None, city="", neighborhood="", street="", complement="", cep=None, responsible_id=None ):
+    def __init__(self, id=None, city="", neighborhood="", street="", complement="", cep=None, responsible_id=None, number=None ):
         self.id = id
         self.city = city
         self.neighborhood = neighborhood
@@ -18,6 +19,7 @@ class Address:
         self.complement = complement
         self.cep = cep 
         self.responsible_id = responsible_id
+        self.number = number
 
     @classmethod
     def createAddress(cls, address):
@@ -27,8 +29,8 @@ class Address:
 
             sql = """
                 INSERT INTO enderecos
-                (cidade, bairro, rua, complemento, CEP, responsavel_id)
-                VALUES (%s, %s, %s, %s, %s, %s)
+                (cidade, bairro, rua, complemento, CEP, responsavel_id, numero)
+                VALUES (%s, %s, %s, %s, %s, %s, %s)
             """
 
             params = (
@@ -37,7 +39,8 @@ class Address:
                 address.street,
                 address.complement,
                 address.cep,
-                address.responsible_id
+                address.responsible_id,
+                address.number
             )
 
             endereco_id = DB.insert(sql, params)
@@ -86,7 +89,7 @@ class Address:
 
         try:
             DB = Database()
-            sql = """SELECT id, cidade, bairro, rua, complemento, CEP
+            sql = """SELECT id, cidade, bairro, rua, complemento, CEP, numero
                 FROM enderecos
                 WHERE responsavel_id = %s;
                 """
