@@ -58,17 +58,9 @@ class AddressController:
             )
 
             adressID = address.createAddress(address)
-            address.id = adressID
-    
-            return {
-                "address_id": address.id,
-                "cep": address.cep,
-                "city": address.city,
-                "neighborhood": address.neighborhood,
-                "street": address.street,
-                "complement": address.complement,
-                "number": address.number
-            }
+            
+            return adressID
+
 
         except Exception as e:
             return {"ERRO AO INSERIR DADOS" : e}
@@ -88,17 +80,8 @@ class AddressController:
             )
 
 
-            Address.updateAddress(address)
-
-            return {
-                "address_id": address.id,
-                "cep": address.cep,
-                "city": address.city,
-                "neighborhood": address.neighborhood,
-                "street": address.street,
-                "complement": address.complement,
-                "number": address.number
-            }
+            query = Address.updateAddress(address)
+            return query
 
         except Exception as e:
             print("ERRO:", e)
@@ -112,28 +95,20 @@ class AddressController:
         try: 
 
             if ParentId:
-                Address.readAddress(ParentId)
+                address = Address.readAddress(ParentId)
+                return address
+    
 
             else:
                 print("Nao existe Id")
 
         except Exception as e:
             return {"Erro ao puxar endereço": e}
+        
+     
 
 
 if __name__ == "__main__":
-
-    form_data = {
-        "id": 1,
-        "cep": "18071-360",
-        "city": "Yakutski",
-        "neighborhood": "bairro santa casa",
-        "street": "rua dos ventos",
-        "complement": "",
-        "number": "123",
-        "responsible_id": 1,
-    }
        
-    dados = AddressController.update(form_data)
-    print(dados)
-
+    var = AddressController.findAddressByParentId(4)
+    print(var)
