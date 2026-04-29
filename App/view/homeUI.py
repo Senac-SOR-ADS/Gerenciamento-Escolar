@@ -25,6 +25,7 @@ class HomeUI(QMainWindow):
         self.createMenu()
         self.btnOptions.clicked.connect(self.showMenu)
         self.btnPesquisa.clicked.connect(self.searchStudentByName)
+        self.barPesquisa.textChanged.connect(self.searchStudentByName)
         
         
         self.consultarTurmas()

@@ -18,10 +18,9 @@ class ClassCardUI(QDialog):
 
         self.turm = turmas
         self.turma.setText(self.turm.turmas)
-        self.turma.clicked.connect(self.mostrar_id)
+        self.turma.clicked.connect(self.idAtual)
 
-    def mostrar_id(self):
-        print(self.turm.id)
+    def idAtual(self):
         self.signal_idDaTurma.emit(self.turm.id)
 
     def desmarcar(self, idTurma):
