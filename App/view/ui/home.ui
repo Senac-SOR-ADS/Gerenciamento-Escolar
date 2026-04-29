@@ -74,10 +74,6 @@ QToolButton:hover {
     background-color: #4A5DD6;
 }
 
-QSrollArea {
-	border: 10px;
-}
-
 QLabel {
 	font-size: 14px;
     font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
@@ -87,17 +83,31 @@ QLabel {
 	color: #5B6EE9;
 }
 
-/*teste*/
-QScrollBar::handle:vertical {
+/*background principal barra*/
+QScrollBar:vertical {
     background: white;
-    min-height: 20px;
+    width: 6px;
+    margin: 10px 0 10px 0;
+	border-radius: 2px;
+ }
+
+/*background barra*/
+ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+	 background: none;
 }
-QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
-    border: 2px solid #4A5DD6;
-    width: 3px;
-    height: 3px;
-    background: white;
-}</string>
+
+/*barra de rolagem*/
+ QScrollBar::handle:vertical {
+    background: #A8B5E8;
+    min-height: 6px;
+	border-radius: 2px;
+ }
+
+QScrollArea{
+	border-radius: 5px;
+	border: 1.5px solid #A8B5E8;
+}
+</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="layoutWidget">
@@ -129,8 +139,8 @@ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>189</width>
-            <height>460</height>
+            <width>187</width>
+            <height>458</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_6"/>
@@ -141,7 +151,7 @@ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
      </item>
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,0">
-       <item>
+       <item alignment="Qt::AlignHCenter">
         <widget class="QLabel" name="labelAluno">
          <property name="text">
           <string>Alunos</string>
@@ -157,12 +167,104 @@ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>0</y>
-            <width>576</width>
-            <height>460</height>
+            <y>-22</y>
+            <width>568</width>
+            <height>623</height>
            </rect>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_7"/>
+          <layout class="QVBoxLayout" name="verticalLayout_7">
+           <item>
+            <widget class="QPushButton" name="pushButton_5">
+             <property name="text">
+              <string>PushButton</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_10">
+             <property name="text">
+              <string>PushButton</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_9">
+             <property name="text">
+              <string>PushButton</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_8">
+             <property name="text">
+              <string>PushButton</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_4">
+             <property name="text">
+              <string>PushButton</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_15">
+             <property name="text">
+              <string>PushButton</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_14">
+             <property name="text">
+              <string>PushButton</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_2">
+             <property name="text">
+              <string>PushButton</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_13">
+             <property name="text">
+              <string>PushButton</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_12">
+             <property name="text">
+              <string>PushButton</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_11">
+             <property name="text">
+              <string>PushButton</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_3">
+             <property name="text">
+              <string>PushButton</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton">
+             <property name="text">
+              <string>PushButton</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </widget>
        </item>
@@ -173,9 +275,9 @@ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
    <widget class="QWidget" name="layoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>210</x>
       <y>20</y>
-      <width>491</width>
+      <width>581</width>
       <height>51</height>
      </rect>
     </property>
