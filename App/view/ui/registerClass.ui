@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>646</width>
-    <height>454</height>
+    <width>511</width>
+    <height>376</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,22 +33,24 @@ QLineEdit, QDateEdit {
 }
 
 QLineEdit:focus, QDateEdit:focus {
-    border: 2px solid #4CAF50;
+   border: 1.8px solid #C5CDF0
 }
 
 QPushButton {
-    background-color: #4CAF50;
+	font: bold;
+    background-color: #5B6EE9;
     color: white;
     border-radius: 8px;
     padding: 6px 12px;
+    border: none;
 }
 
 QPushButton:hover {
-    background-color: #45a049;
+    background-color: #4a5ed8; 
 }
 
 QPushButton:pressed {
-    background-color: #3d8b40;
+    background-color: #3f50c7;  
 }
 </string>
   </property>
@@ -87,7 +89,11 @@ QPushButton:pressed {
     </widget>
    </item>
    <item row="5" column="0">
-    <widget class="QDateEdit" name="data"/>
+    <widget class="QDateEdit" name="data">
+     <property name="calendarPopup">
+      <bool>true</bool>
+     </property>
+    </widget>
    </item>
    <item row="3" column="0">
     <widget class="QLineEdit" name="turma">
@@ -104,7 +110,7 @@ QPushButton:pressed {
      <property name="minimumSize">
       <size>
        <width>0</width>
-       <height>45</height>
+       <height>50</height>
       </size>
      </property>
      <property name="maximumSize">

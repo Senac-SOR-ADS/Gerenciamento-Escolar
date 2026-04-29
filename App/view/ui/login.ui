@@ -27,7 +27,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../../../iconsGerenciamentoSalas/login-avatar.png</normaloff>../../../iconsGerenciamentoSalas/login-avatar.png</iconset>
+    <normaloff>imagens/user.png</normaloff>imagens/user.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QDialog {
