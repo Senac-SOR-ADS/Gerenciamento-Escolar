@@ -103,6 +103,14 @@ QScrollBar:vertical {
 	border-radius: 2px;
  }
 
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical{
+	height: 0px;
+}
+ 
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical{
+	background: transparent;
+}
+
 QScrollArea{
 	border-radius: 5px;
 	border: 1.5px solid #A8B5E8;
