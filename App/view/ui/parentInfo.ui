@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>478</width>
-    <height>576</height>
+    <width>527</width>
+    <height>596</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,7 +33,7 @@ QLineEdit {
 }
 
 QLineEdit:focus, QDateTimeEdit:focus {
-    border: 2px solid #4CAF50;
+    border: 2px solid #5B6EE9;
 }
 QCheckBox {
     border-radius: 8px;
@@ -41,20 +41,19 @@ QCheckBox {
     background: transparent;
 }
 QPushButton {
-    background-color: #4CAF50;
+	font: bold;
+    background-color: #5B6EE9;
     color: white;
     border-radius: 8px;
     padding: 6px 12px;
 }
-
 QPushButton:hover {
-    background-color: #45a049;
+    background-color: #4a5ed8; 
 }
 
 QPushButton:pressed {
-    background-color: #3d8b40;
-}
-</string>
+    background-color: #3f50c7;  
+}</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="rightMargin">

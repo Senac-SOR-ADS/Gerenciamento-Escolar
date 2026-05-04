@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>901</width>
-    <height>466</height>
+    <width>900</width>
+    <height>504</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,7 +33,7 @@
     <widget class="QWidget" name="widget_4" native="true">
      <property name="styleSheet">
       <string notr="true">QPushButton {
-    background-color: #4CAF50;
+    background-color: #5B6EE9;
     color: white;
     border-radius: 10px;
     padding: 8px 12px;
@@ -42,11 +42,11 @@
 }
 
 QPushButton:hover {
-    background-color: #45a049;
+    background-color: #4a5ed8; 
 }
 
 QPushButton:pressed {
-    background-color: #3d8b40;
+    background-color: #3f50c7;  
 }
 
 QPushButton:disabled {
@@ -66,11 +66,11 @@ QLineEdit {
 }
 
 QLineEdit:focus {
-    border: 2px solid #4CAF50;
+    border: 2px solid #5B6EE9;
     background: #fff;
 }
 QTextEdit#obs {
-	border: 1px solid #ccc;
+	border: 1.8px solid #C5CDF0;
     border-radius: 8px;
     padding: 6px;
     background: white;
@@ -155,7 +155,7 @@ QTextEdit#obs {
           </property>
           <property name="maximumSize">
            <size>
-            <width>90</width>
+            <width>95</width>
             <height>16777215</height>
            </size>
           </property>
@@ -216,9 +216,7 @@ QTextEdit#obs {
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">
-
-QLineEdit, QDateTimeEdit {
+      <string notr="true">QLineEdit, QDateTimeEdit {
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 6px;
@@ -226,23 +224,10 @@ QLineEdit, QDateTimeEdit {
 }
 
 QLineEdit:focus, QDateTimeEdit:focus {
-    border: 2px solid #4CAF50;
+    border: 1.8px solid #C5CDF0
 }
 
-QPushButton {
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 8px;
-    padding: 6px 12px;
-}
 
-QPushButton:hover {
-    background-color: #45a049;
-}
-
-QPushButton:pressed {
-    background-color: #3d8b40;
-}
 </string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -355,6 +340,13 @@ QPushButton:pressed {
        </widget>
       </item>
      </layout>
+    </widget>
+   </item>
+   <item row="1" column="0" alignment="Qt::AlignHCenter">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:400;&quot;&gt;Informações do Estudante&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
     </widget>
    </item>
    <item row="1" column="0" alignment="Qt::AlignHCenter">
