@@ -23,7 +23,7 @@ class RegisterStudentUI(QDialog):
         rm = self.rm.text()
         observacao = self.observacao.toPlainText()
 
-        return {
+        return {    
             "nome": nome,
             "data_nasc": data_nasc,
             "nome_social": nome_social,
