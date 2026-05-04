@@ -23,17 +23,21 @@ class Report:
             raise RuntimeError
  
     @classmethod
-    def edit(cls, report:Report):
+    def edit(cls, report: Report) -> Report:
         try:
             DB = Database()
-            sql = "UPDATE relatorios SET descricao= %s WHERE id = %s"
+            sql = "UPDATE relatorios SET descricao = %s WHERE id = %s"
             params = (report.description, report.id)
-            update = DB.execute(sql, params)
-            print(update)
-            if not update: raise Exception("Erro ao editar relatorio")
-            return update
+            sucesso = DB.execute(sql, params)
+            
+            if not sucesso:
+                raise Exception(f"Relatório com ID {report.id} não encontrado.")
+            return cls.searchUnique(report.id)
+            
         except Exception as e:
+            print(f"Erro ao editar e retornar: {e}")
             raise e
+
         
     @classmethod
     def searchUnique(cls, id):
@@ -113,4 +117,6 @@ class Report:
         return cls._getObjectList(result)
  
 if __name__ == "__main__":
-    pass
+    relatorio_para_editar = Report(id=7, description="Descrição atualizada com sucesso")
+    Report.edit(relatorio_para_editar)
+    print(relatorio_para_editar)
