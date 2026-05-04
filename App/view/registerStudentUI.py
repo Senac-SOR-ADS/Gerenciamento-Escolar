@@ -21,7 +21,7 @@ class RegisterStudentUI(QDialog):
         cpf = self.cpf.text()
         ra = self.ra.text()
         rm = self.rm.text()
-        observacao = self.observacao.text()
+        observacao = self.observacao.toPlainText()
 
         return {
             "nome": nome,
