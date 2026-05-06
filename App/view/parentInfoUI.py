@@ -27,6 +27,7 @@ class ParentInfoUI(QDialog):
 
         self.nome.setText(parent.name)
         self.cpf.setText(parent.cpf)
+        self.respLegal.setChecked(parent.legal_guardian)
 
         listTelephone = TelephoneController.findTelephoneByParentId(parent.id)
         self.telefone.setText(listTelephone[0].telephone)
@@ -37,6 +38,8 @@ class ParentInfoUI(QDialog):
         self.rua.setText(listAddress[0].street)
         self.bairro.setText(listAddress[0].neighborhood)
         self.cep.setText(listAddress[0].cep)
+        self.numero.setText(listAddress[0].number)
+        
     
     
     def populateComboBox(self):
@@ -49,7 +52,7 @@ class ParentInfoUI(QDialog):
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
     from App.controller.studentController import StudentController
-    aluno = StudentController.getById(30)
+    aluno = StudentController.getById(15)
     app = QApplication([])
     login = ParentInfoUI(aluno.id)
     app.exec_()

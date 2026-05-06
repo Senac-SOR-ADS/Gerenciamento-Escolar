@@ -346,7 +346,7 @@ background-color: #ff0000;
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox">
+         <widget class="QCheckBox" name="respLegal">
           <property name="minimumSize">
            <size>
             <width>0</width>
@@ -396,10 +396,10 @@ Legal</string>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="btnExcluir">
+           <widget class="QPushButton" name="btnRemover">
             <property name="minimumSize">
              <size>
-              <width>70</width>
+              <width>75</width>
               <height>50</height>
              </size>
             </property>
@@ -410,12 +410,18 @@ Legal</string>
              </size>
             </property>
             <property name="text">
-             <string>Excluir</string>
+             <string>Remover</string>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>16</width>
+              <height>16</height>
+             </size>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="btnFechar">
+           <widget class="QPushButton" name="btnInserir">
             <property name="minimumSize">
              <size>
               <width>70</width>
@@ -429,7 +435,7 @@ Legal</string>
              </size>
             </property>
             <property name="text">
-             <string>Fechar</string>
+             <string>Inserir</string>
             </property>
            </widget>
           </item>
