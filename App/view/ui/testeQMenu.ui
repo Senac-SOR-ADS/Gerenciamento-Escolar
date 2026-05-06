@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>290</width>
+    <height>214</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"> 
+QMenu {
+    background-color: #fff;
+    color: #4A5DD6;
+    border: 1.5px solid #D6DCF5;
+	border-radius: 5px;
+    margin: 2px;
+    font-size: 14px;
+    font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
+}
+QMenu::item {
+    background-color: transparent;
+    padding: 5px 25px 5px 20px;
+}
+QMenu::item:selected {
+    background-color: #5B6EE9;
+    color: white;
+}
+QMenu::separator {
+    height: 1px;
+    background: #555;
+    margin: 5px 10px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>290</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menumenu">
+    <property name="title">
+     <string>menu</string>
+    </property>
+    <addaction name="actionNova_Turma"/>
+    <addaction name="actionCadastrar_Aluno"/>
+    <addaction name="actionCadastrar_Funcion_rio"/>
+   </widget>
+   <addaction name="menumenu"/>
+  </widget>
+  <action name="actionNova_Turma">
+   <property name="text">
+    <string>Nova Turma</string>
+   </property>
+  </action>
+  <action name="actionCadastrar_Aluno">
+   <property name="text">
+    <string>Cadastrar Aluno</string>
+   </property>
+  </action>
+  <action name="actionCadastrar_Funcion_rio">
+   <property name="text">
+    <string>Cadastrar Funcionário</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
