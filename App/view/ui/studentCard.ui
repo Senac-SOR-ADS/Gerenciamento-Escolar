@@ -100,11 +100,10 @@ QPushButton#parentInfo {
 }
 
 QPushButton#parentInfo:hover {
-    background-color: #eef2ff;
-    border: 1px solid #6366f1;
-    color: #3730a3;
+    background-color: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: #1f2937;
 }
-
 </string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout" stretch="0">
