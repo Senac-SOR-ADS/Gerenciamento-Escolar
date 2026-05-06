@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>500</width>
-    <height>90</height>
+    <width>556</width>
+    <height>94</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -18,8 +18,8 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>16777215</width>
-    <height>90</height>
+    <width>659</width>
+    <height>16777215</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -30,57 +30,53 @@
     <normaloff>imagens/68045.png</normaloff>imagens/68045.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">
-QFrame {
-    background-color: #f0f4f8;
+   <string notr="true">QPushButton {
     border-radius: 10px;
-    border: 1px solid #c1c7d0;
-    padding: 15px;
-}
-
-QPushButton {
-    background-color: #2980b9;
-    color: white;
-    border-radius: 8px;
-    padding: 10px;
-    border: none;
-    font-size: 14px;
-    font-weight: bold;
-    min-height: 42px;
-}
-
-QPushButton:hover {
-    background-color: #1f6391;
-}
-
-QPushButton:pressed {
-    background-color: #154360;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    min-height: 40px;
 }
 
 QPushButton#studentName {
-    background-color: #00796B;
+    background-color: transparent;
+    color: #2c3e50;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 700;
 }
 
 QPushButton#studentName:hover {
-    background-color: #00897B;
+    background-color: #f5f7fa;
 }
 
 QPushButton#newReport {
     background-color: #E67E22;
+    color: white;
 }
 
 QPushButton#newReport:hover {
-    background-color: #D35400;
+    background-color: #cf711f;
+}
+
+QPushButton#newReport:pressed {
+    background-color: #a85a17;
 }
 
 QPushButton#parentInfo {
-    background-color: #1976D2;
+    background-color: transparent;
+    color: #1976D2;
+    border: 1px solid #d0d7e2;
 }
 
 QPushButton#parentInfo:hover {
-    background-color: #1565C0;
+    background-color: #eef4ff;
+    border: 1px solid #1976D2;
 }
-   </string>
+QPushButton:hover {
+    border: 1px solid #cfd8e3;
+}
+</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout" stretch="3,1,1">
    <property name="spacing">
@@ -105,7 +101,7 @@ QPushButton#parentInfo:hover {
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>imagens/3413591.png</normaloff>imagens/3413591.png</iconset>
+       <normaloff>imagens/2940653.png</normaloff>imagens/2940653.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -122,13 +118,22 @@ QPushButton#parentInfo:hover {
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>imagens/11331280.png</normaloff>imagens/11331280.png</iconset>
+       <normaloff>imagens/pngtree-warning-flat-red-color-rounded-vector-icon-accident-notice-fatal-vector-picture-image_9721366.png</normaloff>imagens/pngtree-warning-flat-red-color-rounded-vector-icon-accident-notice-fatal-vector-picture-image_9721366.png</iconset>
      </property>
      <property name="iconSize">
       <size>
        <width>26</width>
        <height>26</height>
       </size>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+     <property name="autoRepeat">
+      <bool>false</bool>
+     </property>
+     <property name="autoExclusive">
+      <bool>false</bool>
      </property>
     </widget>
    </item>
@@ -139,7 +144,7 @@ QPushButton#parentInfo:hover {
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>imagens/547479.png</normaloff>imagens/547479.png</iconset>
+       <normaloff>imagens/13483717.png</normaloff>imagens/13483717.png</iconset>
      </property>
      <property name="iconSize">
       <size>
