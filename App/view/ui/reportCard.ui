@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>439</width>
-    <height>337</height>
+    <width>494</width>
+    <height>139</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>400</width>
+    <width>494</width>
     <height>139</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>494</width>
-    <height>900</height>
+    <height>139</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -28,17 +28,11 @@
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>10</x>
      <y>0</y>
-     <width>521</width>
-     <height>341</height>
+     <width>471</width>
+     <height>131</height>
     </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>100</width>
-     <height>100</height>
-    </size>
    </property>
    <property name="styleSheet">
     <string notr="true">background-Color: #fff;
@@ -56,70 +50,44 @@ border-radius: 50px;</string>
       <x>-10</x>
       <y>0</y>
       <width>451</width>
-      <height>339</height>
+      <height>139</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout" stretch="0">
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="50,0">
+     <item>
+      <widget class="QLabel" name="descLabel">
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>900000</width>
+         <height>160</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">    font-family: &quot;Segoe UI&quot;, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333333; 
+	border-radius: 25px;
+	padding-left: 10px;
+	color: #777;</string>
+       </property>
+       <property name="text">
+        <string>Ocorrência</string>
+       </property>
+      </widget>
+     </item>
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <property name="spacing">
         <number>15</number>
        </property>
-       <item>
-        <widget class="QLabel" name="respLabel">
-         <property name="minimumSize">
-          <size>
-           <width>120</width>
-           <height>70</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>120</width>
-           <height>70</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">    font-family: &quot;Segoe UI&quot;, sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-	border-radius: 25px;
-	padding-left: 10px;
-	color: #777;</string>
-         </property>
-         <property name="text">
-          <string>Responsável</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="respLabel_2">
-         <property name="minimumSize">
-          <size>
-           <width>120</width>
-           <height>70</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>120</width>
-           <height>70</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">    font-family: &quot;Segoe UI&quot;, sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-	border-radius: 25px;
-	padding-left: 10px;
-	color: #777;</string>
-         </property>
-         <property name="text">
-          <string>Aluno</string>
-         </property>
-        </widget>
-       </item>
-       <item>
+       <item alignment="Qt::AlignRight">
         <widget class="QLabel" name="dateLabel">
          <property name="minimumSize">
           <size>
@@ -148,31 +116,30 @@ border-radius: 50px;</string>
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QLabel" name="descLabel">
+       <item alignment="Qt::AlignRight">
+        <widget class="QLabel" name="respLabel">
          <property name="minimumSize">
           <size>
-           <width>50</width>
-           <height>100</height>
+           <width>120</width>
+           <height>70</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>900000</width>
-           <height>160</height>
+           <width>120</width>
+           <height>70</height>
           </size>
          </property>
          <property name="styleSheet">
           <string notr="true">    font-family: &quot;Segoe UI&quot;, sans-serif;
     font-size: 14px;
     font-weight: bold;
-    color: #333333; 
 	border-radius: 25px;
 	padding-left: 10px;
 	color: #777;</string>
          </property>
          <property name="text">
-          <string>Ocorrência</string>
+          <string>Responsável</string>
          </property>
         </widget>
        </item>
