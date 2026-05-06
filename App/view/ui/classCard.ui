@@ -47,8 +47,8 @@ QPushButton:hover {
     <widget class="QPushButton" name="turma">
      <property name="minimumSize">
       <size>
-       <width>100</width>
-       <height>40</height>
+       <width>140</width>
+       <height>47</height>
       </size>
      </property>
      <property name="maximumSize">
