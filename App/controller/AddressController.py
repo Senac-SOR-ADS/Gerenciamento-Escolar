@@ -53,20 +53,14 @@ class AddressController:
                 neighborhood=form_data.get("neighborhood"),
                 street=form_data.get("street"),
                 complement=form_data.get("complement"),
+                number=form_data.get("number"),
                 responsible_id=responsible_id
             )
 
             adressID = address.createAddress(address)
-            address.id = adressID
-    
-            return {
-                "address_id": address.id,
-                "cep": address.cep,
-                "city": address.city,
-                "neighborhood": address.neighborhood,
-                "street": address.street,
-                "complement": address.complement
-            }
+            
+            return adressID
+
 
         except Exception as e:
             return {"ERRO AO INSERIR DADOS" : e}
@@ -81,20 +75,13 @@ class AddressController:
                 neighborhood=form_data.get("neighborhood"),
                 street=form_data.get("street"),
                 complement=form_data.get("complement"),
+                number=form_data.get("number"),
                 responsible_id=form_data.get("responsible_id")
             )
 
 
-            Address.updateAddress(address)
-
-            return {
-                "address_id": address.id,
-                "cep": address.cep,
-                "city": address.city,
-                "neighborhood": address.neighborhood,
-                "street": address.street,
-                "complement": address.complement
-            }
+            query = Address.updateAddress(address)
+            return query
 
         except Exception as e:
             print("ERRO:", e)
@@ -108,21 +95,20 @@ class AddressController:
         try: 
 
             if ParentId:
-                Address.readAddress(ParentId)
+                address = Address.readAddress(ParentId)
+                return address
+    
 
             else:
                 print("Nao existe Id")
 
         except Exception as e:
             return {"Erro ao puxar endereço": e}
+        
+     
 
 
 if __name__ == "__main__":
-
-
-    #AddressController.findAddressByParentId(1)
        
-    cep = AddressController.requestCep("18071-360")
-    dados = AddressController.create(10, cep)
-    print(dados)
-
+    var = AddressController.findAddressByParentId(4)
+    print(var)
