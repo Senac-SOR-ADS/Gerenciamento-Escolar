@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS `sala_alunos` (
     `id` INTEGER PRIMARY KEY AUTO_INCREMENT,
     `id_aluno` INTEGER NOT NULL,
     `id_sala` INTEGER NOT NULL,
+    `data` DATE DEFAULT (CURRENT_DATE),
     FOREIGN KEY (`id_aluno`) REFERENCES `alunos`(`id`),
     FOREIGN KEY (`id_sala`) REFERENCES `salas`(`id`) 
 );

@@ -11,13 +11,21 @@ class ClassCardUI(QDialog):
     def __init__(self, turmas, **kwargs):
         super().__init__(**kwargs)
         loadUi("App/view/ui/classCard.ui", self)
+        self.parent = kwargs.get("parent", None)
+
+        if self.parent:
+            self.parent.signal_desmarcarTurma.connect(self.desmarcar)
+
         self.turm = turmas
         self.turma.setText(self.turm.turmas)
-        self.turma.clicked.connect(self.mostrar_id)
+        self.turma.clicked.connect(self.idAtual)
 
-    def mostrar_id(self):
-        print(self.turm.id)
+    def idAtual(self):
         self.signal_idDaTurma.emit(self.turm.id)
+
+    def desmarcar(self, idTurma):
+        if idTurma != self.turm.id:
+            self.turma.setChecked(False)
 
 if __name__ == "__main__":
     turmas = Room.getByYear("2026")

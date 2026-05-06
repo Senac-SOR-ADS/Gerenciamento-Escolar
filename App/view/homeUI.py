@@ -1,6 +1,6 @@
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QMenu, QPushButton, QPushButton, QWidget, QVBoxLayout, QLabel, QMainWindow, QAction, QScrollArea
-from PyQt5.QtCore import Qt, pyqtSlot, QPoint
+from PyQt5.QtCore import Qt, pyqtSlot, QPoint, pyqtSignal
 from PyQt5.uic import loadUi
 from App.controller.roomController import RoomController
 from App.view.classCardUI import ClassCardUI
@@ -12,6 +12,9 @@ from App.controller.studentController import StudentController
 from App.view.studentCardUI import StudentCardUI
 
 class HomeUI(QMainWindow):
+
+    signal_desmarcarTurma = pyqtSignal(object)
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         loadUi("App/view/ui/home.ui", self)
@@ -21,6 +24,8 @@ class HomeUI(QMainWindow):
         self.menuOpt = QMenu(self)
         self.createMenu()
         self.btnOptions.clicked.connect(self.showMenu)
+        self.btnPesquisa.clicked.connect(self.searchStudentByName)
+        self.barPesquisa.textChanged.connect(self.searchStudentByName)
         
         
         self.consultarTurmas()
@@ -52,18 +57,32 @@ class HomeUI(QMainWindow):
     def consultarTurmas(self):
         self.clearStackCards(self.scrollAreaWidgetContents_2)
         todas_turmas = RoomController.getRoomByYear(2026)
-        for i in todas_turmas:
-            card = ClassCardUI(i)
+        for turma in todas_turmas:
+            card = ClassCardUI(turma, parent=self)
             card.signal_idDaTurma.connect(self.consultarAlunos)
+            card.signal_idDaTurma.connect(self.desmarcarTurma)
             self.addCardInStackTurmas(card)
+
+    def desmarcarTurma(self, idTurma):
+        self.signal_desmarcarTurma.emit(idTurma)
     
     def consultarAlunos(self, idTurma):
-        self.clearStackCards(self.scrollAreaWidgetContentAlunos)
         alunos = StudentController.getByRoomID(idTurma)
+        
+        self.populaStackAlunos(alunos)        
 
+    def searchStudentByName(self):
+        name = self.barPesquisa.text()
+        alunos = StudentController.searchStudent(name)
+        self.populaStackAlunos(alunos)
+        
+    
+    def populaStackAlunos(self, alunos):
+        self.clearStackCards(self.scrollAreaWidgetContentAlunos)
+        
         try:
-            for i in alunos:
-                card = StudentCardUI(i)
+            for aluno in alunos:
+                card = StudentCardUI(aluno)
                 self.addCardInStackStudents(card)
         except Exception as e:
             self.scrollAreaWidgetContentAlunos.layout().addWidget(QLabel("Nenhum aluno encontrado nessa turma.", alignment=Qt.AlignCenter))

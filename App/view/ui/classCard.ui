@@ -17,7 +17,7 @@
    <string notr="true">QPushButton {
     background-color: #FFFFFF;
     color: #5B6EE9;
-	border: 1px solid #5B6EE9;
+	border: 1.5px solid #5B6EE9;
     border-radius: 20px;
     padding: 13px 20px;
     font-size: 13px;
@@ -35,7 +35,12 @@ QPushButton:checked {
     font-size: 13px;
     font-weight: 750;
     font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
-}</string>
+}
+
+QPushButton:hover {
+    border: 1.5px solid #D6DCF5;
+}
+</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -48,7 +53,7 @@ QPushButton:checked {
      </property>
      <property name="maximumSize">
       <size>
-       <width>150</width>
+       <width>140</width>
        <height>16777215</height>
       </size>
      </property>

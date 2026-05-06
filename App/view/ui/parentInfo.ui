@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>478</width>
-    <height>498</height>
+    <width>527</width>
+    <height>596</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,14 @@
     <normaloff>imagens/68045.png</normaloff>imagens/68045.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QLineEdit {
+   <string notr="true">QLabel{
+ font-family: &quot;Segoe UI&quot;, &quot;Arial&quot;, sans-serif;
+    font-size: 16px;
+    font-weight: 500;   
+    color: #2c3e50;
+}
+
+QLineEdit {
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 6px;
@@ -26,28 +33,27 @@
 }
 
 QLineEdit:focus, QDateTimeEdit:focus {
-    border: 2px solid #4CAF50;
+    border: 2px solid #5B6EE9;
 }
 QCheckBox {
     border-radius: 8px;
-    padding: 6px;
-    background: white;
+    padding: 4px;
+    background: transparent;
 }
 QPushButton {
-    background-color: #4CAF50;
+	font: bold;
+    background-color: #5B6EE9;
     color: white;
     border-radius: 8px;
     padding: 6px 12px;
 }
-
 QPushButton:hover {
-    background-color: #45a049;
+    background-color: #4a5ed8; 
 }
 
 QPushButton:pressed {
-    background-color: #3d8b40;
-}
-</string>
+    background-color: #3f50c7;  
+}</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="rightMargin">
@@ -60,10 +66,21 @@ QPushButton:pressed {
        <property name="styleSheet">
         <string notr="true"/>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0">
+       <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0,0">
         <property name="spacing">
          <number>50</number>
         </property>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item alignment="Qt::AlignHCenter">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:400;&quot;&gt;Informações de parentesco&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
         <item>
          <widget class="QLineEdit" name="lineEdit">
           <property name="alignment">
@@ -106,6 +123,18 @@ QPushButton:pressed {
         </item>
         <item>
          <widget class="QCheckBox" name="checkBox">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="text">
            <string>Responsável 
 Legal</string>

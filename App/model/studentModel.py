@@ -164,7 +164,7 @@ class Student:
         try:
             DB = Database()
             sql = """
-            SELECT a.id, a.nome, a.nome_social 
+            SELECT a.id, a.nome, a.nome_social, a.CPF, a.data_nasc, a.observacao, a.RA, a.RM, a.status, a.data_registro
             FROM alunos AS a
             JOIN sala_alunos AS sa ON a.id = sa.id_aluno 
             WHERE sa.id_sala = %s
@@ -178,9 +178,32 @@ class Student:
             print(f'Erro ao buscar alunos')
             raise RuntimeError
         
+
+    @classmethod
+    def searchStudent(cls, search):
+        try:
+            DB = Database()
+            sql = """
+                SELECT * FROM alunos 
+                WHERE 
+                    RA = %s 
+                    OR nome LIKE CONCAT('%', %s, '%') 
+                    OR nome_social LIKE CONCAT('%', %s, '%')
+            """
+            params = (search, search, search)
+            result = DB.fetchAll(sql, params)
+            return cls._getObjectList(result)
+        except Exception as e:
+            print(f'Erro ao buscar alunos {e}')
+            raise RuntimeError
+
+        
 if __name__ == "__main__":
     # Student.Update(2)
     # s = Student.findByRoomID(2)
     # print(s)
+    # a = Student.searchStudent("Lucas Crispim")
+    # print(a)
     pass
+    
 

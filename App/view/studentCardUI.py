@@ -1,7 +1,6 @@
 from PyQt5.QtWidgets import QWidget
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.uic import loadUi
-
 from App.view.newReportUI import NewReportUI
 from App.view.parentInfoUI import ParentInfoUI
 from App.view.studentInfoUI import StudentInfoUI
@@ -23,7 +22,7 @@ class StudentCardUI(QWidget):
     def openScreen(self):
         sender = self.sender()
         if sender == self.studentName:
-            self.studentInfo = StudentInfoUI()
+            self.studentInfo = StudentInfoUI(self.student)
             self.studentInfo.show()
 
         elif sender == self.newReport:
@@ -40,6 +39,6 @@ if __name__ == "__main__":
     from App.controller.studentController import Student
     student = Student.findById(13)
     app = QApplication([])
-    login = StudentCardUI(student)
+    login = StudentCardUI(student.id)
     login.show()
     app.exec_()
