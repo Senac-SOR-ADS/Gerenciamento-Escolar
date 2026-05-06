@@ -9,8 +9,9 @@ class Address:
     complement = ""
     cep = None
     responsible_id = None
+    number = None
 
-    def __init__(self, id=None, city="", neighborhood="", street="", complement="", cep=None, responsible_id=None ):
+    def __init__(self, id=None, city="", neighborhood="", street="", complement="", cep=None, responsible_id=None, number=None ):
         self.id = id
         self.city = city
         self.neighborhood = neighborhood
@@ -31,8 +32,8 @@ class Address:
 
             sql = """
                 INSERT INTO enderecos
-                (cidade, bairro, rua, complemento, CEP, responsavel_id)
-                VALUES (%s, %s, %s, %s, %s, %s)
+                (cidade, bairro, rua, complemento, CEP, responsavel_id, numero)
+                VALUES (%s, %s, %s, %s, %s, %s, %s)
             """
 
             params = (
@@ -41,13 +42,13 @@ class Address:
                 address.street,
                 address.complement,
                 address.cep,
-                address.responsible_id
+                address.responsible_id,
+                address.number
             )
 
-            endereco_id = DB.insert(sql, params)
+            DB.insert(sql, params)
 
-            print(f"Endereço inserido! ID: {endereco_id}")
-            return endereco_id
+            return address
 
         except Exception as e:
             print("Não foi possível inserir:", e)
@@ -78,7 +79,10 @@ class Address:
             )
 
             DB.execute(sql, params)
+
             print("Atualização feita!")
+
+            return address
         
         except Exception as e:
             print("Não foi possível atualizar:", e)
@@ -87,10 +91,9 @@ class Address:
     @classmethod
     def readAddress(cls, responsible_id):
         # CONSULTAR ENDEREÇO ATRAVÉS DO RESPONSAVEL
-
         try:
             DB = Database()
-            sql = """SELECT id, cidade, bairro, rua, complemento, CEP
+            sql = """SELECT id, cidade, bairro, rua, complemento, CEP, numero
                 FROM enderecos
                 WHERE responsavel_id = %s;
                 """
@@ -117,10 +120,16 @@ class Address:
             DB.execute(sql, params)
 
             print("Endereço excluido com sucesso!")
+            return address
 
         except Exception as e:
             print("Não foi possivel deletar endereço! ", e)
             raise RuntimeError("Falha ao excluir endereço!") from e
+        
+
+    @classmethod
+    def _getObjectList(cls, lista):
+        return [cls(*user.values()) for user in lista]
     
     @classmethod
     def responsibleforAddress(cls, address):
@@ -136,10 +145,23 @@ class Address:
             params = (address.id,)
             result = DB.fetchOne(sql, params)
 
-            print(result)
-
         except Exception as e:
             print("Não foi possivel encontrar responsável!", e)
             raise RuntimeError("Falha na procura!") from e
 
+if __name__ == "__main__": 
+    # a = Address(cep= "1832393",
+    #     city= "linguiça",
+    #     neighborhood= "Fora",
+    #     street= "paulo guedes",
+    #     complement= "dentro",
+    #     number= "69",
+    #     responsible_id= 4)
+    
+
+    # c = Address.createAddress(a)
+
+    # print(c)
         
+    a = Address.readAddress(1)
+    print(a)

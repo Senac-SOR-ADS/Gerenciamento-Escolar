@@ -25,6 +25,90 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QLineEdit {
+    background-color: #FFFFFF;
+    color: #1E1E3A;
+    border: 1.8px solid #D6DCF5;
+    border-radius: 15px;
+    padding: 11px 16px;
+    font-size: 14px;
+    font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
+    selection-background-color: #A8B8FF;
+    selection-color: #1E1E3A;
+}
+
+QLineEdit:hover {
+    border: 1.5px solid #A8B5E8;
+    background-color: #FAFBFF;
+}
+
+QPushButton {
+    background-color: #5B6EE9;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 12px;
+    font-size: 13px;
+    font-weight: 750;
+    font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
+
+}
+
+QPushButton:hover {
+    background-color: #4A5DD6;
+}
+
+QToolButton {
+	background-color: #5B6EE9;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 10px;
+    font-size: 13px;
+    font-weight: 750;
+    font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
+}
+
+QToolButton:hover {
+    background-color: #4A5DD6;
+}
+
+QLabel {
+	font-size: 14px;
+    font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
+	font-weight: 600;
+    letter-spacing: 1px;
+    padding-left: 4px;
+	color: #5B6EE9;
+}
+
+/*background principal barra*/
+QScrollBar:vertical {
+    background: white;
+    width: 6px;
+    margin: 10px 0 10px 0;
+	border-radius: 2px;
+ }
+
+/*background barra*/
+ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+	 background: none;
+}
+
+/*barra de rolagem*/
+ QScrollBar::handle:vertical {
+    background: #A8B5E8;
+    min-height: 6px;
+	border-radius: 2px;
+ }
+
+QScrollArea{
+	border-radius: 5px;
+	border: 1.5px solid #A8B5E8;
+}
+</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
@@ -55,8 +139,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>189</width>
-            <height>466</height>
+            <width>187</width>
+            <height>458</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_6"/>
@@ -67,7 +151,7 @@
      </item>
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,0">
-       <item>
+       <item alignment="Qt::AlignHCenter">
         <widget class="QLabel" name="labelAluno">
          <property name="text">
           <string>Alunos</string>
@@ -84,8 +168,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>576</width>
-            <height>466</height>
+            <width>574</width>
+            <height>458</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_7"/>
@@ -99,9 +183,9 @@
    <widget class="QWidget" name="layoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>30</y>
-      <width>491</width>
+      <x>210</x>
+      <y>20</y>
+      <width>581</width>
       <height>51</height>
      </rect>
     </property>
@@ -114,12 +198,35 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="barPesquisa"/>
+      <widget class="QLineEdit" name="barPesquisa">
+       <property name="placeholderText">
+        <string>Pesquisar...</string>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QPushButton" name="btnPesquisa">
-       <property name="text">
-        <string>Pesquisar</string>
+       <property name="minimumSize">
+        <size>
+         <width>44</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>44</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>imagens/lupa.png</normaloff>imagens/lupa.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
        </property>
        <property name="shortcut">
         <string>Return</string>
