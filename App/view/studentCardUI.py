@@ -30,7 +30,7 @@ class StudentCardUI(QWidget):
             self.freshReport.show()
 
         elif sender == self.parentInfo:
-            self.parentData = ParentInfoUI()
+            self.parentData = ParentInfoUI(self.student.id)
             self.parentData.show()
 
 
@@ -39,6 +39,6 @@ if __name__ == "__main__":
     from App.controller.studentController import Student
     student = Student.findById(13)
     app = QApplication([])
-    login = StudentCardUI(student.id)
+    login = StudentCardUI(student)
     login.show()
     app.exec_()
