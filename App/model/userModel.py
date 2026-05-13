@@ -21,7 +21,7 @@ class Usuario:
     def createUser(cls , user:"Usuario"):
         try:
             DB = Database()
-            sql = "INSERT INTO usuarios (nome_user , email , senha , tipo_user) VALUES(%s , %s , %s , %s)"
+            sql = "INSERT INTO usuarios (nome, email , senha , tipo_user) VALUES(%s , %s , %s , %s)"
             params = (user.name , user.email , user.password , user.type)
             result = DB.execute(sql  , params)
             return result
@@ -33,7 +33,7 @@ class Usuario:
     def updateUser(cls ,user:"Usuario"):
         try:
             DB = Database()
-            sql = "UPDATE usuarios SET nome_user = %s , email = %s , senha = %s WHERE id = %s"
+            sql = "UPDATE usuarios SET nome = %s , email = %s , senha = %s WHERE id = %s"
             params = (user.name , user.email , user.password , user.id)
             result = DB.execute(sql , params)
             return result
@@ -126,7 +126,8 @@ class Usuario:
             if not result: return None
             return cls(*result.values())
         except Exception as e:
-            pass
+            print(f"Não foi possivel fazer login! {e}")
+            raise ValueError
     
     
     def showInfo(self):
@@ -140,9 +141,10 @@ class Usuario:
         """)
 
 if __name__ == "__main__":
-    user = Usuario(id= 5 , name="Chico" , email="caique22@gmail.com" , password="123" , type="Agente" , active=True)
-    Usuario.updateUser(user)
-    user = Usuario.findById(1)
-    print(user.showInfo())
+    user = Usuario(id= 5 , name="Chico" , email="caique22@gmail.com" , password="123567")
+    criar = Usuario.login("caique22@gmail.com")
+    print(criar.showInfo())
+    #print(criar)
+    #print(criar.showInfo())
     # for u in todosUsuarios:
     #     print(u.showInfo())

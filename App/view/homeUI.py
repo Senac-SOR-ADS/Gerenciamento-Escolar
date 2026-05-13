@@ -46,7 +46,8 @@ class HomeUI(QMainWindow):
             
     def callEvent(self, event, **kwargs):
         self.evento = event(**kwargs)
-        self.evento.signal_IdRoom.connect(self.consultarTurmas)
+        if hasattr(self.evento, 'signal_IdRoom'):
+            self.evento.signal_IdRoom.connect(self.consultarTurmas)
         self.evento.exec_()
             
     def showMenu(self):
