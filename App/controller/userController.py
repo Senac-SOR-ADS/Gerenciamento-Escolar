@@ -125,6 +125,15 @@ class UserController:
             print(f'Não foi possivel atualizar o usuario \n{e}')
 
 
+    @classmethod
+    def findUserActive(cls):
+        try: 
+            findUser = Usuario.findUserActive()  
+            return findUser
+        except Exception as e:
+            raise TypeError(f"Erro ao buscar usuarios {e}")
+
+
 
 if __name__ == "__main__":
     # print(isLogged())
@@ -138,5 +147,7 @@ if __name__ == "__main__":
     #UserController.login(usuario["email"] , usuario["password"])
     #print(isLogged())
     # UserController.updateUser(usuario)
-    resultado = UserController.findByID(1)
-    print(resultado.id, resultado.name, resultado.email)  
+    # resultado = UserController.findByID(1)
+    # print(resultado.id, resultado.name, resultado.email)  
+    resultado = UserController.findUserActive()
+    print(resultado)
