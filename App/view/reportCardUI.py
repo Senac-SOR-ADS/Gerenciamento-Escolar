@@ -11,5 +11,5 @@ class ReportCardUI(QDialog):
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
     app = QApplication([])
-    login = ReportCardUI()
+    login = ReportCardUI(3)
     app.exec_()
