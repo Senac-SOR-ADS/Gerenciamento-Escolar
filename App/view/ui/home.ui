@@ -212,13 +212,13 @@ QScrollArea{
       <item>
        <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
         <property name="leftMargin">
-         <number>20</number>
+         <number>30</number>
         </property>
         <property name="topMargin">
-         <number>20</number>
+         <number>30</number>
         </property>
         <property name="bottomMargin">
-         <number>20</number>
+         <number>30</number>
         </property>
         <item alignment="Qt::AlignHCenter">
          <widget class="QLabel" name="labelTurmas_2">
@@ -229,6 +229,12 @@ QScrollArea{
         </item>
         <item>
          <widget class="QScrollArea" name="scrollAreaTurma">
+          <property name="maximumSize">
+           <size>
+            <width>250</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
@@ -237,8 +243,8 @@ QScrollArea{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>169</width>
-             <height>437</height>
+             <width>159</width>
+             <height>417</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_6"/>
@@ -253,13 +259,13 @@ QScrollArea{
          <number>20</number>
         </property>
         <property name="topMargin">
-         <number>20</number>
+         <number>30</number>
         </property>
         <property name="rightMargin">
-         <number>20</number>
+         <number>30</number>
         </property>
         <property name="bottomMargin">
-         <number>20</number>
+         <number>30</number>
         </property>
         <item alignment="Qt::AlignHCenter">
          <widget class="QLabel" name="labelAluno">
@@ -278,8 +284,8 @@ QScrollArea{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>536</width>
-             <height>437</height>
+             <width>526</width>
+             <height>417</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_7"/>
