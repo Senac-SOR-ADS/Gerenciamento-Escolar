@@ -164,10 +164,10 @@ class Student:
         try:
             DB = Database()
             sql = """
-            SELECT a.id, a.nome, a.nome_social, a.CPF, a.data_nasc, a.observacao, a.RA, a.RM, a.status, a.data_registro
-            FROM alunos AS a
-            JOIN sala_alunos AS sa ON a.id = sa.id_aluno 
+            SELECT a.id, a.nome, a.nome_social, a.CPF, a.data_nasc, a.observacao, a.RA, a.RM, a.status, a.data_registro 
+            FROM alunos AS a JOIN sala_alunos AS sa ON a.id = sa.id_aluno 
             WHERE sa.id_sala = %s
+            AND sa.id = (SELECT MAX(sa2.id) FROM sala_alunos sa2 WHERE sa2.id_aluno = a.id);
             """
             params = (roomID,)
             result = DB.fetchAll(sql, params)
@@ -199,7 +199,14 @@ class Student:
 
         
 if __name__ == "__main__":
-     #Student.Update(2)
-     #s = Student.findByRoomID(2)
-     #print(s)
-    pass
+    # Student.Update(2)
+
+    listaEstudantes = Student.findByRoomID(10)
+    for i in listaEstudantes:
+        i.showInfo()
+    # print(s)
+    # a = Student.searchStudent("Lucas Crispim")
+    # print(a)
+    # pass
+    
+
