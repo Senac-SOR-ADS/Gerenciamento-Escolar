@@ -6,31 +6,34 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>710</width>
-    <height>642</height>
+    <width>803</width>
+    <height>769</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Admin</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>imagens/contexto.png</normaloff>imagens/contexto.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QLineEdit {
 	border-radius: 5px;	
 	margin-top: 10px;
 	border: 1px solid #a9a9a9;
-
+	margin: 10px;
+	padding: 10px;
 }
 QPushButton {
     background-color: #5B6EE9;
     color: #FFFFFF;
     border: none;
     border-radius: 10px;
-    padding: 10px;
     font-size: 14px;
     font-weight: 700;
     font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
 	margin-top: 40px;
-
 }
 
 QPushButton:hover {
@@ -40,13 +43,14 @@ QPushButton:hover {
 QComboBox {
 	border-radius: 5px;
 	border: 1px solid #a9a9a9;
+	margin: 10px;
+	padding: 10px;
 }
 
 QComboBox::drop-down {
     subcontrol-origin: padding;
     subcontrol-position: top right; 
-    width: 20px; 
-
+    width: 20px;
     border-left-width: 1px; 
     border-left-color: #a9a9a9;
     border-left-style: solid; 
@@ -95,8 +99,8 @@ QHeaderView::section {
         </property>
         <property name="minimumSize">
          <size>
-          <width>200</width>
-          <height>416</height>
+          <width>250</width>
+          <height>150</height>
          </size>
         </property>
         <property name="columnCount">
@@ -231,7 +235,7 @@ QHeaderView::section {
             </item>
            </widget>
           </item>
-          <item>
+          <item alignment="Qt::AlignVCenter">
            <widget class="QPushButton" name="salvar">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -269,7 +273,7 @@ QHeaderView::section {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>710</width>
+     <width>803</width>
      <height>21</height>
     </rect>
    </property>

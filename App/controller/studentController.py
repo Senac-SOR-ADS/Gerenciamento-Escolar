@@ -152,12 +152,12 @@ if __name__ == "__main__":
     # print(alunos[4].nome)
 
     # print('-'*50)
-    # alunos_sala = StudentController.getByRoomID(5)
-    # print(alunos_sala[0].nome)
+     alunos_sala = StudentController.getByRoomID(2)
+     print(alunos_sala)
 
     # print('-'*50)
     # alunos_ativos = StudentController.getActive()
     # print(alunos_ativos[5].nome)
 
-    u = StudentController.searchStudent("ana")
-    print(u)
+    # u = StudentController.searchStudent("ana")
+    # print(u)
