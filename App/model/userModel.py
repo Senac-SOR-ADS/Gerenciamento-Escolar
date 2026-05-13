@@ -140,9 +140,11 @@ class Usuario:
         """)
 
 if __name__ == "__main__":
-    user = Usuario(id= 5 , name="Chico" , email="caique22@gmail.com" , password="123" , type="Agente" , active=True)
-    Usuario.updateUser(user)
-    user = Usuario.findById(1)
-    print(user.showInfo())
+    # user = Usuario(id= 5 , name="Chico" , email="caique22@gmail.com" , password="123" , type="Agente" , active=True)
+    # Usuario.updateUser(user)
+    # user = Usuario.findById(1)
+    # print(user.showInfo())
     # for u in todosUsuarios:
     #     print(u.showInfo())
+    resultado = Usuario.findById(100)
+    print (resultado.id, resultado.name, resultado.email)

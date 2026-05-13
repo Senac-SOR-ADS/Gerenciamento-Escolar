@@ -81,6 +81,19 @@ class UserController:
         except Exception as e:
             print(f'Não foi possivel fazer o login \n{e}')
 
+
+    @classmethod
+    def findByID(cls, id):
+        try:
+            if not id:
+                raise TypeError("Esse ID não existe!")
+            findID = Usuario.findById(id)
+            print(f"Usuário encontrado: {findID}")
+            return findID
+        except Exception as e:
+            print(f"Erro ao Buscar Usuario! \n{e}")
+
+
     @classmethod
     def deactiveUser(cls , id):
         try:
@@ -124,4 +137,6 @@ if __name__ == "__main__":
     }
     #UserController.login(usuario["email"] , usuario["password"])
     #print(isLogged())
-    UserController.updateUser(usuario)
+    # UserController.updateUser(usuario)
+    resultado = UserController.findByID(1)
+    print(resultado.id, resultado.name, resultado.email)  
