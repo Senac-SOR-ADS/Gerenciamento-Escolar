@@ -58,10 +58,11 @@ class UserController:
                 
             user.password = Criptografia.gerarHash(user.password)
             Usuario.createUser(user)
+            return True
 
         except Exception as e:
             print(f'Erro ao tentar a criação de usuario {e}')
-            raise RuntimeError
+            return False
         
     @classmethod
     def login(cls , email , senha):
@@ -144,7 +145,7 @@ if __name__ == "__main__":
         "password" : "Nelson137982",
         "type" : "agente"
     }
-    UserController.createUser(usuario)
+    # UserController.createUser(usuario)
     #UserController.login(usuario["email"] , usuario["password"])
     #print(isLogged())
     # UserController.updateUser(usuario)
