@@ -144,6 +144,7 @@ if __name__ == "__main__":
         "password" : "Nelson137982",
         "type" : "agente"
     }
+    UserController.createUser(usuario)
     #UserController.login(usuario["email"] , usuario["password"])
     #print(isLogged())
     # UserController.updateUser(usuario)

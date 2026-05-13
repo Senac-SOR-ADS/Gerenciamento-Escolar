@@ -20,6 +20,10 @@ class Address:
         self.cep = cep 
         self.responsible_id = responsible_id
         self.number = number
+    
+    @classmethod
+    def _getObjectList(cls, lista):
+        return [cls(*user.values()) for user in lista]
 
     @classmethod
     def createAddress(cls, address):
@@ -90,16 +94,14 @@ class Address:
         # CONSULTAR ENDEREÇO ATRAVÉS DO RESPONSAVEL
         try:
             DB = Database()
-            sql = """SELECT id, cidade, bairro, rua, complemento, CEP, numero
+            sql = """SELECT id, cidade, bairro, rua, complemento, CEP, responsavel_id, numero
                 FROM enderecos
                 WHERE responsavel_id = %s;
                 """
             params = (responsible_id,)
             result = DB.fetchAll(sql, params)
-            result1 = cls._getObjectList(result)
-            return result1
+            return cls._getObjectList(result)
             
-
         except Exception as e:
             print("Não foi possível selecionar:", e)
             print("Causa:", e.__cause__)  # <-- adiciona isso

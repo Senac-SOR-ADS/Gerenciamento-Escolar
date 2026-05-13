@@ -46,7 +46,8 @@ class HomeUI(QMainWindow):
             
     def callEvent(self, event, **kwargs):
         self.evento = event(**kwargs)
-        self.evento.signal_IdRoom.connect(self.consultarTurmas)
+        if hasattr(self.evento, 'signal_IdRoom'):
+            self.evento.signal_IdRoom.connect(self.consultarTurmas)
         self.evento.exec_()
             
     def showMenu(self):
@@ -85,10 +86,8 @@ class HomeUI(QMainWindow):
                 card = StudentCardUI(aluno)
                 self.addCardInStackStudents(card)
         except Exception as e:
-            self.scrollAreaWidgetContentAlunos.layout().addWidget(QLabel("Nenhum aluno encontrado nessa turma."))
-        
-        return alunos
-        
+            self.scrollAreaWidgetContentAlunos.layout().addWidget(QLabel("Nenhum aluno encontrado nessa turma.", alignment=Qt.AlignCenter))
+                    
     def addCardInStackTurmas(self, interface):
         self.scrollAreaWidgetContents_2.layout().addWidget(interface)
     
