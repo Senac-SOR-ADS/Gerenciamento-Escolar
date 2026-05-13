@@ -2,12 +2,12 @@ from PyQt5.QtWidgets import QDialog
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.uic import loadUi
 from App.view.reportCardUI import ReportCardUI
-from App.model.reportModel import Report
+from App.controller.reportController import ReportController
 
 class ReportUI(QDialog):
     def __init__(self, studentId, **kwargs):
         super().__init__(**kwargs)
-        loadUi("App/view/ui/report.ui", self)
+        loadUi("App/view/ui/report.ui", self) 
         self.studentId = studentId
         self.show()
 
@@ -15,7 +15,7 @@ class ReportUI(QDialog):
         self.clearStackCards(self.scrollAreaWidgetContents)
         try:
             for report in reports:
-                card = ReportCardUI()
+                card = ReportCardUI(report)
                 self.addCardInStackReports(card)
         except Exception as e:
             pass
@@ -24,7 +24,7 @@ class ReportUI(QDialog):
         self.scrollAreaWidgetContents.layout().addWidget(interface)
 
     def consultarReports(self, StudentId):
-        reports = Report.searchStudentID(StudentId)
+        reports = ReportController.getByStudentID(StudentId)
         self.listReport(reports)
         
 
