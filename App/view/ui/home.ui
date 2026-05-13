@@ -167,6 +167,12 @@ QScrollArea{
       </property>
       <item>
        <widget class="QToolButton" name="btnOptions">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>...</string>
         </property>
@@ -174,6 +180,12 @@ QScrollArea{
       </item>
       <item>
        <widget class="QLineEdit" name="barPesquisa">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="placeholderText">
          <string>Pesquisar...</string>
         </property>
@@ -209,16 +221,28 @@ QScrollArea{
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,3">
+      <property name="leftMargin">
+       <number>30</number>
+      </property>
+      <property name="topMargin">
+       <number>20</number>
+      </property>
+      <property name="rightMargin">
+       <number>30</number>
+      </property>
+      <property name="bottomMargin">
+       <number>30</number>
+      </property>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
         <property name="leftMargin">
-         <number>30</number>
+         <number>0</number>
         </property>
         <property name="topMargin">
-         <number>30</number>
+         <number>0</number>
         </property>
         <property name="bottomMargin">
-         <number>30</number>
+         <number>0</number>
         </property>
         <item alignment="Qt::AlignHCenter">
          <widget class="QLabel" name="labelTurmas_2">
@@ -243,8 +267,8 @@ QScrollArea{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>159</width>
-             <height>417</height>
+             <width>173</width>
+             <height>427</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_6"/>
@@ -256,16 +280,16 @@ QScrollArea{
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,0">
         <property name="leftMargin">
-         <number>20</number>
+         <number>10</number>
         </property>
         <property name="topMargin">
-         <number>30</number>
+         <number>0</number>
         </property>
         <property name="rightMargin">
-         <number>30</number>
+         <number>0</number>
         </property>
         <property name="bottomMargin">
-         <number>30</number>
+         <number>0</number>
         </property>
         <item alignment="Qt::AlignHCenter">
          <widget class="QLabel" name="labelAluno">
@@ -284,8 +308,8 @@ QScrollArea{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>526</width>
-             <height>417</height>
+             <width>522</width>
+             <height>427</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_7"/>
