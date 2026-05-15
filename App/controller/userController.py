@@ -17,8 +17,9 @@ def isLogged():
 def logout():
     _setCurrentUser(None)
 
-def _setCurrentUser(id):
-    __currentUser["id"] = id       
+def _setCurrentUser(user:Usuario):
+    __currentUser["id"] = user.id
+    __currentUser["tipo"] = user.tipo       
             
 
 
