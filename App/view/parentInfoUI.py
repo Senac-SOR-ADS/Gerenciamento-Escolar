@@ -4,6 +4,8 @@ from PyQt5.uic import loadUi
 from App.controller.telephoneController import TelephoneController
 from App.controller.parentController import ParentController
 from App.controller.AddressController import AddressController
+from App.view.registerParentUI import RegisterParentUI
+
 
 
 
@@ -18,6 +20,7 @@ class ParentInfoUI(QDialog):
         self.populateComboBox()
         self.comboBox.currentIndexChanged.connect(self.getInfo)
         self.btnRemover.clicked.connect(self.removeParent)
+        self.btnInserir.clicked.connect(RegisterParentUI)
         self.getInfo()
         self.show()
         
