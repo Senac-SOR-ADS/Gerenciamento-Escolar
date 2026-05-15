@@ -103,6 +103,20 @@ class Student:
         except Exception as erro:
             print(f'Erro ao tentar inserir aluno na sala {erro}')
             raise RuntimeError
+    
+    @classmethod
+    def updateStudentClassroom(cls, student_id, room_id):
+        try:
+            DB = Database()
+            sql = """INSERT INTO sala_alunos (id_aluno, id_sala) VALUES (%s, %s)"""
+
+            params = (student_id, room_id)
+            result = DB.insert(sql, params)
+            print(f"Aluno inserido na sala {result}")
+
+        except Exception as erro:
+            print(f'Erro ao tentar inserir aluno na sala {erro}')
+            raise RuntimeError
         
     @classmethod
     def findById(cls, id):

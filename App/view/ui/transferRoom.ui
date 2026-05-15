@@ -257,7 +257,7 @@ QTableWidget::item:selected {
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBox_2">
+      <widget class="QComboBox" name="transferCombo">
        <property name="maximumSize">
         <size>
          <width>300</width>

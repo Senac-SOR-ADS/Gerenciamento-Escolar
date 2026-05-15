@@ -48,7 +48,7 @@ class Room:
             return False     
 
     @classmethod
-    def deactivateRoom(cls, roomId):
+    def desactivateRoom(cls, roomId):
         try:
             DB = Database()
             sql = "UPDATE salas SET ativo = 0 WHERE id = %s" 
