@@ -16,16 +16,17 @@ class ParentInfoUI(QDialog):
         loadUi("App/view/ui/parentInfo.ui", self)
         self.studentID = studentID
         self.listParents = ParentController.findParentForStudent(self.studentID)
-        
+        self.btnInserir.clicked.connect(self.openNewParent)
         self.populateComboBox()
         self.comboBox.currentIndexChanged.connect(self.getInfo)
         self.btnRemover.clicked.connect(self.removeParent)
-        self.btnInserir.clicked.connect(RegisterParentUI)
         self.getInfo()
         self.show()
         
         
     def getInfo(self):
+        if self.comboBox.count() == 0:
+                return
         indexResp = self.comboBox.currentIndex()
         parent = self.listParents[indexResp]
 
@@ -43,6 +44,9 @@ class ParentInfoUI(QDialog):
         self.bairro.setText(listAddress[0].neighborhood)
         self.cep.setText(listAddress[0].cep)
         self.numero.setText(listAddress[0].number)
+
+        self.nome.setReadOnly(True)
+        self.cpf.setReadOnly(True)
         
     
     
@@ -63,10 +67,15 @@ class ParentInfoUI(QDialog):
         except Exception as e:
             print(f"Erro ao remover parente: {e}")
 
+    def openNewParent(self):
+            self.newparent = RegisterParentUI()
+            self.newparent.show()
+
+
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
     from App.controller.studentController import StudentController
-    aluno = StudentController.getById(11)
+    aluno = StudentController.getById(82)
     app = QApplication([])
     login = ParentInfoUI(aluno.id)
     app.exec_()
