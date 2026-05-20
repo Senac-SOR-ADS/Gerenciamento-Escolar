@@ -89,7 +89,7 @@ class HomeUI(QMainWindow):
             self.scrollAreaWidgetContentAlunos.layout().addWidget(QLabel("Nenhum aluno encontrado nessa turma.", alignment=Qt.AlignCenter))
                     
     def addCardInStackTurmas(self, interface):
-        self.scrollAreaWidgetContents_2.layout().addWidget(interface)
+        self.scrollAreaWidgetContents_2.layout().addWidget(interface, alignment=Qt.AlignCenter)
     
     def addCardInStackStudents(self, interface):
         self.scrollAreaWidgetContentAlunos.layout().addWidget(interface)
