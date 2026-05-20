@@ -60,7 +60,14 @@ class ParentController:
             return lista
         except Exception as e:
             raise e
-
+        
+    @classmethod
+    def findParentId(cls, parentId):
+        try:
+            parId = Parent.getUnique(parentId)
+            return parId
+        except Exception as e:
+            raise e
     
     @classmethod
     def validateID(cls, value):
@@ -90,6 +97,7 @@ if __name__ == "__main__":
     # }
     # ParentController.create(testParent)
 
-    a= ParentController.deleteParent(5, 12)
+    # a= ParentController.findParentForStudent(10)
+    par = ParentController.findParentId(3)
 
-    print(a)
+    print(par.name)
