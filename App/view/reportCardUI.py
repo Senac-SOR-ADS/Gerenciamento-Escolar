@@ -1,7 +1,6 @@
 from PyQt5.QtWidgets import QDialog
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.uic import loadUi
-from App.model.parentModel import Parent
 
 
 class ReportCardUI(QDialog):

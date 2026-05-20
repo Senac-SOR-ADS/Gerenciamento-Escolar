@@ -3,6 +3,7 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.uic import loadUi
 from App.view.reportCardUI import ReportCardUI
 from App.controller.reportController import ReportController
+from App.controller.parentController import ParentController
 
 class ReportUI(QDialog):
     def __init__(self, studentId, **kwargs):
