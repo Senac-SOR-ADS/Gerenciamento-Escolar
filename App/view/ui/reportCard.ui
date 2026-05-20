@@ -6,148 +6,173 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>494</width>
-    <height>139</height>
+    <width>730</width>
+    <height>163</height>
    </rect>
   </property>
-  <property name="minimumSize">
-   <size>
-    <width>494</width>
-    <height>139</height>
-   </size>
+  <property name="styleSheet">
+   <string notr="true">QFrame {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+}
+
+QLabel {
+    font-family: &quot;Segoe UI&quot;;
+}
+
+#respLabel {
+    background-color: #f5f5f5;
+    color: #444;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    padding: 8px 14px;
+    border-radius: 10px;
+}
+
+#dateLabel {
+    background-color: #f1f5f9;
+    color: #777;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    padding: 8px 12px;
+    border-radius: 10px;
+}
+
+#descLabel {
+    color: #444;
+    font-size: 15px;
+    border: none;
+    padding-top: 10px;
+}
+
+   </string>
   </property>
-  <property name="maximumSize">
-   <size>
-    <width>494</width>
-    <height>139</height>
-   </size>
-  </property>
-  <property name="windowTitle">
-   <string>Form</string>
-  </property>
-  <widget class="QFrame" name="frame">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>0</y>
-     <width>471</width>
-     <height>131</height>
-    </rect>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <property name="leftMargin">
+    <number>10</number>
    </property>
-   <property name="styleSheet">
-    <string notr="true">background-Color: #fff;
-border-radius: 50px;</string>
+   <property name="topMargin">
+    <number>10</number>
    </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
+   <property name="rightMargin">
+    <number>10</number>
    </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
+   <property name="bottomMargin">
+    <number>10</number>
    </property>
-   <widget class="QWidget" name="horizontalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>-10</x>
-      <y>0</y>
-      <width>451</width>
-      <height>139</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout" stretch="50,0">
-     <item>
-      <widget class="QLabel" name="descLabel">
-       <property name="minimumSize">
-        <size>
-         <width>50</width>
-         <height>100</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>900000</width>
-         <height>160</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">    font-family: &quot;Segoe UI&quot;, sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    color: #333333; 
-	border-radius: 25px;
-	padding-left: 10px;
-	color: #777;</string>
-       </property>
-       <property name="text">
-        <string>Ocorrência</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <property name="spacing">
-        <number>15</number>
-       </property>
-       <item alignment="Qt::AlignRight">
-        <widget class="QLabel" name="dateLabel">
-         <property name="minimumSize">
-          <size>
-           <width>120</width>
-           <height>50</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>100</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">    font-family: &quot;Segoe UI&quot;, sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    color: #333333; 
-	border-radius: 25px;
-	padding-left: 10px;
-	color: #777;
-	background-color: #d0d0d0;</string>
-         </property>
-         <property name="text">
-          <string>Data:</string>
-         </property>
-        </widget>
-       </item>
-       <item alignment="Qt::AlignRight">
-        <widget class="QLabel" name="respLabel">
-         <property name="minimumSize">
-          <size>
-           <width>120</width>
-           <height>70</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>120</width>
-           <height>70</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">    font-family: &quot;Segoe UI&quot;, sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-	border-radius: 25px;
-	padding-left: 10px;
-	color: #777;</string>
-         </property>
-         <property name="text">
-          <string>Responsável</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
-  </widget>
+   <item>
+    <widget class="QFrame" name="frame">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <layout class="QVBoxLayout" name="mainLayout">
+      <property name="spacing">
+       <number>10</number>
+      </property>
+      <property name="leftMargin">
+       <number>18</number>
+      </property>
+      <property name="topMargin">
+       <number>18</number>
+      </property>
+      <property name="rightMargin">
+       <number>18</number>
+      </property>
+      <property name="bottomMargin">
+       <number>18</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" name="topLayout">
+        <property name="spacing">
+         <number>10</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="respLabel">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>250</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Responsável</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="dateLabel">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>15/05/2026</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="descLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Aluno burro fez merda, deixou o Jeff puto porque não sabe versionamento.</string>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+        <property name="margin">
+         <number>4</number>
+        </property>
+        <property name="buddy">
+         <cstring>descLabel</cstring>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

@@ -15,12 +15,22 @@ def isLogged():
     return __currentUser['id'] != None
 
 def logout():
-    _setCurrentUser(None)
+    global __currentUser
+    __currentUser = {
+        "id": None,
+        "nome": "",
+        "email": "",
+        "tipo": ""
+    }
 
-def _setCurrentUser(id):
-    __currentUser["id"] = id       
-            
-
+def _setCurrentUser(user:Usuario):
+    __currentUser["id"] = user.id
+    __currentUser["nome"] = user.name
+    __currentUser["email"] = user.email
+    __currentUser["tipo"] = user.type       
+    
+def getCurrentUser():
+    return __currentUser.copy()
 
 class UserController:
 
@@ -74,7 +84,7 @@ class UserController:
             if not comparePassword:
                 raise ValueError("Email ou senha incorretos")
             
-            _setCurrentUser(user.id)
+            _setCurrentUser(user)
             print(f'Login efetuado com sucesso!')
             return True
             
@@ -122,7 +132,14 @@ if __name__ == "__main__":
         "password" : "Nelson137982",
         "type" : "agente"
     }
-    UserController.createUser(usuario)
+     
+    UserController.login("admin@escola.com" , "senha123")
+    user = getCurrentUser()
+    print(user)
+    logout()
+    user = getCurrentUser()
+    print(user)
+    # _setCurrentUser(user)
     #UserController.login(usuario["email"] , usuario["password"])
     #print(isLogged())
     #UserController.updateUser(usuario)
