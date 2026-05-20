@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QDialog
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.uic import loadUi
+from App.controller.parentController import ParentController
 
 
 class ReportCardUI(QDialog):
@@ -12,9 +13,11 @@ class ReportCardUI(QDialog):
        
         self.dateLabel.setText(str(self.report.date))
         self.descLabel.setText(self.report.description)
-        self.respLabel.setText(str(self.report.parentID))
-        
+        parent = ParentController.findParentId(self.report.parentID)
 
+        self.respLabel.setText(parent.name)
+        
+    # def getNameParent(se)
  
 
     
