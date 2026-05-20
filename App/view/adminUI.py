@@ -1,5 +1,6 @@
-from PyQt5.QtWidgets import QDialog, QTableWidgetItem, QPushButton , QApplication
+from PyQt5.QtWidgets import QDialog, QTableWidgetItem, QPushButton , QApplication, QTableWidget
 from PyQt5.uic import loadUi
+from PyQt5.QtCore import Qt
 from PyQt5.QtCore import pyqtSlot
 from App.controller.userController import UserController
 
@@ -14,6 +15,8 @@ class adminUI(QDialog):
         self.show()
 
         self.tableWidget.itemClicked.connect(self.ao_clicar_item)
+
+        self.tableWidget.setEditTriggers(QTableWidget.NoEditTriggers)
 
     def setValuesOnTable(self, values):
         self.tableWidget.setRowCount(len(values)) 
