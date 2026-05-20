@@ -75,6 +75,19 @@ class ParentController:
         if value <= 0: raise ValueError("Id invalido")
         return value
     
+    @classmethod
+    def deleteParent(cls, responsavel_id, aluno_id):
+
+        try:
+
+            if not responsavel_id or not aluno_id:
+                return {"Parente não foi passado "}
+            
+            Parent.deleteParent(responsavel_id, aluno_id)
+
+        except Exception as e:
+            return {"Erro ao excluir parente"}
+    
 
 if __name__ == "__main__":
     # testParent = {

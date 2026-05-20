@@ -17,6 +17,7 @@ class ParentInfoUI(QDialog):
         
         self.populateComboBox()
         self.comboBox.currentIndexChanged.connect(self.getInfo)
+        self.btnRemover.clicked.connect(self.removeParent)
         self.getInfo()
         self.show()
         
@@ -49,10 +50,20 @@ class ParentInfoUI(QDialog):
         except Exception as e:
             print(f"{e}")
 
+    def removeParent(self):
+        try:
+            indexResp = self.comboBox.currentIndex()
+            parent = self.listParents[indexResp]
+            ParentController.deleteParent(parent.id, self.studentID)
+            self.listParents.pop(indexResp)
+            self.comboBox.removeItem(indexResp)
+        except Exception as e:
+            print(f"Erro ao remover parente: {e}")
+
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
     from App.controller.studentController import StudentController
-    aluno = StudentController.getById(15)
+    aluno = StudentController.getById(11)
     app = QApplication([])
     login = ParentInfoUI(aluno.id)
     app.exec_()
