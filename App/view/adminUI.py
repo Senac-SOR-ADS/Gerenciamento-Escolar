@@ -1,7 +1,7 @@
-from PyQt5.QtWidgets import QDialog, QTableWidgetItem, QPushButton , QApplication, QTableWidget
+from PyQt5.QtWidgets import QDialog, QTableWidgetItem, QPushButton, QApplication, QTableWidget, QWidget, QHBoxLayout
 from PyQt5.uic import loadUi
-from PyQt5.QtCore import Qt
 from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtCore import Qt
 from App.controller.userController import UserController
 
 class adminUI(QDialog):
@@ -12,24 +12,35 @@ class adminUI(QDialog):
         dados = UserController.findUserActive()
         self.setValuesOnTable(dados)
 
-        self.show()
-
         self.tableWidget.itemClicked.connect(self.ao_clicar_item)
-
         self.tableWidget.setEditTriggers(QTableWidget.NoEditTriggers)
 
-    def setValuesOnTable(self, values):
-        self.tableWidget.setRowCount(len(values)) 
-        for i, v in enumerate(values):
-            self.tableWidget.setItem(i, 0, QTableWidgetItem(v.name))
-            self.tableWidget.setItem(i, 1, QTableWidgetItem(str(v.email)))
- 
-            btn = QPushButton("Excluir")
-            btn.clicked.connect(lambda _, id=v.id: self.btn_act(id))
-            self.tableWidget.setCellWidget(i, 1, btn)
+        self.show()
 
+
+    def setValuesOnTable(self, values):
+        self.tableWidget.setColumnCount(3)
+        self.tableWidget.setRowCount(len(values))
+
+        for i, v in enumerate(values):
+
+            self.tableWidget.setItem(i, 0, QTableWidgetItem(str(v.name)))
+            self.tableWidget.setItem(i, 1, QTableWidgetItem(str(v.email)))
+
+            btn = QPushButton("Excluir")  
+            btn.setCursor(Qt.PointingHandCursor) 
+            btn.clicked.connect(lambda _, id=v.id: self.btn_act(id))
+            self.tableWidget.setCellWidget(i, 2, btn)
+
+
+            
     def btn_act(self, id):
-        print(f'Excluir ID: {id}')
+        resp = UserController.deleteUser(id)
+
+        print(resp)
+
+        dados = UserController.findUserActive()
+        self.setValuesOnTable(dados)
 
     @pyqtSlot()
     def on_salvar_clicked(self):
@@ -75,10 +86,17 @@ class adminUI(QDialog):
 
         nome  = self.tableWidget.item(row, 0)
         email = self.tableWidget.item(row, 1)
+        tipo = self.tableWidget.item(row, 2)
 
         self.name.setText(nome.text())
         self.email.setText(email.text())
-        self.senha.setText("")  
+        self.senha.setText("")
+
+
+        if tipo:
+            self.typeUser.setCurrentText(tipo.text())
+
+          
 
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication

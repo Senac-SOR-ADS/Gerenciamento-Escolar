@@ -74,6 +74,17 @@ class UserController:
             return False
         
     @classmethod
+    def deleteUser(cls, id):
+        try:
+            if not id:
+                print ("Não foi possivel deletar")
+            delete = Usuario.removeUser(id)
+            if delete:
+                return f"Sala deletada!"
+        except Exception as e:
+            raise TypeError(f"Erro ao deletar! {e}")
+        
+    @classmethod
     def login(cls , email , senha):
         try:
             user = Usuario.login(email)

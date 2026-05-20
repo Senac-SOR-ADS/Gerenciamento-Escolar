@@ -128,6 +128,21 @@ class Usuario:
         except Exception as e:
             print(f"Não foi possivel fazer login! {e}")
             raise ValueError
+        
+    @classmethod
+    def removeUser(cls, id):
+        try:
+            DB = Database()
+            sql = "DELETE FROM `usuarios` WHERE id = %s"
+            params = (id, )
+            result = DB.fetchOne(sql, params)
+            if not result: 
+                return "Usuario Deletado!"
+            return cls(*result.values())
+        
+        except Exception as e:
+            print(f"Não foi possivel remover usuario! {e}")
+            raise ValueError
     
     
     def showInfo(self):
