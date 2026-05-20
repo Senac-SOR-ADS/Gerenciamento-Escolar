@@ -107,13 +107,26 @@ class Parent:
             return parent
         except ValueError as e:
             raise ValueError(f"Erro ao buscar responsavel por aluno {e}")
+        
+    @classmethod
+    def deleteParent(cls, responsavel_id, aluno_id):
+        try:
+            DB = Database()
+            sql = "DELETE FROM responsavel_aluno WHERE responsavel_id = %s AND aluno_id = %s"
+            values = (responsavel_id, aluno_id)
+            deleted = DB.execute(sql, values)
+            print('Parente excluido com sucesso!')
+            return deleted
+        except Exception as e:
+            print(f'Erro ao excluir o parente!{e}')
+            raise RuntimeError
          
      
 
 
 if __name__ == "__main__":
-    detalhes = Parent.getAll()
-    for detalhe in detalhes:
-        print(detalhe.name)
+    resultado = Parent.deleteParent(3, 12)
+    print(resultado)
+
         
 

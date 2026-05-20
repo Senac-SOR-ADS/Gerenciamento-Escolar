@@ -60,13 +60,33 @@ class ParentController:
             return lista
         except Exception as e:
             raise e
-
+        
+    @classmethod
+    def findParentId(cls, parentId):
+        try:
+            parId = Parent.getUnique(parentId)
+            return parId
+        except Exception as e:
+            raise e
     
     @classmethod
     def validateID(cls, value):
         if not isinstance(value, int): raise TypeError(f"ID incorreto")
         if value <= 0: raise ValueError("Id invalido")
         return value
+    
+    @classmethod
+    def deleteParent(cls, responsavel_id, aluno_id):
+
+        try:
+
+            if not responsavel_id or not aluno_id:
+                return {"Parente não foi passado "}
+            
+            Parent.deleteParent(responsavel_id, aluno_id)
+
+        except Exception as e:
+            return {"Erro ao excluir parente"}
     
 
 if __name__ == "__main__":
@@ -77,6 +97,7 @@ if __name__ == "__main__":
     # }
     # ParentController.create(testParent)
 
-    a= ParentController.findParentForStudent(10)
+    # a= ParentController.findParentForStudent(10)
+    par = ParentController.findParentId(3)
 
-    print(a)
+    print(par.name)

@@ -95,9 +95,7 @@ class AddressController:
         try: 
 
             if ParentId:
-                address = Address.readAddress(ParentId)
-                return address
-    
+                return Address.readAddress(ParentId)
 
             else:
                 print("Nao existe Id")
