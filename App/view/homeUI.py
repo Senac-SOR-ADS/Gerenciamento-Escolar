@@ -30,9 +30,32 @@ class HomeUI(QMainWindow):
         
         self.consultarTurmas()
         self.show()
-    
+ 
     def createMenu(self):
         # can't click on other screens when menu is open, being necessary to click on the menu to close it before clicking on the screen
+        self.menuOpt.setStyleSheet("""
+            QMenu {
+                background-color: #fff;
+                color: #4A5DD6;
+                border: 1.5px solid #D6DCF5;
+                border-radius: 5px;
+                margin: 2px;
+                font-size: 14px;
+                font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
+            }
+            QMenu::item {
+                background-color: transparent;
+                padding: 5px 25px 5px 20px;
+            }
+            QMenu::item:selected {
+                background-color: #5B6EE9;
+                color: white;
+            }
+            QMenu::separator {
+                height: 1px;
+                background: #555;
+                margin: 5px 10px;
+            }""")
         action = [
             ("Nova turma", lambda : self.callEvent(RegisterClassUI, parent=self)),
             ("Cadatrar aluno", lambda : self.callEvent(RegisterStudentUI, parent=self)),
