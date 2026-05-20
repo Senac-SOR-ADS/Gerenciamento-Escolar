@@ -11,7 +11,7 @@ class ReportCardUI(QDialog):
         self.show()
         self.report = report
        
-        self.dateLabel.setText(str(self.report.date))
+        self.dateLabel.setText(str(self.report.date.strftime("%d/%m/%Y")))
         self.descLabel.setText(self.report.description)
         parent = ParentController.findParentId(self.report.parentID)
 
