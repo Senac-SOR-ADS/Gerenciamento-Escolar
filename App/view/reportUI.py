@@ -10,6 +10,7 @@ class ReportUI(QDialog):
         super().__init__(**kwargs)
         loadUi("App/view/ui/report.ui", self) 
         self.studentId = studentId
+        self.consultarReports(studentId)
         self.show()
 
     def listReport(self, reports):
@@ -40,6 +41,4 @@ class ReportUI(QDialog):
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
     app = QApplication([])
-    login = ReportUI(1)
-    login.consultarReports(5)
     app.exec_()

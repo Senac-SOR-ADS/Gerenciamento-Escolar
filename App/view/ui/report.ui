@@ -47,14 +47,7 @@ QListWidget:hover {
 	border: 2px solid #32cd32;
 }
 
-QLabel {
-	font-family: Georgia, serif;
-  	font-size: 26px;
- 	font-weight: 700;
- 	color: #4CAF50;
-  	letter-spacing: -0.5px;
-	text-decoration: underline;
-}
+
 </string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -64,6 +57,17 @@ QLabel {
       <layout class="QVBoxLayout" name="verticalLayout_5">
        <item alignment="Qt::AlignHCenter">
         <widget class="QLabel" name="label">
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+	font-family: Georgia, serif;
+  	font-size: 26px;
+ 	font-weight: 700;
+ 	color: #4CAF50;
+  	letter-spacing: -0.5px;
+	text-decoration: underline;
+}
+</string>
+         </property>
          <property name="text">
           <string>Ocorrências do Aluno</string>
          </property>
@@ -102,6 +106,11 @@ QLabel {
         <layout class="QVBoxLayout" name="verticalLayout_6">
          <item>
           <widget class="QScrollArea" name="scrollArea">
+           <property name="font">
+            <font>
+             <kerning>false</kerning>
+            </font>
+           </property>
            <property name="widgetResizable">
             <bool>true</bool>
            </property>
