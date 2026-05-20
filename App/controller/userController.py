@@ -68,10 +68,10 @@ class UserController:
                 
             user.password = Criptografia.gerarHash(user.password)
             Usuario.createUser(user)
+            return True
 
         except Exception as e:
-            print(f'Erro ao tentar a criação de usuario {e}')
-            raise RuntimeError
+            return False
         
     @classmethod
     def login(cls , email , senha):
@@ -90,6 +90,19 @@ class UserController:
             
         except Exception as e:
             print(f'Não foi possivel fazer o login \n{e}')
+
+
+    @classmethod
+    def findByID(cls, id):
+        try:
+            if not id:
+                raise TypeError("Esse ID não existe!")
+            findID = Usuario.findById(id)
+            print(f"Usuário encontrado: {findID}")
+            return findID
+        except Exception as e:
+            print(f"Erro ao Buscar Usuario! \n{e}")
+
 
     @classmethod
     def deactiveUser(cls , id):
@@ -122,6 +135,15 @@ class UserController:
             print(f'Não foi possivel atualizar o usuario \n{e}')
 
 
+    @classmethod
+    def findUserActive(cls):
+        try: 
+            findUser = Usuario.findUserActive()  
+            return findUser
+        except Exception as e:
+            raise TypeError(f"Erro ao buscar usuarios {e}")
+
+
 
 if __name__ == "__main__":
     # print(isLogged())
@@ -142,4 +164,8 @@ if __name__ == "__main__":
     # _setCurrentUser(user)
     #UserController.login(usuario["email"] , usuario["password"])
     #print(isLogged())
-    #UserController.updateUser(usuario)
+    # UserController.updateUser(usuario)
+    # resultado = UserController.findByID(1)
+    # print(resultado.id, resultado.name, resultado.email)  
+    resultado = UserController.findUserActive()
+    print(resultado)
