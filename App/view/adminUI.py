@@ -26,7 +26,7 @@ class adminUI(QDialog):
  
             btn = QPushButton("Excluir")
             btn.clicked.connect(lambda _, id=v.id: self.btn_act(id))
-            self.tableWidget.setCellWidget(i, 1, btn)
+            self.tableWidget.setCellWidget(i, 2, btn)
 
     def btn_act(self, id):
         print(f'Excluir ID: {id}')
