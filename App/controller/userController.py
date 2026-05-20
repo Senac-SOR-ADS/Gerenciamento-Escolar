@@ -61,7 +61,6 @@ class UserController:
             return True
 
         except Exception as e:
-            print(f'Erro ao tentar a criação de usuario {e}')
             return False
         
     @classmethod

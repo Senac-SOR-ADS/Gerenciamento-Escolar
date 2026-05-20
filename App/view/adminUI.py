@@ -13,6 +13,8 @@ class adminUI(QDialog):
 
         self.show()
 
+        self.tableWidget.itemClicked.connect(self.ao_clicar_item)
+
     def setValuesOnTable(self, values):
         self.tableWidget.setRowCount(len(values)) 
         for i, v in enumerate(values):
@@ -20,11 +22,11 @@ class adminUI(QDialog):
             self.tableWidget.setItem(i, 1, QTableWidgetItem(str(v.email)))
  
             btn = QPushButton("Excluir")
-            # btn.clicked.connect(lambda _, id=v.id: self.btn_act(id))
-            self.tableWidget.setCellWidget(i, 2, btn)
+            btn.clicked.connect(lambda _, id=v.id: self.btn_act(id))
+            self.tableWidget.setCellWidget(i, 1, btn)
 
-    # def btn_act(self, id):
-    #     print(f'Excluir ID: {id}')
+    def btn_act(self, id):
+        print(f'Excluir ID: {id}')
 
     @pyqtSlot()
     def on_salvar_clicked(self):
@@ -33,15 +35,21 @@ class adminUI(QDialog):
         password = self.senha.text()
         confirmarSenha = self.confirmarSenha.text()
         type = self.typeUser.currentText()
+
+        if not UserController.isValidPassword(password):
+            self.label1.setText("Senha fraca! Mínimo 8 caracteres e 1 maiúscula.")
+            return
+        
+        if password != confirmarSenha :
+                self.label1.setText("As senhas não Coicidem!")
+                return  
+
         resp = UserController.createUser({
                 "name": name,
                 "email": email,
                 "password": password,
                 "type": type
             })
-        if confirmarSenha != password:
-                self.label1.setText("As senhas não coincidem!")
-                return  
 
         if resp:
             self.label1.setText("Usuário criado com sucesso!")
@@ -55,7 +63,19 @@ class adminUI(QDialog):
             self.setValuesOnTable(dados)
 
         else: 
-            self.label1.setText("Senhas não condizem!")
+            self.label1.setText("Preencha os Dados Corretamente!")
+
+
+        
+    def ao_clicar_item(self, item):
+        row = item.row()  
+
+        nome  = self.tableWidget.item(row, 0)
+        email = self.tableWidget.item(row, 1)
+
+        self.name.setText(nome.text())
+        self.email.setText(email.text())
+        self.senha.setText("")  
 
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
