@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>527</width>
-    <height>663</height>
+    <width>551</width>
+    <height>677</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -122,7 +122,7 @@ QComboBox::drop-down {
 }
 
 QComboBox::down-arrow {
-    image: url(C:/xampp/htdocs/Gerenciamento-Escolar/App/view/ui/imagens/image-arrow.png);
+    image: url(:setas/image-arrow.png);
     width: 14px;
     height: 14px;
 }
@@ -419,6 +419,8 @@ QComboBox::drop-down:hover {
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="imagens/imagens.qrc"/>
+ </resources>
  <connections/>
 </ui>
