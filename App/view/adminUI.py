@@ -39,7 +39,7 @@ class adminUI(QDialog):
 
             
     def btn_act(self, id):
-        resp = UserController.deleteUser(id)
+        resp = UserController.deactiveUser(id)
 
         print(resp)
 
@@ -121,7 +121,7 @@ class adminUI(QDialog):
         self.salvar.setText("Atualizar")
 
         if tipo:
-            self.typeUser.setCurrentText(tipo.table())
+            self.typeUser.setCurrentText(tipo.text().upper())
 
             
 
