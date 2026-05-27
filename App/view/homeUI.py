@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QMenu, QPushButton, QPushButton, QWidget, QVBoxLayou
 from PyQt5.QtCore import Qt, pyqtSlot, QPoint, pyqtSignal
 from PyQt5.uic import loadUi
 from App.controller.roomController import RoomController
+from App.view.adminUI import adminUI
 from App.view.classCardUI import ClassCardUI
 from App.view.registerClassUI import RegisterClassUI
 from App.controller.loginController import logout
@@ -64,10 +65,10 @@ class HomeUI(QMainWindow):
             }""")
         action = [
             ("Nova turma", lambda : self.callEvent(RegisterClassUI, parent=self)),
-            ("Cadatrar aluno", lambda : self.callEvent(RegisterStudentUI, parent=self)),
+            ("Cadastrar aluno", lambda : self.callEvent(RegisterStudentUI, parent=self)),
             ("Novo ano letivo", lambda : self.callEvent(RegisterStudentUI, parent=self)), # mudar para transferenciaUI
             ("Relatórios", lambda : self.callEvent(RegisterStudentUI, parent=self)), # mudar para relatoriosUI
-            ("Cadastrar funcionário", lambda : self.callEvent(RegisterEmployeeUI, parent=self)),
+            ("Cadastrar funcionário", lambda : self.callEvent(adminUI, parent=self)),
         ]
 
         if self.currentUser["tipo"] == "secretaria":
