@@ -132,6 +132,13 @@ class StudentController:
             return []
         
     @classmethod
+    def linkListStudentsToClassroom(cls, students:Student , roomId):
+        if not students or roomId < 1:
+            return ("Preencha os dados necessários")
+        for student in students:
+            Student.linkStudentInClassroom(student.id , roomId)
+
+    @classmethod
     def searchStudent(cls, search):
         try:
             if not search:
@@ -152,8 +159,10 @@ if __name__ == "__main__":
     # print(alunos[4].nome)
 
     # print('-'*50)
-     alunos_sala = StudentController.getByRoomID(2)
-     print(alunos_sala)
+    alunos_sala = StudentController.getByRoomID(3)
+    StudentController.linkListStudentsToClassroom(alunos_sala[:2] , 1)
+
+
 
     # print('-'*50)
     # alunos_ativos = StudentController.getActive()
