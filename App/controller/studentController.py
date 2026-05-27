@@ -144,6 +144,13 @@ class StudentController:
             return ("Preencha os dados necessários")
         for student in students:
             Student.linkStudentInClassroom(student.id , roomId)
+    
+    @classmethod
+    def deleteListStudent(cls , list:list[Student]):
+        if not list:
+            raise ValueError("A lista deve conter valores validos!")
+        for student in list:
+            cls.delete(student.id)
 
     @classmethod
     def searchStudent(cls, search):
