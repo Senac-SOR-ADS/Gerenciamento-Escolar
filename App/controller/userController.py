@@ -15,12 +15,22 @@ def isLogged():
     return __currentUser['id'] != None
 
 def logout():
-    _setCurrentUser(None)
+    global __currentUser
+    __currentUser = {
+        "id": None,
+        "nome": "",
+        "email": "",
+        "tipo": ""
+    }
 
-def _setCurrentUser(id):
-    __currentUser["id"] = id       
-            
-
+def _setCurrentUser(user:Usuario):
+    __currentUser["id"] = user.id
+    __currentUser["nome"] = user.name
+    __currentUser["email"] = user.email
+    __currentUser["tipo"] = user.type       
+    
+def getCurrentUser():
+    return __currentUser.copy()
 
 class UserController:
 
@@ -58,10 +68,10 @@ class UserController:
                 
             user.password = Criptografia.gerarHash(user.password)
             Usuario.createUser(user)
+            return True
 
         except Exception as e:
-            print(f'Erro ao tentar a criação de usuario {e}')
-            raise RuntimeError
+            return False
         
     @classmethod
     def login(cls , email , senha):
@@ -74,12 +84,25 @@ class UserController:
             if not comparePassword:
                 raise ValueError("Email ou senha incorretos")
             
-            _setCurrentUser(user.id)
+            _setCurrentUser(user)
             print(f'Login efetuado com sucesso!')
             return True
             
         except Exception as e:
             print(f'Não foi possivel fazer o login \n{e}')
+
+
+    @classmethod
+    def findByID(cls, id):
+        try:
+            if not id:
+                raise TypeError("Esse ID não existe!")
+            findID = Usuario.findById(id)
+            print(f"Usuário encontrado: {findID}")
+            return findID
+        except Exception as e:
+            print(f"Erro ao Buscar Usuario! \n{e}")
+
 
     @classmethod
     def deactiveUser(cls , id):
@@ -112,6 +135,15 @@ class UserController:
             print(f'Não foi possivel atualizar o usuario \n{e}')
 
 
+    @classmethod
+    def findUserActive(cls):
+        try: 
+            findUser = Usuario.findUserActive()  
+            return findUser
+        except Exception as e:
+            raise TypeError(f"Erro ao buscar usuarios {e}")
+
+
 
 if __name__ == "__main__":
     # print(isLogged())
@@ -122,6 +154,18 @@ if __name__ == "__main__":
         "password" : "Nelson137982",
         "type" : "agente"
     }
+     
+    UserController.login("admin@escola.com" , "senha123")
+    user = getCurrentUser()
+    print(user)
+    logout()
+    user = getCurrentUser()
+    print(user)
+    # _setCurrentUser(user)
     #UserController.login(usuario["email"] , usuario["password"])
     #print(isLogged())
-    UserController.updateUser(usuario)
+    # UserController.updateUser(usuario)
+    # resultado = UserController.findByID(1)
+    # print(resultado.id, resultado.name, resultado.email)  
+    resultado = UserController.findUserActive()
+    print(resultado)

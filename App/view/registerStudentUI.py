@@ -11,7 +11,6 @@ class RegisterStudentUI(QDialog):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         loadUi("App/view/ui/registerStudent.ui", self)
-        self.show()
 
     def validateAll(self):
         nome = self.nome.text()
@@ -23,7 +22,7 @@ class RegisterStudentUI(QDialog):
         rm = self.rm.text()
         observacao = self.observacao.toPlainText()
 
-        return {
+        return {    
             "nome": nome,
             "data_nasc": data_nasc,
             "nome_social": nome_social,
