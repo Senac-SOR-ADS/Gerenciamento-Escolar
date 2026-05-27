@@ -7,7 +7,6 @@ class RegisterEmployeeUI(QDialog):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         loadUi("App/view/ui/registerEmployee.ui", self)
-        self.show()
         self.funcionario: QComboBox
 
     def clearText(self):
