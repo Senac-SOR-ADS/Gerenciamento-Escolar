@@ -80,7 +80,7 @@ class UserController:
                 print ("Não foi possivel deletar")
             delete = Usuario.removeUser(id)
             if delete:
-                return f"Sala deletada!"
+                return f"Usuario Excluido!"
         except Exception as e:
             raise TypeError(f"Erro ao deletar! {e}")
         
