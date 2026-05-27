@@ -72,7 +72,14 @@ class StudentController:
         except Exception as e:
             print(f"Erro no controller ao desativar aluno: {e}")
             return False
- 
+    
+    @classmethod
+    def deleteListStudent(cls , list:list[Student]):
+        if not list:
+            raise ValueError("A lista deve conter valores validos!")
+        for student in list:
+            cls.delete(student.id)
+
     @classmethod
     def activate(cls, id: int):
         try:
@@ -160,7 +167,7 @@ if __name__ == "__main__":
 
     # print('-'*50)
     alunos_sala = StudentController.getByRoomID(3)
-    StudentController.linkListStudentsToClassroom(alunos_sala[:2] , 1)
+    StudentController.deleteListStudent(alunos_sala[:3])
 
 
 
