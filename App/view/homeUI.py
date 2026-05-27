@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QMenu, QPushButton, QPushButton, QWidget, QVBoxLayou
 from PyQt5.QtCore import Qt, pyqtSlot, QPoint, pyqtSignal
 from PyQt5.uic import loadUi
 from App.controller.roomController import RoomController
-from App.view import adminUI
+from App.view.adminUI import AdminUI
 from App.view.classCardUI import ClassCardUI
 from App.view.registerClassUI import RegisterClassUI
 from App.controller.loginController import logout
