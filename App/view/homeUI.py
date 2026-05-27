@@ -68,7 +68,7 @@ class HomeUI(QMainWindow):
             ("Cadastrar aluno", lambda : self.callEvent(RegisterStudentUI, parent=self)),
             ("Novo ano letivo", lambda : self.callEvent(RegisterStudentUI, parent=self)), # mudar para transferenciaUI
             ("Relatórios", lambda : self.callEvent(RegisterStudentUI, parent=self)), # mudar para relatoriosUI
-            ("Admin UI", lambda : self.callEvent(adminUI, parent=self)),
+            ("Cadastrar funcionário", lambda : self.callEvent(adminUI, parent=self)),
         ]
 
         if self.currentUser["tipo"] == "secretaria":
