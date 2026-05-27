@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QMenu, QPushButton, QPushButton, QWidget, QVBoxLayou
 from PyQt5.QtCore import Qt, pyqtSlot, QPoint, pyqtSignal
 from PyQt5.uic import loadUi
 from App.controller.roomController import RoomController
+from App.view.adminUI import adminUI
 from App.view.classCardUI import ClassCardUI
 from App.view.registerClassUI import RegisterClassUI
 from App.controller.loginController import logout
@@ -10,6 +11,7 @@ from App.view.registerStudentUI import RegisterStudentUI
 from App.view.registerEmployeeUI import RegisterEmployeeUI
 from App.controller.studentController import StudentController
 from App.view.studentCardUI import StudentCardUI
+from App.controller.userController import getCurrentUser
 
 class HomeUI(QMainWindow):
 
@@ -19,10 +21,15 @@ class HomeUI(QMainWindow):
         super().__init__(**kwargs)
         loadUi("App/view/ui/home.ui", self)
         self.show()
-        
+
+        self.currentUser = getCurrentUser()
+        print(self.currentUser["tipo"])
         
         self.menuOpt = QMenu(self)
-        self.createMenu()
+
+        if self.currentUser["tipo"] != "agente":
+            self.createMenu()
+
         self.btnOptions.clicked.connect(self.showMenu)
         self.btnPesquisa.clicked.connect(self.searchStudentByName)
         self.barPesquisa.textChanged.connect(self.searchStudentByName)
@@ -58,9 +65,14 @@ class HomeUI(QMainWindow):
             }""")
         action = [
             ("Nova turma", lambda : self.callEvent(RegisterClassUI, parent=self)),
-            ("Cadatrar aluno", lambda : self.callEvent(RegisterStudentUI, parent=self)),
-            ("Cadastrar funcionário", lambda : self.callEvent(RegisterEmployeeUI, parent=self)),
+            ("Cadastrar aluno", lambda : self.callEvent(RegisterStudentUI, parent=self)),
+            ("Novo ano letivo", lambda : self.callEvent(RegisterStudentUI, parent=self)), # mudar para transferenciaUI
+            ("Relatórios", lambda : self.callEvent(RegisterStudentUI, parent=self)), # mudar para relatoriosUI
+            ("Cadastrar funcionário", lambda : self.callEvent(adminUI, parent=self)),
         ]
+
+        if self.currentUser["tipo"] == "secretaria":
+            action.pop()
         
         for texto, funcao in action:
             event = QAction(texto, self)
