@@ -67,15 +67,10 @@ class ParentInfoUI(QDialog):
         except Exception as e:
             print(f"Erro ao remover parente: {e}")
 
-    def openNewParent(self):
-            self.newparent = RegisterParentUI()
-            self.newparent.show()
-
-
 if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
     from App.controller.studentController import StudentController
-    aluno = StudentController.getById(82)
+    aluno = StudentController.getById(11)
     app = QApplication([])
     login = ParentInfoUI(aluno.id)
     app.exec_()

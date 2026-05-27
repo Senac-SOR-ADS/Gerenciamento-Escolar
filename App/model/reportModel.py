@@ -88,7 +88,7 @@ class Report:
             result = DB.fetchAll(sql, params)
             if result: 
                 return cls._getObjectList(result)
-            return cls()
+            return []
         except Exception as e:
             print(f'Erro ao buscar relatorio')
             raise RuntimeError

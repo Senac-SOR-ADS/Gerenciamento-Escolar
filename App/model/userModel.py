@@ -148,3 +148,5 @@ if __name__ == "__main__":
     #print(criar.showInfo())
     # for u in todosUsuarios:
     #     print(u.showInfo())
+    resultado = Usuario.findById(100)
+    print (resultado.id, resultado.name, resultado.email)
