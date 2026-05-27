@@ -65,8 +65,13 @@ class HomeUI(QMainWindow):
         action = [
             ("Nova turma", lambda : self.callEvent(RegisterClassUI, parent=self)),
             ("Cadatrar aluno", lambda : self.callEvent(RegisterStudentUI, parent=self)),
+            ("Novo ano letivo", lambda : self.callEvent(RegisterStudentUI, parent=self)), # mudar para transferenciaUI
+            ("Relatórios", lambda : self.callEvent(RegisterStudentUI, parent=self)), # mudar para relatoriosUI
             ("Cadastrar funcionário", lambda : self.callEvent(RegisterEmployeeUI, parent=self)),
         ]
+
+        if self.currentUser["tipo"] == "secretaria":
+            action.pop()
         
         if self.currentUser["tipo"] == "secretaria":
             action.pop()
