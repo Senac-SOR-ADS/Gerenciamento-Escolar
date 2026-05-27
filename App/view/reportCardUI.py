@@ -4,6 +4,8 @@ from PyQt5.uic import loadUi
 from App.controller.parentController import ParentController
 
 
+from App.controller.parentController import ParentController 
+ 
 class ReportCardUI(QDialog):
     def __init__(self, report, **kwargs):
         super().__init__(**kwargs)
