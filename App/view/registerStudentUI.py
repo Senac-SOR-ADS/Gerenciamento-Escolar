@@ -11,7 +11,6 @@ class RegisterStudentUI(QDialog):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         loadUi("App/view/ui/registerStudent.ui", self)
-        self.show()
 
     def validateAll(self):
         nome = self.nome.text()
