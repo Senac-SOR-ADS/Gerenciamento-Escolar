@@ -1,7 +1,6 @@
 from App.model.studentModel import Student
 from datetime import datetime
 class StudentController:
- 
     @classmethod
     def validateRequiredFields(cls, data):
  
@@ -41,22 +40,22 @@ class StudentController:
             return False
  
     @classmethod
-    def update(cls, id: int, data: dict):
+    def update(cls, student):
         try:
 
-            data_nasc=data.get("data_nasc")
-            data_nasc= datetime.strptime(data_nasc, "%d/%m/%Y")
-            student = Student(
-                id=id,
-                nome=data.get("nome"),
-                nome_social=data.get("nome_social"),
-                CPF=data.get("CPF"),
-                data_nasc=data_nasc,
-                RA=data.get("RA"),
-                RM=data.get("RM"),
-                obs=data.get("observacao"),
-                status=data.get("status", True)
-            )
+            # data_nasc=data.get("data_nasc")
+            # # data_nasc= datetime.strptime(data_nasc, "%d/%m/%Y")
+            # student = Student(
+            #     id=id,
+            #     nome=data.get("nome"),
+            #     nome_social=data.get("nome_social"),
+            #     CPF=data.get("CPF"),
+            #     data_nasc=data_nasc,
+            #     RA=data.get("RA"),
+            #     RM=data.get("RM"),
+            #     obs=data.get("observacao"),
+            #     status=data.get("status", True)
+            # )
  
             result = Student.Update(student)
             return result
