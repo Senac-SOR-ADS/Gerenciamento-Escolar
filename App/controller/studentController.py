@@ -155,6 +155,15 @@ class StudentController:
         except Exception as e:
             print(f"Erro ao buscar Aluno: ")
             raise e
+    
+    @classmethod
+    def AllStudentsWithoutClassroom(cls):
+        try:
+            return Student.AllStudentsWithoutClassroom()
+        except Exception as e:
+            print("Erro ao tentar buscar alunos {e}")
+            RuntimeError
+
 
         
 if __name__ == "__main__":
@@ -166,9 +175,23 @@ if __name__ == "__main__":
     # print(alunos[4].nome)
 
     # print('-'*50)
-    alunos_sala = StudentController.getByRoomID(3)
-    StudentController.deleteListStudent(alunos_sala[:3])
+    # alunos_sala = StudentController.getByRoomID(3)
+    # StudentController.deleteListStudent(alunos_sala[:3])
 
+    estudante = StudentController.AllStudentsWithoutClassroom()
+    for i in estudante:
+        print(f"""
+            ID : {i.id}
+            Nome : {i.nome}
+            Nome Social: {i.nome_social}
+            CPF: {i.CPF}
+            Data Nascimento: {i.data_nasc}
+            RA: {i.RA}
+            RM: {i.RM}
+            STATUS: {i.status}
+            Data Registro: {i.data_registro}
+            Observações: {i.obs}
+        """)
 
 
     # print('-'*50)
